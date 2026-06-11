@@ -29,18 +29,25 @@
  }
 
  .footer__container {
-     padding: 40px 20px 24px;
+     padding: 48px 20px;
      display: flex;
      flex-direction: column;
      align-items: center;
-     gap: 32px;
+     gap: 80px;
+ }
+
+ .footer__content {
+     width: 100%;
+     row-gap: 32px;
+     display: flex;
+     flex-direction: column;
  }
 
  /* ── LOGO ── */
  .footer__logo {
-     display: flex;
+     /* display: flex;
      align-items: center;
-     gap: 10px;
+     gap: 10px;*/
      text-decoration: none;
      color: var(--color-text);
      cursor: pointer;
@@ -60,8 +67,8 @@
  }
 
  .footer__logo-icon {
-     width: 44px;
-     height: 44px;
+     width: 298px;
+     height: 98px;
      flex-shrink: 0;
  }
 
@@ -113,7 +120,7 @@
  /* ── SOCIALS ── */
  .footer__socials {
      display: flex;
-     align-items: center;
+     justify-content: center;
      gap: 24px;
  }
 
@@ -121,8 +128,8 @@
      display: flex;
      align-items: center;
      justify-content: center;
-     width: 36px;
-     height: 36px;
+     width: 32px;
+     height: 32px;
      color: var(--color-text);
      text-decoration: none;
      border-radius: 50%;
@@ -151,6 +158,10 @@
      background-color: rgba(46, 33, 24, 0.16);
  }
 
+ .footer__credits {
+     width: 100%;
+ }
+
  /* ── DIVIDER ── */
  .footer__divider {
      width: 100%;
@@ -164,7 +175,6 @@
      font-size: 13px;
      color: var(--color-text-muted);
      text-align: center;
-     padding-bottom: 48px;
      padding-top: 32px;
  }
 
@@ -172,13 +182,19 @@
        TABLET — 768px
     ══════════════════════════════════════ */
  @media (min-width: 768px) {
+
+     .footer__container {
+         padding: 48px 32px;
+     }
+
      .footer__inner {
          padding: 48px 40px 28px;
          gap: 32px;
      }
 
      .footer__nav {
-         gap: 32px;
+         flex-direction: row;
+         justify-content: center;
      }
 
      .footer__nav-link {
@@ -194,6 +210,11 @@
        DESKTOP — 1440px
     ══════════════════════════════════════ */
  @media (min-width: 1440px) {
+
+     .footer__container {
+         padding: 64px;
+     }
+
      .footer__inner {
          max-width: 1440px;
          margin: 0 auto;
@@ -211,6 +232,5 @@
 
      .footer__copy {
          font-size: 14px;
-         padding-bottom: 24px;
      }
  }
