@@ -1,0 +1,76 @@
+
+/* base section */
+
+.pets {
+  /* секція */
+}
+
+.pets__header {
+  /* title + subtitle wrapper */
+}
+
+.pets__title {}
+
+.pets__subtitle {}
+
+
+/* filters */
+
+.pets__filters {
+  /* flex container */
+}
+
+.pets__filter-btn {
+  /* базова кнопка */
+}
+
+.pets__filter-btn.is-active {
+  /* активний стан */
+}
+
+
+/* loader */
+
+.pets__loader {
+  /* loader container */
+}
+
+.hidden {
+  display: none;
+}
+
+
+/* cards list */
+
+.pets__list {
+  /* grid або flex */
+}
+
+
+/* card */
+
+.pet-card {}
+
+.pet-card__img {}
+
+.pet-card__bottom {}
+
+.pet-card__header {}
+
+.pet-card__tags {}
+
+.tag {}
+
+.pet-card__meta {}
+
+.pet-card__btn {}
+
+
+
+/* load more */
+
+.pets__actions {}
+
+.pets__load-more {}
+
+

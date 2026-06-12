@@ -1,0 +1,89 @@
+<section class="pets">
+  <div class="container">
+
+    <!-- TITLE -->
+    <div class="pets__header">
+      <h2 class="pets__title">Наші хвостики</h2>
+      <p class="pets__subtitle">
+        Вони дуже чекають на знайомство з вами
+      </p>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="pets__filters">
+      <button class="pets__filter-btn is-active">Всі</button>
+      <button class="pets__filter-btn">Собаки</button>
+      <button class="pets__filter-btn">Коти</button>
+      <button class="pets__filter-btn">Кролики</button>
+      <button class="pets__filter-btn">Гризуни</button>
+      <button class="pets__filter-btn">Птахи</button>
+      <button class="pets__filter-btn">Тварини з особливими потребами</button>
+      <button class="pets__filter-btn">Терміново шукають дім</button>
+    </div>
+
+    <!-- LOADER -->
+    <div class="pets__loader hidden"></div>
+
+    <!-- CARDS LIST -->
+    <ul class="pets__list">
+
+      <!-- CARD -->
+      <li class="pet-card">
+
+        <img class="pet-card__img" src="" alt="Pet image" />
+
+        <div class="pet-card__bottom">
+
+          <!-- content -->
+          <div class="pet-card__content">
+
+            <header class="pet-card__header">
+
+              <!-- frame 266 -->
+              <div class="pet-card__main">
+                <h3 class="pet-card__name">Кличка</h3>
+                <p class="pet-card__species">Вид тварини</p>
+              </div>
+
+              <!-- frame 270 (tags) -->
+              <div class="pet-card__tags">
+                <span class="tag">Tag</span>
+                <span class="tag">Tag</span>
+                <span class="tag">Tag</span>
+              </div>
+
+              <!-- frame 265 -->
+              <div class="pet-card__meta">
+                <span>Вік</span>
+                <span>Стать</span>
+              </div>
+
+            </header>
+
+            <p class="pet-card__description">
+              Короткий опис тварини
+            </p>
+
+          </div>
+
+          <!-- BUTTON -->
+          <button class="pet-card__btn">
+            Дізнатись більше
+          </button>
+
+        </div>
+      </li>
+
+      <!-- JS will duplicate cards here -->
+
+    </ul>
+ </div>
+ 
+  <!-- LOAD MORE -->
+  <div class="pets__actions">
+    <button class="pets__load-more">
+      Показати більше
+    </button>
+  </div>
+
+</section>
