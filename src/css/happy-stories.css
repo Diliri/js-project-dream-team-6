@@ -1,0 +1,229 @@
+/* ==========================================================================
+   СЕКЦІЯ ТА ЗАГОЛОВКИ
+   ========================================================================== */
+
+.section#happy-stories {
+/* Відступи всієї секції зверху/знизу */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 32px;
+  background: var(--color-scheme-1-background);
+  padding-block: 64px;
+  padding-inline: 20px;
+  width: 375px;
+  height: 776px;
+}
+
+.happy-stories__container {
+  /* Базовий контейнер*/
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.title {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 36px;
+
+  line-height: 43px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--color-scheme-1-text);
+}
+
+.happy-stories__text {
+  /* Стилі для підзаголовка*/
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+
+/* line-height: 24px; */ 
+  line-height: 1.5;
+  text-align: center;
+  color: var(--color-scheme-1-text);
+}
+
+
+/* ==========================================================================
+   СТРУКТУРА СЛАЙДЕРА (SWIPER)
+   ========================================================================== */
+
+.happy-stories__swiper {
+  /* Головний контейнер слайдера. Ширина 100% */
+  width: 100%;
+}
+
+.happy-stories__list {
+  /* Це <ul>, він же swiper-wrapper. */
+  /* Зазвичай Swiper сам керує його флексами, але тут можна скинути margin/padding списку */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ==========================================================================
+   КАРТКА ВІДГУКУ (Елемент списку <li>)
+   ========================================================================== */
+
+.happy-stories__list-item {
+  /* Картка відгуку (фон, внутрішні відступи padding, border-radius) */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Зірочки */
+.happy-stories__stars {
+  display: flex;
+  /* Відступ від зірочок до тексту */
+}
+
+/WARNING!!!/
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.happy-stories__star {
+  /* Колір зірочок регулюється через 'color', бо в JS ми прописали currentColor */
+  color: #000000; 
+}
+
+/* Текст відгуку всередині картки */
+.happy-stories__item-text {
+  /* Колір тексту, font-size, line-height */
+}
+
+/* Ім'я користувача */
+.happy-stories__item-user {
+  /* Шрифти, жирність (font-weight: 700) */
+  margin-top: auto; /* Притискає ім'я до низу, якщо тексти різної довжини */
+}
+
+
+/* ==========================================================================
+   ЕЛЕМЕНТИ КЕРУВАННЯ (Пагінація + Кнопки)
+   ========================================================================== */
+
+.happy-stories__controls {
+  /* Контейнер для крапок і стрілочок */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Контейнер для двох кнопок-стрілочок */
+.happy-stories__buttons {
+  display: flex;
+}
+
+/* Спільний стиль для обох кнопок */
+.happy-stories__btn {
+  /* Розміри (width/height), рамка, ховери, курсор */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.happy-stories__btn:hover,
+.happy-stories__btn:focus {
+  /* Стилі при наведенні та фокусі з UI Kit */
+}
+
+/* ДЕАКТИВОВАНИЙ СТАН КНОПОК (для першого/останнього слайду за ТЗ) */
+.happy-stories__btn.swiper-button-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+
+/* ==========================================================================
+   КАСТОМІЗАЦІЯ КРАПОК ПАГІНАЦІЇ SWIPER
+   ========================================================================== */
+
+/* Сама плашка пагінації (скасовуємо абсолютне позиціонування Swiper) */
+.happy-stories__pagination.swiper-pagination {
+  position: static !important;
+  width: auto !important;
+}
+
+/* Кожна окрема крапка */
+.happy-stories__pagination .swiper-pagination-bullet {
+  cursor: pointer;
+  /* Колір неактивної крапки, розмір */
+  transition: all 0.2s;
+}
+
+/* Активна крапка */
+.happy-stories__pagination .swiper-pagination-bullet-active {
+  /* Колір активної крапки з макету */
+}
+
+
+/* ==========================================================================
+   СТАНИ ЗАВАНТАЖЕННЯ ТА ПОМИЛКИ
+   ========================================================================== */
+
+.happy-stories__loading {
+  /* Стиль для тексту "Завантаження відгуків..." */
+  text-align: center;
+  width: 100%;
+}
+
+.happy-stories__error {
+  /* Стиль для повідомлення про помилку з сервера */
+  text-align: center;
+  color: #ff0000; /* або колір помилки з вашого гайдлайну */
+  width: 100%;
+}
+
+
+/* ==========================================================================
+   АДАПТИВНІСТЬ (МЕДІА-ЗАПИТИ)
+   ========================================================================== */
+
+/* Планшетна версія (від 768px) */
+@media screen and (min-width: 768px) {
+  .happy-stories__container {
+    /* Новий max-width та падінги */
+  }
+
+  .title,
+  .happy-stories__text {
+    /* Вирівнювання тексту по центру, як на макеті 768px */
+    text-align: center;
+  }
+}
+
+/* Десктопна версія (від 1280px) */
+@media screen and (min-width: 1280px) {
+  .happy-stories__container {
+    /* Максимальна ширина для десктопу */
+  }
+}
+
+/* Стиль для повідомлення про помилку або завантаження */
+.error-placeholder,
+.loading-placeholder {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 16px;
+  color: #da4040; /* Червонуватий колір для помилки */
+  background-color: var(--color-bg-card);
+  border-radius: 8px;
+  width: 100%;
+}
+
+.loading-placeholder {
+  color: var(--color-text-muted); /* Для завантаження залишаємо сірий */
+}

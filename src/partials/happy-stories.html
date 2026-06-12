@@ -1,3 +1,8 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
 <section class="section" id="happy-stories">
   <div class="happy-stories__container container">
     <h2 class="title">Щасливі історії, що надихають</h2>
@@ -5,25 +10,55 @@
       Ці хвостики вже знайшли свій дім. Ваш майбутній друг теж чекає на вас
     </p>
 
-    <ul class="happy-stories__list">
-      <li class="happy-stories__list-item">
-        <div>stars</div>
-        <p>
-          Ми довго вагалися, чи готові до собаки, але коли побачили на сайті
-          Хатинки фото Арчі, зрозуміли — це наш. Тепер ми не уявляємо ранків без
-          його веселого гавкоту та вечорів без спільних прогулянок. Він приніс у
-          наш дім стільки сміху та любові! Дякуємо „Хатинці лапок“ за нашого
-          найкращого друга.
-        </p>
-        <p>Submarine and Sergay</p>
-      </li>
-    </ul>
-    <div>
-      <div>dotes</div>
-      <div>
-        <button>left arrow (svg)</button>
-        <button>right arrow (svg)</button>
+    <div class="swiper happy-stories__swiper">
+      <ul class="happy-stories__list swiper-wrapper" id="feedbacks-container">
+        <li class="swiper-slide happy-stories__loading">
+          Завантаження відгуків...
+        </li>
+      </ul>
+
+      <div class="happy-stories__controls">
+        <div class="swiper-pagination happy-stories__pagination"></div>
+
+        <div class="happy-stories__buttons">
+          <button
+            type="button"
+            class="swiper-btn-prev happy-stories__btn"
+            aria-label="Попередній відгук"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            class="swiper-btn-next happy-stories__btn"
+            aria-label="Наступний відгук"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+-->
