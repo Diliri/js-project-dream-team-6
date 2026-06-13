@@ -1,0 +1,79 @@
+<div
+  class="modal-overlay hidden"
+  id="adoptModalOverlay"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="adoptModalTitle"
+>
+  <div class="modal" id="adoptModal">
+    <button class="modal__close" id="adoptModalClose" aria-label="Закрити">
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1 1L17 17M17 1L1 17"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+
+    <h2 class="modal__title" id="adoptModalTitle">
+      Залишіть заявку на знайомство
+    </h2>
+
+    <form class="modal__form" id="adoptForm" novalidate>
+      <div class="field" id="fieldName">
+        <label class="field__label" for="inputName">Ім'я*</label>
+        <input
+          class="field__input"
+          id="inputName"
+          type="text"
+          placeholder="Андрій"
+          autocomplete="given-name"
+          required
+        />
+        <span class="field__error-text" role="alert"
+          >Будь ласка, введіть ваше ім'я</span
+        >
+      </div>
+
+      <div class="field" id="fieldPhone">
+        <label class="field__label" for="inputPhone">Телефон*</label>
+        <input
+          class="field__input"
+          id="inputPhone"
+          type="tel"
+          placeholder="380955559922"
+          autocomplete="tel"
+          required
+        />
+        <span class="field__error-text" role="alert"
+          >Будь ласка, введіть номер телефону</span
+        >
+      </div>
+
+      <div class="field" id="fieldComment">
+        <label class="field__label" for="inputComment">Коментар</label>
+        <textarea
+          class="field__textarea"
+          id="inputComment"
+          placeholder="Напишіть ваш коментар"
+        ></textarea>
+      </div>
+
+      <button class="modal__submit" type="submit">Надіслати</button>
+    </form>
+  </div>
+</div>
+
+<div class="trigger-wrap">
+  <button class="trigger-btn" id="openAdoptModalBtn">
+    Відкрити модальне вікно
+  </button>
+</div>
