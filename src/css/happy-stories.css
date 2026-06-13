@@ -4,26 +4,32 @@
 
 .section#happy-stories {
 /* Відступи всієї секції зверху/знизу */
-  display: flex;
+  /*display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
   gap: 32px;
+  padding-inline: 20px; */
   background: var(--color-scheme-1-background);
   padding-block: 64px;
-  padding-inline: 20px;
-  width: 375px;
-  height: 776px;
+
 }
 
 .happy-stories__container {
   /* Базовий контейнер*/
+  /* ТУТ налаштовуємо гуму для mobile devices */
+
+  width: 100%;
+  max-width: 375px; 
+  margin: 0 auto;
+  padding-inline: 20px;
+  box-sizing: border-box;
 
   display: flex;
-  align-items: center;
+  align-items: stretch; /* Розтягує дітей по ширині контейнера */
   justify-content: flex-start;
   flex-direction: column;
-  gap: 40px;
+  gap: 40px; /* Однаковий відступ між заголовком, текстом і слайдером */
 }
 
 .title {
@@ -32,10 +38,10 @@
   font-size: 36px;
 
   line-height: 43px;
-  line-height: 1.2;
   letter-spacing: -0.01em;
   text-align: center;
   color: var(--color-scheme-1-text);
+  margin: 0;
 }
 
 .happy-stories__text {
@@ -47,6 +53,7 @@
   line-height: 24px;
   text-align: center;
   color: var(--color-scheme-1-text);
+  margin: 0;
 }
 
 
@@ -82,7 +89,7 @@
 /* Зірочки */
 .happy-stories__stars {
   display: flex;
-  /* Відступ від зірочок до тексту */
+  gap: 4px;
 }
 
 .happy-stories__star {
@@ -98,6 +105,8 @@
 
   line-height: 27px;
   color: var(--color-scheme-1-text);
+  margin: 0;
+  padding: 32px 0; /* Робимо красивий фіксований відступ між зірками, текстом та ім'ям */
 }
 
 /* Ім'я користувача */
@@ -109,6 +118,7 @@
   line-height: 21px;
   color: var(--color-scheme-1-text);
   margin-top: auto; /* Притискає ім'я до низу, якщо тексти різної довжини */
+  margin-bottom: 0;
 }
 
 
@@ -118,6 +128,7 @@
 
 .happy-stories__controls {
   /* Контейнер для крапок і стрілочок */
+  padding-top: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -126,24 +137,23 @@
 /* Контейнер для двох кнопок-стрілочок */
 .happy-stories__buttons {
   display: flex;
-  align-items: flex-start;
+  /* align-items: flex-start;
   justify-content: flex-start;
-  flex-direction: row;
+  flex-direction: row; */
   gap: 16px;
-  width: 112px;
-  height: 48px;
 }
 
 /* Спільний стиль для обох кнопок */
 .happy-stories__btn {
   border: 1px solid transparent; /*var(--color-mariner-light);*/
   border-radius: 8px;
-  padding: 12px;
+  /* padding: 12px; */
   width: 48px;
   height: 48px;
 
   /* 1. Звичайний стан (Перша пара з UI Kit) */
-  fill: var(--color-scheme-1-text); /* Колір стрілочки */
+  /* fill:*/ 
+  color: var(--color-scheme-1-text); /*Колір стрілочки */
 
   display: flex;
   align-items: center;
@@ -151,8 +161,8 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   
-  flex-direction: row; 
-  gap: 8px;
+  /* flex-direction: row; 
+  gap: 8px; */
 
   background: var(--color-scheme-1-foreground);
 }
@@ -180,7 +190,7 @@
 }
 /* ДЕАКТИВОВАНИЙ СТАН КНОПОК (для першого/останнього слайду за ТЗ) */
 .happy-stories__btn.swiper-button-disabled {
-  background: var(--color-scheme-1-foreground);
+  /* background: var(--color-scheme-1-foreground); */
   opacity: 0.4;
   cursor: not-allowed;
 }
@@ -190,22 +200,34 @@
    КАСТОМІЗАЦІЯ КРАПОК ПАГІНАЦІЇ SWIPER
    ========================================================================== */
 
-/* Сама плашка пагінації (скасовуємо абсолютне позиціонування Swiper) */
+/* Контейнер для пагінації (скасовуємо дефолтне абсолютне позиціонування Swiper) */
 .happy-stories__pagination.swiper-pagination {
   position: static !important;
   width: auto !important;
+  display: flex;
+  align-items: center;
+  gap: 7px; /* Відступ між краями крапок, щоб між центрами було ~15px */
 }
-
-/* Кожна окрема крапка */
+/* 1. Звичайна неактивна крапка (маленьке сіре коло) */
 .happy-stories__pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #02060A !important; /* Беремо колір з Figma */
+  opacity: 0.2 !important;              /* Задаємо прозорість 20% як в інспекторі */
+  margin: 0 !important;                  /* Скидаємо стандартні відступи Swiper */
   cursor: pointer;
-  /* Колір неактивної крапки, розмір */
-  transition: all 0.2s;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
-/* Активна крапка */
+/* Ховер на крапочку (для виконання ТЗ: змінювати стилі та курсор) */
+.happy-stories__pagination .swiper-pagination-bullet:hover {
+  opacity: 0.4 !important; /* Стає трохи чіткішою при наведенні */
+}
+
+/* 2. Активна крапка (чорне коло) */
 .happy-stories__pagination .swiper-pagination-bullet-active {
-  /* Колір активної крапки з макету */
+  opacity: 1 !important; /* Стає повністю непрозорою (100% fill) */
+  background-color: #02060A !important;
 }
 
 
@@ -213,17 +235,25 @@
    СТАНИ ЗАВАНТАЖЕННЯ ТА ПОМИЛКИ
    ========================================================================== */
 
-.happy-stories__loading {
-  /* Стиль для тексту "Завантаження відгуків..." */
+.happy-stories__loading,
+.happy-stories__error {
   text-align: center;
   width: 100%;
+  padding: 40px 20px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.happy-stories__loading {
+  /* Стиль для тексту "Завантаження відгуків..." */
+  color: var(--color-scheme-1-text);
+  opacity: 0.6;
 }
 
 .happy-stories__error {
   /* Стиль для повідомлення про помилку з сервера */
-  text-align: center;
-  color: #ff0000; /* або колір помилки з вашого гайдлайну */
-  width: 100%;
+  color: #da4040;
+  
 }
 
 
@@ -233,13 +263,18 @@
 
 /* Планшетна версія (від 768px) */
 @media screen and (min-width: 768px) {
+  .section#happy-stories {
+    padding-block: 64px; /* Збільшуємо відступи всієї секції на великих екранах */
+  }
+
   .happy-stories__container {
-    /* Новий max-width та падінги */
+    max-width: 768px; /* Тепер макет фіксується під планшет */
+    padding-inline: 32px;
+    gap: 40px;
   }
 
   .title,
   .happy-stories__text {
-    /* Вирівнювання тексту по центру, як на макеті 768px */
     text-align: center;
   }
 }
@@ -247,9 +282,30 @@
 /* Десктопна версія (від 1440px) */
 @media screen and (min-width: 1440px) {
   .happy-stories__container {
-    /* Максимальна ширина для десктопу */
+    max-width: 1440px; /* Фіксуємо під десктоп */
+    padding-inline: 80px;
   }
 }
+
+/* Планшетна версія (від 768px)
+@media screen and (min-width: 768px) {
+  .happy-stories__container {
+    /* Новий max-width та падінги */
+  /* }
+
+  .title,
+  .happy-stories__text { */
+    /* Вирівнювання тексту по центру, як на макеті 768px */
+    /* text-align: center;
+  }
+} */
+
+/* Десктопна версія (від 1440px) */
+/* @media screen and (min-width: 1440px) {
+  .happy-stories__container {
+    max-width: 1440px;
+  }
+} */ */
 
 /* Стиль для повідомлення про помилку або завантаження */
 .error-placeholder,
