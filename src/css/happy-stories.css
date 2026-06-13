@@ -44,8 +44,7 @@
   font-weight: 400;
   font-size: 16px;
 
-/* line-height: 24px; */ 
-  line-height: 1.5;
+  line-height: 24px;
   text-align: center;
   color: var(--color-scheme-1-text);
 }
@@ -86,12 +85,6 @@
   /* Відступ від зірочок до тексту */
 }
 
-/WARNING!!!/
-img, svg {
-  max-width: 100%;
-  height: auto;
-}
-
 .happy-stories__star {
   /* Колір зірочок регулюється через 'color', бо в JS ми прописали currentColor */
   color: #000000; 
@@ -99,12 +92,22 @@ img, svg {
 
 /* Текст відгуку всередині картки */
 .happy-stories__item-text {
-  /* Колір тексту, font-size, line-height */
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+
+  line-height: 27px;
+  color: var(--color-scheme-1-text);
 }
 
 /* Ім'я користувача */
 .happy-stories__item-user {
-  /* Шрифти, жирність (font-weight: 700) */
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 14px;
+
+  line-height: 21px;
+  color: var(--color-scheme-1-text);
   margin-top: auto; /* Притискає ім'я до низу, якщо тексти різної довжини */
 }
 
@@ -123,25 +126,61 @@ img, svg {
 /* Контейнер для двох кнопок-стрілочок */
 .happy-stories__buttons {
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 16px;
+  width: 112px;
+  height: 48px;
 }
 
 /* Спільний стиль для обох кнопок */
 .happy-stories__btn {
-  /* Розміри (width/height), рамка, ховери, курсор */
+  border: 1px solid transparent; /*var(--color-mariner-light);*/
+  border-radius: 8px;
+  padding: 12px;
+  width: 48px;
+  height: 48px;
+
+  /* 1. Звичайний стан (Перша пара з UI Kit) */
+  fill: var(--color-scheme-1-text); /* Колір стрілочки */
+
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  
+  flex-direction: row; 
+  gap: 8px;
+
+  background: var(--color-scheme-1-foreground);
 }
 
-.happy-stories__btn:hover,
-.happy-stories__btn:focus {
-  /* Стилі при наведенні та фокусі з UI Kit */
+/* Перевертаємо іконку для правої кнопки */
+.happy-stories__btn--next svg {
+  transform: rotate(180deg);
 }
 
+/* 2. Стан Hover — Наведення курсору (Друга пара з UI Kit) */
+
+.happy-stories__btn:hover {
+  background: var(--color-scheme-1-foreground); 
+  border: 1px solid var(--opacity-neutral-darkest-60);
+  /* З'являється акуратна бежева рамка */
+}
+
+/* 3. Стан Focus / Active — Клік або виділення (Третя пара на скріншоті) */
+.happy-stories__btn:focus,
+.happy-stories__btn:active {
+  box-shadow: inset 0 4px 6px -2px rgba(0, 0, 0, 0.03), inset 0 12px 16px -4px rgba(0, 0, 0, 0.08);
+  background: var(--color-scheme-1-foreground); /* Стає темнішою */
+  border: 1px solid var(--opacity-neutral-darkest-60);
+  outline: none;
+}
 /* ДЕАКТИВОВАНИЙ СТАН КНОПОК (для першого/останнього слайду за ТЗ) */
 .happy-stories__btn.swiper-button-disabled {
+  background: var(--color-scheme-1-foreground);
   opacity: 0.4;
   cursor: not-allowed;
 }
@@ -205,8 +244,8 @@ img, svg {
   }
 }
 
-/* Десктопна версія (від 1280px) */
-@media screen and (min-width: 1280px) {
+/* Десктопна версія (від 1440px) */
+@media screen and (min-width: 1440px) {
   .happy-stories__container {
     /* Максимальна ширина для десктопу */
   }
