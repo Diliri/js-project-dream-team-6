@@ -4,12 +4,6 @@
 
 .section#happy-stories {
 /* Відступи всієї секції зверху/знизу */
-  /*display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  gap: 32px;
-  padding-inline: 20px; */
   background: var(--color-scheme-1-background);
   padding-block: 64px;
 
@@ -137,9 +131,6 @@
 /* Контейнер для двох кнопок-стрілочок */
 .happy-stories__buttons {
   display: flex;
-  /* align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: row; */
   gap: 16px;
 }
 
@@ -147,11 +138,11 @@
 .happy-stories__btn {
   border: 1px solid transparent; /*var(--color-mariner-light);*/
   border-radius: 8px;
-  /* padding: 12px; */
   width: 48px;
   height: 48px;
 
   /* 1. Звичайний стан (Перша пара з UI Kit) */
+  background: var(--color-scheme-1-foreground);
   /* fill:*/ 
   color: var(--color-scheme-1-text); /*Колір стрілочки */
 
@@ -160,11 +151,6 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  
-  /* flex-direction: row; 
-  gap: 8px; */
-
-  background: var(--color-scheme-1-foreground);
 }
 
 /* Перевертаємо іконку для правої кнопки */
@@ -190,7 +176,6 @@
 }
 /* ДЕАКТИВОВАНИЙ СТАН КНОПОК (для першого/останнього слайду за ТЗ) */
 .happy-stories__btn.swiper-button-disabled {
-  /* background: var(--color-scheme-1-foreground); */
   opacity: 0.4;
   cursor: not-allowed;
 }
@@ -256,57 +241,6 @@
   
 }
 
-
-/* ==========================================================================
-   АДАПТИВНІСТЬ (МЕДІА-ЗАПИТИ)
-   ========================================================================== */
-
-/* Планшетна версія (від 768px) */
-@media screen and (min-width: 768px) {
-  .section#happy-stories {
-    padding-block: 64px; /* Збільшуємо відступи всієї секції на великих екранах */
-  }
-
-  .happy-stories__container {
-    max-width: 768px; /* Тепер макет фіксується під планшет */
-    padding-inline: 32px;
-    gap: 40px;
-  }
-
-  .title,
-  .happy-stories__text {
-    text-align: center;
-  }
-}
-
-/* Десктопна версія (від 1440px) */
-@media screen and (min-width: 1440px) {
-  .happy-stories__container {
-    max-width: 1440px; /* Фіксуємо під десктоп */
-    padding-inline: 80px;
-  }
-}
-
-/* Планшетна версія (від 768px)
-@media screen and (min-width: 768px) {
-  .happy-stories__container {
-    /* Новий max-width та падінги */
-  /* }
-
-  .title,
-  .happy-stories__text { */
-    /* Вирівнювання тексту по центру, як на макеті 768px */
-    /* text-align: center;
-  }
-} */
-
-/* Десктопна версія (від 1440px) */
-/* @media screen and (min-width: 1440px) {
-  .happy-stories__container {
-    max-width: 1440px;
-  }
-} */ */
-
 /* Стиль для повідомлення про помилку або завантаження */
 .error-placeholder,
 .loading-placeholder {
@@ -321,4 +255,42 @@
 
 .loading-placeholder {
   color: var(--color-text-muted); /* Для завантаження залишаємо сірий */
+}
+
+
+/* ==========================================================================
+   АДАПТИВНІСТЬ (МЕДІА-ЗАПИТИ)
+   ========================================================================== */
+
+/* Планшетна версія (від 768px) */
+@media screen and (min-width: 768px) {
+  .section#happy-stories {
+    padding-block: 64px; /* Збільшуємо відступи всієї секції на великих екранах */
+  }
+
+  .happy-stories__container {
+    max-width: 768px; /* Тепер макет фіксується під планшет */
+    padding-inline: 32px;
+  }
+
+.title {
+    text-align: center;
+  }
+
+.happy-stories__text {
+  text-align: center;
+  /* Компенсуємо загальний gap, роблячи чисті 24px між заголовками за макетом */
+  margin-top: -16px; 
+  }
+}
+
+/* Десктопна версія (від 1440px) */
+@media screen and (min-width: 1440px) {
+  .section#happy-stories {
+    padding-block: 80px; /* Збільшуємо відступи всієї секції на великих екранах */
+  }
+  .happy-stories__container {
+    max-width: 1440px; /* Фіксуємо під десктоп */
+    padding-inline: 64px;
+  }
 }
