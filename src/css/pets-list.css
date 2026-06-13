@@ -22,7 +22,7 @@
 
 @media (min-width: 1280px) {
   .pets {
-    padding-block: 80px 32px;
+    padding-block: 0 32px;
   }
 }
 
@@ -38,6 +38,7 @@
 
 @media (min-width: 1280px) {
   .pets__header {
+    margin-top: 80px;
     margin-bottom: 32px;
   }
 }
@@ -104,6 +105,8 @@
     font-size: 16px;
     line-height: 1.5;
     color: var(--color-scheme-1-text);
+
+    cursor: pointer;
 }
 
 .pets__filter-btn.is-active {
@@ -295,6 +298,7 @@ body.is-loading {
     padding-inline: 20px;
 
     background: transparent;
+    cursor: pointer;
 }
 
 @media (min-width: 1280px) {
@@ -423,6 +427,7 @@ body.is-loading {
     color: var(--color-white);
 
     background: var(--color-mariner-dark);
+    cursor: pointer;
 }
 
 @media (min-width: 1280px) {
@@ -503,6 +508,7 @@ body.is-loading {
     color: var(--color-white);
 
     background: transparent;
+    cursor: pointer;
 }
 
 
