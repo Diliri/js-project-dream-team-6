@@ -1,0 +1,174 @@
+/* Swipper */
+.swiper {
+  width: 100%;
+  height: 100%;
+  position: unset;
+}
+.swiper-slide{
+  width: 100%;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.paws-house-pagination-arrows::after {
+  display: none;
+}
+.swiper-pagination-bullet-active{
+  background-color: #02060A;
+}
+
+
+.paws-house-container {
+  margin-top: 64px;
+  background-color: #f6f4f1;
+}
+
+.paws-house-title {
+  text-align: center;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.paws-house-card {
+  margin-top: 40px;
+  position: relative;
+  max-width: 335px;
+  height: 402px;
+}
+
+/* Затемнення картини */
+.paws-house-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.paws-house-img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.paws-house-text {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white, #ffffff);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  margin: 0;
+  z-index: 2;
+}
+
+.paws-house-pagination {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.paws-house-pagination-wrap {
+  display: flex;
+  gap: 8px;
+  position: static;
+}
+.paws-house-pagination-arrows:nth-child(1) {
+  transform: rotate(180deg);
+}
+
+.paws-house-pagination-arrows {
+  width: 48px;
+  height: 48px;
+  background-color: #eee9e3;
+  border: solid 1px #c3b49d;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; 
+  box-sizing: border-box;
+}
+.paws-house-pagination>.paws-house-pagination-dots.swiper-pagination {
+  position: static;
+  width: auto ;
+  transform: translateX(0);
+}
+.paws-house-pagination-arrows.swiper-button-prev,
+.paws-house-pagination-arrows.swiper-button-next {
+  position: static;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  margin: 0;
+}
+/* Сама SVG іконка */
+.paws-house-pagination-arrows .paws-house-svg-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  flex-shrink: 0;
+  margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  .paws-house-container {
+    position: relative;
+  }
+  .paws-house-card {
+    max-width: 768px;
+  }
+  .paws-house-text {
+    max-width: 548px;
+    padding-left: 32px;
+  }
+  .paws-house-pagination-wrap {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 100%;
+    justify-content: space-between;
+    transform: translateX(-4.2%);
+  }
+  .paws-house-pagination-dots {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+  }
+  .paws-house-pagination-dots.swiper-pagination {
+  position: absolute;
+  width: auto ;
+  transform: unset;
+}
+.paws-house-pagination>.paws-house-pagination-dots.swiper-pagination {
+  position: absolute;
+  bottom: -24px;
+  width: auto ;
+  transform: translateX(-50%);
+}
+}
+@media screen and (min-width: 1280px) {
+  .paws-house-card {
+    max-width: 1312px;
+    height: 100%;
+  }
+  .paws-house-text {
+    padding: 0 0 64px 64px;
+  }
+  .paws-house-pagination-wrap {
+    transform: translateX(-4.5%);
+    padding: 0 36px;
+  }
+}
