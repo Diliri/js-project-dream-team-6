@@ -364,13 +364,49 @@ function bindFiltersEvents() {
   refs.filtersContainer.addEventListener('click', onFiltersClick);
 }
 
+function smoothScrollToElement(element, duration = 1200) {
+  const offset = 24;
+  const targetY =
+    element.getBoundingClientRect().top + window.scrollY - offset;
+  const startY = window.scrollY;
+  const distance = targetY - startY;
+  const startTime = performance.now();
+
+  const easeInOutCubic = progress =>
+    progress < 0.5
+      ? 4 * progress * progress * progress
+      : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+  const animateScroll = currentTime => {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+
+    if (progress < 1) {
+      requestAnimationFrame(animateScroll);
+    }
+  };
+
+  requestAnimationFrame(animateScroll);
+}
+
+function scrollToFirstNewCard(previousCount) {
+  const firstNewCard = refs.petsList.children[previousCount];
+  if (!firstNewCard) return;
+
+  smoothScrollToElement(firstNewCard);
+}
+
 async function onLoadMoreClick() {
+  const previousCount = refs.petsList.children.length;
   state.page += 1;
 
   try {
     refs.loadMoreBtn.disabled = true;
     toggleLoader(true);
     await loadAnimals({ append: true });
+    scrollToFirstNewCard(previousCount);
   } catch {
     state.page -= 1;
     showToast('Не вдалося завантажити ще тварин. Спробуйте пізніше.');
@@ -384,10 +420,43 @@ function bindLoadMoreEvents() {
   refs.loadMoreBtn.addEventListener('click', onLoadMoreClick);
 }
 
+async function resetToFirstPage() {
+  const isFirstPageOnly =
+    state.page === 1 &&
+    refs.petsList.children.length <= getItemsPerPage();
+
+  if (isFirstPageOnly) return;
+
+  try {
+    toggleLoader(true);
+    await loadAnimals({ reset: true });
+
+    const firstCard = refs.petsList.firstElementChild;
+    if (firstCard) {
+      smoothScrollToElement(firstCard);
+    }
+  } catch {
+    showToast('Не вдалося оновити список тварин. Спробуйте пізніше.');
+  } finally {
+    toggleLoader(false);
+  }
+}
+
+function onEscapeKeydown(event) {
+  if (event.key !== 'Escape' || !isPetsListReady) return;
+
+  resetToFirstPage();
+}
+
+function bindEscapeEvent() {
+  document.addEventListener('keydown', onEscapeKeydown);
+}
+
 async function initPetsList() {
   bindFiltersEvents();
   bindLoadMoreEvents();
   bindResizeEvents();
+  bindEscapeEvent();
 
   try {
     toggleLoader(true);

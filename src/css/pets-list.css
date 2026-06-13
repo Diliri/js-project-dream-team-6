@@ -38,7 +38,7 @@
 
 @media (min-width: 1280px) {
   .pets__header {
-    margin-bottom: 0;
+    margin-bottom: 32px;
   }
 }
 
@@ -87,13 +87,6 @@
     margin-bottom: 32px;
 }
 
-@media (min-width: 1280px) {
-  .pets__filters {
-    display: none;
-    margin-bottom: 0;
-  }
-}
-
 .pets__filter-btn {
     display: flex;
     align-items: center;
@@ -117,6 +110,16 @@
     border: 1px solid var(--opacity-transparent);
     background: var(--color-scheme-1-foreground);
     font-weight: 500;
+}
+
+@media (min-width: 1280px) {
+  .pets__filter-btn {
+    transition: transform 0.3s ease;
+  }
+
+  .pets__filter-btn:hover {
+    transform: scale(1.1);
+  }
 }
 
 /* loader */
@@ -168,7 +171,6 @@ body.is-loading {
 
 @media (min-width: 1280px) {
   .pets__list {
-    margin-top: 40px;
     grid-template-columns: repeat(3, 1fr);
   }
 }
