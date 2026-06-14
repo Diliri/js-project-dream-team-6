@@ -1,0 +1,83 @@
+<header class="header">
+  <div class="container header__container">
+    <!-- Логотип -->
+    <a
+      href="./index.html"
+      class="logo header__logo"
+      aria-label="Хатинка Лапок — на головну"
+    >
+      <img src="./img/logo-icons.svg" alt="Логотип Лапка" class="logo__icon" />
+      <img src="./img/logo-text.svg" alt="Хатинка Лапок" class="logo__text" />
+    </a>
+
+    <!-- Мобильное бургер-меню -->
+    <div class="header__menu-wrapper" id="mobile-menu">
+      <button
+        type="button"
+        class="menu-close-btn"
+        id="menu-close"
+        aria-label="Закрити меню"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://w3.org"
+        >
+          <path
+            d="M18 6L6 18M6 6L18 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="#search" class="nav__link">Знайди друга</a>
+          </li>
+          <li class="nav__item">
+            <a href="#about" class="nav__link">Про нас</a>
+          </li>
+          <li class="nav__item">
+            <a href="#faq" class="nav__link">Часті запитання</a>
+          </li>
+          <li class="nav__item">
+            <a href="#happy-stories" class="nav__link">Історії успіху</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Кнопка -->
+      <a href="#search" class="btn btn-primary header__btn">Взяти друга</a>
+    </div>
+
+    <!-- Кнопка бургер-меню для мобилок -->
+    <button
+      type="button"
+      class="burger-btn"
+      id="menu-open"
+      aria-label="Відкрити меню"
+    >
+      <svg
+        width="28"
+        height="20"
+        viewBox="0 0 28 20"
+        fill="none"
+        xmlns="http://w3.org"
+      >
+        <path
+          d="M2 2H26M2 10H26M2 18H26"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+  </div>
+</header>
