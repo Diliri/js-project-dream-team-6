@@ -1,21 +1,20 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
+/* Підключаємо рідні стилі встановленого Swiper прямо з node_modules */
+@import url('swiper/css/bundle');
+
 /* Common styles */
 @import url('./variables.css');
 @import url('./reset.css');
 @import url('./container.css');
 @import url('./styles.css');
 
+
 /* Sections style */
 @import url('./header.css');
 @import url('./hero.css');
 @import url('./paws-house.css');
 @import url('./happy-stories.css');
-@import url('./paw-btn.css');
-@import url('./theme-switche.css');
+@import url('./footer.css');
 
-/* @import url('./footer.css'); */
+/* Modal windows and features */
+@import url('./order-modal.css');
+@import url('./paw-btn.css');
