@@ -1,0 +1,31 @@
+.paw-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99;
+  background: transparent;
+  box-shadow: none;
+  color: var(--color-mariner-light);
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 300ms ease,
+    visibility 300ms ease,
+    color 250ms ease;
+}
+.paw-top-btn.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+.paw-top-btn:hover {
+  background-color: transparent;
+  color: var(--color-mariner-dark);
+}
+.paw-top-btn svg {
+  fill: none;
+}
