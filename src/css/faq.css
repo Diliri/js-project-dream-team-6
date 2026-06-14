@@ -65,6 +65,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
   padding: 16px;
   background: transparent;
   border: none;
@@ -90,16 +91,35 @@
   background: var(--opacity-neutral-darkest-10);
 }
 
-.faq .ac-trigger::after {
-  content: '+';
+.faq .faq__icon {
   flex-shrink: 0;
-  font-size: 20px;
-  line-height: 1;
+  width: 24px;
+  height: 24px;
   color: var(--color-scheme-1-text);
+  transition: transform 250ms ease;
 }
 
-.faq .ac.is-active .ac-trigger::after {
-  content: '×';
+.faq .faq__icon-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.faq .faq__icon-line--vertical {
+  transform-origin: center;
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+.faq .ac.is-active .faq__icon {
+  transform: rotate(180deg);
+}
+
+.faq .ac.is-active .faq__icon-line--vertical {
+  opacity: 0;
+  transform: scaleY(0);
 }
 
 /* ==========================================================================
