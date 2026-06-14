@@ -1,3 +1,4 @@
+import Swiper from 'swiper/bundle';
 document.addEventListener('DOMContentLoaded', () => {
   const API_URL = 'https://paw-hut.b.goit.study/api/feedbacks';
   const container = document.getElementById('feedbacks-container');
