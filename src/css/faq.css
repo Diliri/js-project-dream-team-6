@@ -82,7 +82,7 @@
   position: relative;
 }
 
-/* No hover effect — matches Figma (only cursor changes) */
+/* No hover effect — matches Figma */
 .faq .ac-trigger:hover,
 .faq .ac.is-active .ac-trigger:hover,
 .faq .ac .ac-header .ac-trigger:hover {
@@ -92,26 +92,37 @@
 
 /* ==========================================================================
    ICONS (+ and ×)
+   TODO: Icons icon-plus and icon-close need to be added to src/icons/sprite.svg by teammate
    ========================================================================== */
 
-.faq .ac-trigger::after {
-  content: '';
+.faq .ac-trigger__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
   position: absolute;
   right: 16px;
   top: 50%;
-  width: 24px;
-  height: 24px;
-  /* background-image: url('../assets/icons/plus.svg'); */
-  background-color: var(--color-scheme-1-border); /* placeholder visual */
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 24px 24px;
   transform: translateY(-50%);
+  fill: var(--color-scheme-1-text);
+  stroke: var(--color-scheme-1-text);
 }
 
-.faq .ac.is-active .ac-trigger::after {
-  /* background-image: url('../assets/icons/close.svg'); */
-  background-color: var(--opacity-neutral-darkest-30); /* placeholder visual */
+/* Closed state — show plus, hide close */
+.faq .ac .ac-trigger__icon--close {
+  display: none;
+}
+
+.faq .ac .ac-trigger__icon--plus {
+  display: block;
+}
+
+/* Open state — show close, hide plus */
+.faq .ac.is-active .ac-trigger__icon--plus {
+  display: none;
+}
+
+.faq .ac.is-active .ac-trigger__icon--close {
+  display: block;
 }
 
 /* ==========================================================================
@@ -166,10 +177,6 @@
    ========================================================================== */
 
 @media screen and (min-width: 768px) {
-  .faq {
-    padding-block: 64px;
-  }
-
   .faq .faq__container {
     max-width: 768px;
     padding-inline: 32px;
@@ -189,7 +196,7 @@
     line-height: 24px;
   }
 
-  .faq .ac-trigger::after {
+  .faq .ac-trigger__icon {
     right: 24px;
   }
 
@@ -232,7 +239,7 @@
     line-height: 24px;
   }
 
-  .faq .ac-trigger::after {
+  .faq .ac-trigger__icon {
     right: 16px;
   }
 
