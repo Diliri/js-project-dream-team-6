@@ -8,7 +8,7 @@
 <span align="center">
 
 ![HTML](https://img.shields.io/badge/-HTML-05122A?style=flat&logo=HTML5)&nbsp;
-![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=ff69b4)&nbsp;
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flatlogo=css3&logoColor=ff69b4)&nbsp;
 ![JavaScript](https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=javascript)&nbsp;
 
 ![Git](https://img.shields.io/badge/-Git-05122A?style=flat&logo=git)&nbsp;
@@ -27,10 +27,10 @@
 <a align="center" href="https://github.com/Diliri">![GitHub](https://img.shields.io/badge/-Diana-05122A?style=flat&logo=github)</a>
 <a align="center" href="https://github.com/AleksandrWeber">![GitHub](https://img.shields.io/badge/-Oleksandr-05122A?style=flat&logo=github)</a>
 <a align="center" href="https://github.com/ipaskevych">![GitHub](https://img.shields.io/badge/-Iryna-05122A?style=flat&logo=github)</a>
-<a align="center" href="https://github.com/AnastasiaSyniakova">![GitHub](https://img.shields.io/badge/-Anastasia-Syniakova-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/AnastasiaSyniakova">![GitHub](https://img.shields.io/badge/-Nastya-05122A?style=flat&logo=github)</a>
 <a align="center" href="https://github.com/Lulu-wiszenka">![GitHub](https://img.shields.io/badge/-Luiza-05122A?style=flat&logo=github)</a>
 <a align="center" href="https://github.com/Art-Pasha">![GitHub](https://img.shields.io/badge/-Pavlo-05122A?style=flat&logo=github)</a>
-<a align="center" href="https://github.com/anastasiialobanovaa">![GitHub](https://img.shields.io/badge/-Anastasia-Lobanova-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/anastasiialobanovaa">![GitHub](https://img.shields.io/badge/-Nastya-05122A?style=flat&logo=github)</a>
 <a align="center" href="https://github.com/gordeykarpenko">![GitHub](https://img.shields.io/badge/-Gordiy-05122A?style=flat&logo=github)</a>
 <a align="center" href="https://github.com/mariiakosheva01">![GitHub](https://img.shields.io/badge/-Mariya-05122A?style=flat&logo=github)</a>
 <a align="center" href="https://github.com/ivAn-hrobov6019">![GitHub](https://img.shields.io/badge/-Ivan-05122A?style=flat&logo=github)</a>
