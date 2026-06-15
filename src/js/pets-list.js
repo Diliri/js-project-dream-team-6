@@ -332,12 +332,8 @@ function handleViewportResize() {
 
   if (currentItemsPerPage === lastItemsPerPage) return;
 
-  const isDesktopNow = currentItemsPerPage > lastItemsPerPage;
   lastItemsPerPage = currentItemsPerPage;
-
-  if (isDesktopNow) {
-    reloadAnimalsForCurrentPages();
-  }
+  reloadAnimalsForCurrentPages();
 }
 
 function bindResizeEvents() {
