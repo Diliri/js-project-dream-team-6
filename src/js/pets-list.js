@@ -50,6 +50,7 @@ export async function toggleLoader(isVisible) {
   // Класи перемикаємо миттєво, щоб інтерфейс зразу реагував (CSS-бекграунд чи розмиття)
   refs.loader.classList.toggle('hidden', !isVisible);
   document.body.classList.toggle('is-loading', isVisible);
+  updateLoadMoreButton();
 
   if (isVisible) {
     if (!spinner && refs.spinnerRoot) {
@@ -281,11 +282,15 @@ function renderPetCards(animals, { append = false } = {}) {
   refs.petsList.appendChild(fragment);
 }
 
-function updateLoadMoreVisibility() {
+function updateLoadMoreButton() {
+  if (!refs.loadMoreBtn || !refs.loadMoreWrapper) return;
+
   const renderedCount = refs.petsList.children.length;
   const hasMore = renderedCount < state.totalItems;
+  const isLoading = !refs.loader.classList.contains('hidden');
 
-  refs.loadMoreWrapper.classList.toggle('hidden', !hasMore);
+  refs.loadMoreWrapper.classList.toggle('hidden', !hasMore || isLoading);
+  refs.loadMoreBtn.disabled = !hasMore || isLoading;
 }
 
 async function loadAnimals({ reset = false, append = false } = {}) {
@@ -297,7 +302,7 @@ async function loadAnimals({ reset = false, append = false } = {}) {
   state.totalItems = data.totalItems;
 
   renderPetCards(data.animals, { append });
-  updateLoadMoreVisibility();
+  updateLoadMoreButton();
 }
 
 async function reloadAnimalsForCurrentPages() {
@@ -317,7 +322,7 @@ async function reloadAnimalsForCurrentPages() {
       renderPetCards(data.animals, { append: true });
     }
 
-    updateLoadMoreVisibility();
+    updateLoadMoreButton();
   } catch {
     showToast('Не вдалося оновити список тварин. Спробуйте пізніше.');
   } finally {
@@ -411,11 +416,12 @@ function scrollToFirstNewCard(previousCount) {
 }
 
 async function onLoadMoreClick() {
+  if (refs.loadMoreBtn.disabled) return;
+
   const previousCount = refs.petsList.children.length;
   state.page += 1;
 
   try {
-    refs.loadMoreBtn.disabled = true;
     await toggleLoader(true);
     await loadAnimals({ append: true });
     scrollToFirstNewCard(previousCount);
@@ -423,8 +429,8 @@ async function onLoadMoreClick() {
     state.page -= 1;
     showToast('Не вдалося завантажити ще тварин. Спробуйте пізніше.');
   } finally {
-    refs.loadMoreBtn.disabled = false;
     await toggleLoader(false);
+    refs.loadMoreBtn.blur();
   }
 }
 
