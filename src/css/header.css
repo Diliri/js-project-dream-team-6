@@ -2,202 +2,201 @@
    1. МОБИЛЬНАЯ ВЕРСИЯ (По умолчанию от 320px до 767px)
    ========================================================================== */
 .header {
-    padding: 16px 0;
-    background-color: var(--color-scheme-background, #ffffff);
-    border-bottom: 1px solid var(--color-scheme-border, #e0e0e0);
+  padding: 16px 0;
+  background-color: var(--color-scheme-1-background);
 }
 
 .header__container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* Базовые стили кликабельного логотипа с точными размерами */
 .logo {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-    /* Точные размеры фрейма из Figma */
-    width: 160px;
-    height: 68px;
-gap: 12px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0, 0.2);
+  /* Точные размеры фрейма из Figma */
+  width: 160px;
+  height: 68px;
+  gap: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0, 0.2);
 }
 
 .logo:hover,
 .logo:focus-visible {
-    outline: none;
-    /* Логотип становится на 30% прозрачнее и визуально «светлеет» в тон фона */
-    opacity: 0.7;
+  outline: none;
+  /* Логотип становится на 30% прозрачнее и визуально «светлеет» в тон фона */
+  opacity: 0.7;
 }
 
 /* Картинки внутри фрейма автоматически подстроятся под его высоту */
 .logo__icon,
 .logo__text {
-    display: block;
-    height: auto;
-    max-height: 100%;
+  display: block;
+  height: auto;
+  max-height: 100%;
 }
 
 /* Кнопка открытия меню (Бургер) */
 .burger-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: none;
-    padding: 0;
-    color: var(--color-scheme-text, #333333);
-    cursor: pointer;
-    transition: color 250ms cubic-bezier(0.4, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-scheme-1-text);
+  cursor: pointer;
+  transition: color 250ms cubic-bezier(0.4, 0, 0, 0.2);
 }
 
 .burger-btn:hover,
 .burger-btn:focus {
-    color: var(--color-scheme-1-accent, #887B5C);
+  color: var(--color-scheme-1-accent, #887b5c);
 }
 
 /* Шторка мобильного меню (ТЗ: на всю ширину и высоту окна) */
 .header__menu-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 999;
-    background-color: var(--color-scheme-background, #ffffff);
-    padding: 48px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  background-color: var(--color-scheme-background, #ffffff);
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
 
-    /* Анимация плавного появления/скрытия */
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateX(100%);
-    transition: opacity 300ms ease, transform 300ms ease, visibility 300ms ease;
+  /* Анимация плавного появления/скрытия */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(100%);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease,
+    visibility 300ms ease;
 }
 
 /* Класс, который мы будем добавлять через JS для открытия меню */
 .header__menu-wrapper.is-open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
 }
 
 /* Кнопка закрытия меню (Крестик) */
 .menu-close-btn {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    background: none;
-    border: none;
-    padding: 0;
-    color: var(--color-scheme-text, #333333);
-    cursor: pointer;
-    transition: color 250ms cubic-bezier(0.4, 0, 0, 0.2);
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-scheme-1-text);
+  cursor: pointer;
+  transition: color 250ms cubic-bezier(0.4, 0, 0, 0.2);
 }
 
 .menu-close-btn:hover,
 .menu-close-btn:focus {
-    color: var(--color-scheme-1-accent, #887B5C);
+  color: var(--color-scheme-1-accent, #887b5c);
 }
 
 /* Список ссылок навигации */
 .nav__list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .nav__link {
-    font-family: var(--font-family, sans-serif);
-    font-size: 18px;
-    font-weight: 500;
-    text-decoration: none;
-    color: var(--color-scheme-text, #333333);
-    transition: color 250ms cubic-bezier(0.4, 0, 0, 0.2);
+  font-family: var(--font-family, sans-serif);
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-scheme-1-text, #333333);
+  transition: color 250ms cubic-bezier(0.4, 0, 0, 0.2);
 }
 
 .nav__link:hover,
 .nav__link:focus,
 .nav__link.active {
-    color: var(--color-scheme-1-accent, #887B5C);
+  color: var(--color-scheme-1-accent, #887b5c);
 }
-
 
 /* ==========================================================================
    2. ПЛАНШЕТНАЯ ВЕРСИЯ (От 768px до 1439px)
    ========================================================================== */
 @media screen and (min-width: 768px) {
-    .header {
-        padding: 24px 0;
-    }
+  .header {
+    padding: 24px 0;
+  }
 
-    /* На планшетах меню всё ещё может быть мобильным (по ТЗ), 
+  /* На планшетах меню всё ещё может быть мобильным (по ТЗ), 
      но если в Figma на 768px оно уже открыто, мы его перестроим в десктопное. 
      Пока оставляем логику мобильного по ТЗ, но увеличиваем отступы */
-    .header__menu-wrapper {
-        padding: 64px 32px;
-    }
+  .header__menu-wrapper {
+    padding: 64px 32px;
+  }
 }
 
 /* ==========================================================================
    3. ДЕСКТОПНАЯ ВЕРСИЯ (От 1440px)
    ========================================================================== */
 @media screen and (min-width: 1440px) {
+  .burger-btn,
+  .menu-close-btn {
+    display: none;
+  }
 
-    .burger-btn,
-    .menu-close-btn {
-        display: none;
-    }
+  .header__menu-wrapper {
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    padding: 0;
 
-    .header__menu-wrapper {
-        position: static;
-        width: auto;
-        height: auto;
-        background: none;
-        padding: 0;
+    /* Растягиваем обертку на всю оставшуюся ширину */
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
 
-        /* Растягиваем обертку на всю оставшуюся ширину */
-        display: flex;
-        flex-grow: 1;
-        flex-direction: row;
-        align-items: center;
+    margin-left: 24px;
+    /* Отступ всего блока меню от логотипа */
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+  }
 
-        margin-left: 24px;
-        /* Отступ всего блока меню от логотипа */
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        transform: none;
-    }
+  .nav__list {
+    flex-direction: row;
+    gap: 32px;
+    /* Расстояние между ссылками */
+  }
 
-    
+  .nav__link {
+    font-size: 16px;
+  }
 
-    .nav__list {
-        flex-direction: row;
-        gap: 32px;
-        /* Расстояние между ссылками */
-    }
-
-    .nav__link {
-        font-size: 16px;
-    }
-
-    /* ВОТ ЭТО СВОЙСТВО ОТОЛКНЕТ КНОПКУ НА ПРАВЫЙ КРАЙ */
-    .header__btn {
-        margin-left: auto;
-    }
+  /* ВОТ ЭТО СВОЙСТВО ОТОЛКНЕТ КНОПКУ НА ПРАВЫЙ КРАЙ */
+  .header__btn {
+    margin-left: auto;
+    color: var(--color-scheme-1-text);
+  }
 }
