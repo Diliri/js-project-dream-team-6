@@ -187,8 +187,8 @@
 
 /* Контейнер для пагінації (скасовуємо дефолтне абсолютне позиціонування Swiper) */
 .happy-stories__pagination.swiper-pagination {
-  position: static !important;
-  width: auto !important;
+  position: static; /* !important; */
+  width: auto; /* !important; */
   display: flex;
   align-items: center;
   gap: 7px; /* Відступ між краями крапок, щоб між центрами було ~15px */
@@ -211,8 +211,9 @@
 
 /* 2. Активна крапка (чорне коло) */
 .happy-stories__pagination .swiper-pagination-bullet-active {
-  opacity: 1 !important; /* Стає повністю непрозорою (100% fill) */
-  background-color: #02060A !important;
+  opacity: 1 !important; /*Стає повністю непрозорою (100% fill) */
+  background-color: #02060A; /*!important;*/
+  transform: scale(1.1);
 }
 
 

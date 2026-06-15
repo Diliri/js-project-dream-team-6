@@ -1,17 +1,32 @@
-import Swiper from 'swiper/bundle';
-var swiper = new Swiper('.mySwiper', {
-  pagination: {
-    el: '.swiper-pagination',
-    dynamicBullets: true,
-    clickable: true,
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  keyboard: {
-    enabled: true,
-    onlyInViewport: true,
-    pageUpDown: false,
-  },
+// Переносимо ініціалізацію в асинхронну функцію для lazy loading
+async function initPawsSwiper() {
+  // Завантажуємо тільки базове ядро Swiper та лише потрібні модулі
+  const { default: Swiper } = await import('swiper');
+  const { Pagination, Navigation, Keyboard } = await import('swiper/modules');
+
+  // Ініціалізуємо слайдер
+  new Swiper('.mySwiper', {
+    // Обов'язково передаємо масив підключених модулів
+    modules: [Pagination, Navigation, Keyboard],
+
+    pagination: {
+      el: '.swiper-pagination',
+      dynamicBullets: true,
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+      pageUpDown: false,
+    },
+  });
+}
+
+// Запускаємо функцію після завантаження сторінки
+document.addEventListener('DOMContentLoaded', () => {
+  initPawsSwiper();
 });
