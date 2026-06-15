@@ -3,6 +3,7 @@
     --second-family: "Open Sans", sans-serif;
 	--color-scheme-1-background: var(--color-mariner-lightest);
 	--color-neutral-darkest: #02060a;
+	--color-neutral-darkest2: #02060a;
 	--color-scheme-1-border: var(--opacity-neutral-darkest-15);
 	--color-scheme-1-text: var(--color-neutral-darkest);
 	--color-neutral-lighter: #d9d9da;
@@ -47,7 +48,11 @@
 }
 body.dark-theme {
 	--color-mariner-lightest: #383837;
+	--color-neutral-darkest2: #9e5600;
 	--color-mariner-lighter: #9e5600;
+	--color-mariner-darkest: #9e5600;
+	--color-scheme-2-background: #402d10;
+
 	--color-scheme-1-foreground: var(--color-mariner-lighter);
 	--color-scheme-1-background: var(--color-mariner-lightest);
 	--color-neutral-darkest: #d6d1c8;

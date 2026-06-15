@@ -67,7 +67,6 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 999;
   background-color: var(--color-scheme-background, #ffffff);
   padding: 48px 24px;
   display: flex;
