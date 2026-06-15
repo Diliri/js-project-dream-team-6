@@ -19,9 +19,12 @@
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.62.0",
     "axios": "^1.18.0",
+    "spin.js": "^4.1.2",
     "sweetalert2": "^11.26.25",
     "swiper": "^12.2.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.62.0"
   }
 }
