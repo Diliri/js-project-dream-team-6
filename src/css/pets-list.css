@@ -253,7 +253,7 @@ body.is-loading {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
-  color: var(--color-neutral);
+  color: var(--color-scheme-1-text);
 }
 
 .pet-card__tags {
@@ -264,38 +264,47 @@ body.is-loading {
 
 .tag {
     padding: 4px 8px;
+    border: 1px solid var(--opacity-transparent);
     border-radius: 999px;
 
     font-size: 12px;
     line-height: 1.2;
+    color: var(--color-scheme-1-text);
 
-    background: var(--color-neutral-lightest);
-    color: var(--color-neutral-dark);
+    background: var(--opacity-neutral-darkest-5);
 }
 
 .pet-card__meta {
     display: flex;
     gap: 12px;
+    font-family: var(--font-family);
     font-size: 14px;
-    color: var(--color-neutral-dark);
+    color: var(--color-scheme-1-text);
 }
 
 .pet-card__description {
+    font-family: var(--font-family);
+    font-weight: 400;
     font-size: 14px;
     line-height: 1.5;
-    color: var(--color-neutral-dark);
+    color: var(--color-scheme-1-text);
 }
 
 .pet-card__btn {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
 
     border: 1px solid var(--color-neutral-darkest);
     border-radius: 8px;
 
     padding-block: 8px;
     padding-inline: 20px;
+
+    font-family: var(--font-family);
+    color: var(--color-neutral-darkest);
 
     background: transparent;
     cursor: pointer;
@@ -323,7 +332,6 @@ body.is-loading {
   .pet-card__species {
     font-size: 12px;
     line-height: 1.5;
-    color: var(--color-scheme-1-text);
     padding-bottom: 4px;
   }
 
@@ -342,39 +350,29 @@ body.is-loading {
   .tag {
     padding-block: 4px;
     padding-inline: 10px;
-    border: 1px solid var(--opacity-transparent);
     border-radius: 100px;
-    background: var(--opacity-neutral-darkest-5);
     font-size: 12px;
     line-height: 1.5;
-    color: var(--color-scheme-1-text);
   }
 
   .pet-card__meta {
     gap: 16px;
     font-size: 12px;
     line-height: 1.5;
-    color: var(--color-scheme-1-text);
     padding-bottom: 16px;
     width: 100%;
   }
 
   .pet-card__description {
-    font-family: var(--font-family);
-    font-weight: 400;
     font-size: 14px;
     line-height: 1.5;
-    color: var(--color-scheme-1-text);
     width: 100%;
     margin-bottom: 16px;
   }
 
   .pet-card__btn {
-    width: 100%;
-    font-family: var(--font-family);
     font-size: 16px;
     line-height: 1.5;
-    color: var(--color-neutral-darkest);
     margin-bottom: 12px;
   }
 }
