@@ -181,11 +181,11 @@
 /* Карусельна (dynamicBullets) пагінація — позиціонування, scale та
    left-офсети крапок залишаємо повністю на Swiper, тут лише кольори */
 .happy-stories__pagination.swiper-pagination {
-  position: relative !important; /* потрібна для left-офсетів крапок */
-  top: auto !important;
-  bottom: auto !important;
-  left: 0 !important; /* скасовуємо стандартне left: 50% */
-  transform: none !important; /* скасовуємо translateX(-50%) */
+  position: static; /* !important; */
+  width: auto; /* !important; */
+  display: flex;
+  align-items: center;
+  gap: 7px; /* Відступ між краями крапок, щоб між центрами було ~15px */
 }
 
 .happy-stories__pagination .swiper-pagination-bullet {
@@ -202,8 +202,9 @@
 }
 
 .happy-stories__pagination .swiper-pagination-bullet-active {
-  opacity: 1;
-  background-color: #02060a;
+  opacity: 1 !important; /*Стає повністю непрозорою (100% fill) */
+  background-color: #02060A; /*!important;*/
+  transform: scale(1.1);
 }
 /* ==========================================================================
    СТАНИ ЗАВАНТАЖЕННЯ ТА ПОМИЛКИ

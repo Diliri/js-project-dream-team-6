@@ -1,4 +1,4 @@
-import { Spinner } from 'spin.js';
+// ПРИБРАЛИ СТАТИЧНИЙ ІМПОРТ spin.js З ПЕРШОГО РЯДКА
 
 const API_BASE = 'https://paw-hut.b.goit.study/api';
 
@@ -43,19 +43,34 @@ const spinnerOptions = {
   color: '#88765c',
 };
 
-export function toggleLoader(isVisible) {
+// ОПТИМІЗОВАНА ФУНКЦІЯ ЛОАДЕРА
+export async function toggleLoader(isVisible) {
   if (!refs.loader) return;
 
+  // Класи перемикаємо миттєво, щоб інтерфейс зразу реагував (CSS-бекграунд чи розмиття)
   refs.loader.classList.toggle('hidden', !isVisible);
   document.body.classList.toggle('is-loading', isVisible);
 
   if (isVisible) {
     if (!spinner && refs.spinnerRoot) {
-      spinner = new Spinner(spinnerOptions).spin(refs.spinnerRoot);
+      try {
+        // ЛІНИВИЙ ІМПОРТ: завантажуємо бібліотеку тільки в момент появи лоадера
+        const { Spinner } = await import('./spin.js');
+
+        // Перевіряємо ще раз isVisible, бо поки скрипт вантажився, запит міг уже завершитись
+        if (refs.loader.classList.contains('hidden')) return;
+
+        if (!spinner) {
+          spinner = new Spinner(spinnerOptions).spin(refs.spinnerRoot);
+        }
+      } catch (err) {
+        console.error('Не вдалося завантажити спінер:', err);
+      }
     }
     return;
   }
 
+  // Якщо лоадер ховаємо, зупиняємо спінер
   if (spinner) {
     spinner.stop();
     spinner = null;
@@ -168,7 +183,9 @@ function sortCategories(categories) {
     const indexA = CATEGORY_ORDER.indexOf(a.name);
     const indexB = CATEGORY_ORDER.indexOf(b.name);
 
-    return (indexA === -1 ? Infinity : indexA) - (indexB === -1 ? Infinity : indexB);
+    return (
+      (indexA === -1 ? Infinity : indexA) - (indexB === -1 ? Infinity : indexB)
+    );
   });
 }
 
@@ -286,7 +303,7 @@ async function loadAnimals({ reset = false, append = false } = {}) {
 async function reloadAnimalsForCurrentPages() {
   const pagesLoaded = state.page;
 
-  toggleLoader(true);
+  await toggleLoader(true);
 
   try {
     state.page = 1;
@@ -304,7 +321,7 @@ async function reloadAnimalsForCurrentPages() {
   } catch {
     showToast('Не вдалося оновити список тварин. Спробуйте пізніше.');
   } finally {
-    toggleLoader(false);
+    await toggleLoader(false);
   }
 }
 
@@ -315,12 +332,8 @@ function handleViewportResize() {
 
   if (currentItemsPerPage === lastItemsPerPage) return;
 
-  const isDesktopNow = currentItemsPerPage > lastItemsPerPage;
   lastItemsPerPage = currentItemsPerPage;
-
-  if (isDesktopNow) {
-    reloadAnimalsForCurrentPages();
-  }
+  reloadAnimalsForCurrentPages();
 }
 
 function bindResizeEvents() {
@@ -349,14 +362,14 @@ async function onFiltersClick(event) {
   state.categoryId = button.dataset.categoryId || '';
 
   try {
-    toggleLoader(true);
+    await toggleLoader(true);
     await loadAnimals({ reset: true });
   } catch {
     setActiveFilter(previousActive);
     state.categoryId = previousCategoryId;
     showToast('Не вдалося завантажити тварин. Спробуйте пізніше.');
   } finally {
-    toggleLoader(false);
+    await toggleLoader(false);
   }
 }
 
@@ -366,8 +379,7 @@ function bindFiltersEvents() {
 
 function smoothScrollToElement(element, duration = 1200) {
   const offset = 24;
-  const targetY =
-    element.getBoundingClientRect().top + window.scrollY - offset;
+  const targetY = element.getBoundingClientRect().top + window.scrollY - offset;
   const startY = window.scrollY;
   const distance = targetY - startY;
   const startTime = performance.now();
@@ -404,7 +416,7 @@ async function onLoadMoreClick() {
 
   try {
     refs.loadMoreBtn.disabled = true;
-    toggleLoader(true);
+    await toggleLoader(true);
     await loadAnimals({ append: true });
     scrollToFirstNewCard(previousCount);
   } catch {
@@ -412,7 +424,7 @@ async function onLoadMoreClick() {
     showToast('Не вдалося завантажити ще тварин. Спробуйте пізніше.');
   } finally {
     refs.loadMoreBtn.disabled = false;
-    toggleLoader(false);
+    await toggleLoader(false);
   }
 }
 
@@ -422,13 +434,12 @@ function bindLoadMoreEvents() {
 
 async function resetToFirstPage() {
   const isFirstPageOnly =
-    state.page === 1 &&
-    refs.petsList.children.length <= getItemsPerPage();
+    state.page === 1 && refs.petsList.children.length <= getItemsPerPage();
 
   if (isFirstPageOnly) return;
 
   try {
-    toggleLoader(true);
+    await toggleLoader(true);
     await loadAnimals({ reset: true });
 
     const firstCard = refs.petsList.firstElementChild;
@@ -438,7 +449,7 @@ async function resetToFirstPage() {
   } catch {
     showToast('Не вдалося оновити список тварин. Спробуйте пізніше.');
   } finally {
-    toggleLoader(false);
+    await toggleLoader(false);
   }
 }
 
@@ -459,7 +470,7 @@ async function initPetsList() {
   bindEscapeEvent();
 
   try {
-    toggleLoader(true);
+    await toggleLoader(true);
 
     const categories = await fetchCategories();
     renderCategories(categories);
@@ -470,7 +481,7 @@ async function initPetsList() {
   } catch {
     showToast('Не вдалося завантажити дані. Спробуйте пізніше.');
   } finally {
-    toggleLoader(false);
+    await toggleLoader(false);
   }
 }
 
