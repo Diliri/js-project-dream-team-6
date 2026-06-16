@@ -209,6 +209,8 @@ function createPetCard(animal) {
   img.src = animal.image;
   img.alt = animal.name;
   img.loading = 'lazy';
+  img.width = '311';
+  img.height = '245';
 
   const top = document.createElement('div');
   top.className = 'pet-card__top';
