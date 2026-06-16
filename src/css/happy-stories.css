@@ -3,10 +3,9 @@
    ========================================================================== */
 
 .section#happy-stories {
-/* Відступи всієї секції зверху/знизу */
+  /* Відступи всієї секції зверху/знизу */
   background: var(--color-scheme-1-background);
   padding-block: 64px;
-
 }
 
 .happy-stories__container {
@@ -14,7 +13,7 @@
   /* ТУТ налаштовуємо гуму для mobile devices */
 
   width: 100%;
-  max-width: 375px; 
+  max-width: 375px;
   margin: 0 auto;
   padding-inline: 20px;
   box-sizing: border-box;
@@ -50,7 +49,6 @@
   margin: 0;
 }
 
-
 /* ==========================================================================
    СТРУКТУРА СЛАЙДЕРА (SWIPER)
    ========================================================================== */
@@ -67,7 +65,6 @@
   margin: 0;
   padding: 0;
 }
-
 
 /* ==========================================================================
    КАРТКА ВІДГУКУ (Елемент списку <li>)
@@ -88,7 +85,7 @@
 
 .happy-stories__star {
   /* Колір зірочок регулюється через 'color', бо в JS ми прописали currentColor */
-  color: #000000; 
+  color: #000000;
 }
 
 /* Текст відгуку всередині картки */
@@ -114,7 +111,6 @@
   margin-top: auto; /* Притискає ім'я до низу, якщо тексти різної довжини */
   margin-bottom: 0;
 }
-
 
 /* ==========================================================================
    ЕЛЕМЕНТИ КЕРУВАННЯ (Пагінація + Кнопки)
@@ -143,7 +139,7 @@
 
   /* 1. Звичайний стан (Перша пара з UI Kit) */
   background: var(--color-scheme-1-foreground);
-  /* fill:*/ 
+  /* fill:*/
   color: var(--color-scheme-1-text); /*Колір стрілочки */
 
   display: flex;
@@ -161,7 +157,7 @@
 /* 2. Стан Hover — Наведення курсору (Друга пара з UI Kit) */
 
 .happy-stories__btn:hover {
-  background: var(--color-scheme-1-foreground); 
+  background: var(--color-scheme-1-foreground);
   border: 1px solid var(--opacity-neutral-darkest-60);
   /* З'являється акуратна бежева рамка */
 }
@@ -169,7 +165,9 @@
 /* 3. Стан Focus / Active — Клік або виділення (Третя пара на скріншоті) */
 .happy-stories__btn:focus,
 .happy-stories__btn:active {
-  box-shadow: inset 0 4px 6px -2px rgba(0, 0, 0, 0.03), inset 0 12px 16px -4px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    inset 0 4px 6px -2px rgba(0, 0, 0, 0.03),
+    inset 0 12px 16px -4px rgba(0, 0, 0, 0.08);
   background: var(--color-scheme-1-foreground); /* Стає темнішою */
   border: 1px solid var(--opacity-neutral-darkest-60);
   outline: none;
@@ -179,13 +177,9 @@
   opacity: 0.4;
   cursor: not-allowed;
 }
-
-
-/* ==========================================================================
-   КАСТОМІЗАЦІЯ КРАПОК ПАГІНАЦІЇ SWIPER
-   ========================================================================== */
-
-/* Контейнер для пагінації (скасовуємо дефолтне абсолютне позиціонування Swiper) */
+/* try to fix */
+/* Карусельна (dynamicBullets) пагінація — позиціонування, scale та
+   left-офсети крапок залишаємо повністю на Swiper, тут лише кольори */
 .happy-stories__pagination.swiper-pagination {
   position: static; /* !important; */
   width: auto; /* !important; */
@@ -193,30 +187,25 @@
   align-items: center;
   gap: 7px; /* Відступ між краями крапок, щоб між центрами було ~15px */
 }
-/* 1. Звичайна неактивна крапка (маленьке сіре коло) */
+
 .happy-stories__pagination .swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  background-color: #02060A !important; /* Беремо колір з Figma */
-  opacity: 0.2 !important;              /* Задаємо прозорість 20% як в інспекторі */
-  margin: 0 !important;                  /* Скидаємо стандартні відступи Swiper */
+  background-color: #02060a;
+  opacity: 0.2;
   cursor: pointer;
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transition:
+    opacity 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
 }
 
-/* Ховер на крапочку (для виконання ТЗ: змінювати стилі та курсор) */
 .happy-stories__pagination .swiper-pagination-bullet:hover {
-  opacity: 0.4 !important; /* Стає трохи чіткішою при наведенні */
+  opacity: 0.4;
 }
 
-/* 2. Активна крапка (чорне коло) */
 .happy-stories__pagination .swiper-pagination-bullet-active {
   opacity: 1 !important; /*Стає повністю непрозорою (100% fill) */
   background-color: #02060A; /*!important;*/
   transform: scale(1.1);
 }
-
-
 /* ==========================================================================
    СТАНИ ЗАВАНТАЖЕННЯ ТА ПОМИЛКИ
    ========================================================================== */
@@ -239,7 +228,6 @@
 .happy-stories__error {
   /* Стиль для повідомлення про помилку з сервера */
   color: #da4040;
-  
 }
 
 /* Стиль для повідомлення про помилку або завантаження */
@@ -258,7 +246,6 @@
   color: var(--color-text-muted); /* Для завантаження залишаємо сірий */
 }
 
-
 /* ==========================================================================
    АДАПТИВНІСТЬ (МЕДІА-ЗАПИТИ)
    ========================================================================== */
@@ -274,14 +261,14 @@
     padding-inline: 32px;
   }
 
-.title {
+  .title {
     text-align: center;
   }
 
-.happy-stories__text {
-  text-align: center;
-  /* Компенсуємо загальний gap, роблячи чисті 24px між заголовками за макетом */
-  margin-top: -16px; 
+  .happy-stories__text {
+    text-align: center;
+    /* Компенсуємо загальний gap, роблячи чисті 24px між заголовками за макетом */
+    margin-top: -16px;
   }
 }
 
