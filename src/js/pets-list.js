@@ -206,11 +206,29 @@ function createPetCard(animal) {
 
   const img = document.createElement('img');
   img.className = 'pet-card__img';
-  img.src = animal.image;
+  //img.src = animal.image;//
+  // img.alt = animal.name;//
+  //img.loading = 'lazy';
+  // img.width = '311';
+  //img.height = '245'; //
+  // ОПТИМІЗАЦІЯ: Пропускаємо оригінальне фото через сервіс weserv
+  // &w=311 задає ширину, &output=webp конвертує у надлегкий формат, &q=80 якість
+  const optimizedImage = `https://images.weserv.nl/?url=${encodeURIComponent(
+    animal.image
+  )}&w=311&output=webp&q=80`;
+
+  img.src = optimizedImage;
   img.alt = animal.name;
   img.loading = 'lazy';
-  img.width = '311';
-  img.height = '245';
+
+  // Обов'язково додаємо дескриптори для адаптивності (якщо на ретині треба чіткіше)
+  const optimizedImage2x = `https://images.weserv.nl/?url=${encodeURIComponent(
+    animal.image
+  )}&w=622&output=webp&q=80`;
+  img.srcset = `${optimizedImage} 1x, ${optimizedImage2x} 2x`;
+
+  img.setAttribute('width', '311');
+  img.setAttribute('height', '245');
 
   const top = document.createElement('div');
   top.className = 'pet-card__top';
