@@ -1,113 +1,102 @@
-# Vanilla App Template
+# Хатинка лапок 🐾
 
-Цей проект було створено за допомогою Vite. Для знайомства та налаштування
-додаткових можливостей [звернись до документації](https://vitejs.dev/).
+<div align="center">
+  <h1>👨‍💻 GOIT Team Project 👩‍💻</h1>
+  <h2>Group 127 | Team 6</h2>
+</div>
 
-## Створення репозиторію за шаблоном
+<span align="center">
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проекту. Для цього натисни на кнопку `«Use this template»` і
-обери опцію `«Create a new repository»`, як показано на зображенні.
+![HTML](https://img.shields.io/badge/-HTML-05122A?style=flat&logo=HTML5)&nbsp;
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flatlogo=css3&logoColor=ff69b4)&nbsp;
+![JavaScript](https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=javascript)&nbsp;
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+![Git](https://img.shields.io/badge/-Git-05122A?style=flat&logo=git)&nbsp;
+![GitHub](https://img.shields.io/badge/-GitHub-05122A?style=flat&logo=github)&nbsp;
+![Figma](https://img.shields.io/badge/-Figma-05122A?style=flat&logo=figma)&nbsp;
 
-На наступному етапі відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся, що репозиторій публічний, після чого натисни
-кнопку `«Create repository from template»`.
+![Visual Studio Code](https://img.shields.io/badge/-Visual%20Studio%20Code-05122A?style=flat&logo=visual-studio-code&logoColor=007ACC)&nbsp;
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+</span>
 
-Після того, як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
+<h3 align="center"> ℹ️  Dream Team 06 🚀 </h3>
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+<span align="center">
 
-Проскроливши сторінку до самого кінця, в секції `«Workflow permissions»` обери
-опцію `«Read and write permissions»` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проекту.
+<a align="center" href="https://github.com/Artemosypchuk">![GitHub](https://img.shields.io/badge/-Artem-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Diliri">![GitHub](https://img.shields.io/badge/-Diana-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/AleksandrWeber">![GitHub](https://img.shields.io/badge/-Oleksandr-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/ipaskevych">![GitHub](https://img.shields.io/badge/-Iryna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/AnastasiaSyniakova">![GitHub](https://img.shields.io/badge/-Nastya-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Lulu-wiszenka">![GitHub](https://img.shields.io/badge/-Luiza-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Art-Pasha">![GitHub](https://img.shields.io/badge/-Pavlo-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/anastasiialobanovaa">![GitHub](https://img.shields.io/badge/-Nastya-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/gordeykarpenko">![GitHub](https://img.shields.io/badge/-Gordiy-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/mariiakosheva01">![GitHub](https://img.shields.io/badge/-Mariya-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/ivAn-hrobov6019">![GitHub](https://img.shields.io/badge/-Ivan-05122A?style=flat&logo=github)</a>
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+</span>
 
-Тепер у тебе є особистий репозиторій проекту, зі структурою файлів та папок
-репозиторію-шаблону. Далі працюй з ним, як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби коміти та відправляй
-їх на GitHub.
+## Description
 
-## Підготовка до роботи
+**«Хатинка лапок»** — це затишний та сучасний вебдодаток, створений для допомоги
+безпритульним тваринам знайти свій новий дім та люблячу родину. Проєкт
+покликаний спростити процес адаптації тварин, ознайомити користувачів із
+діяльністю притулку та надати зручний інтерфейс для зв'язку з волонтерами.
 
-1. Переконайся, що на комп'ютері встановлено LTS-версію Node.js.
-   [Скачай та встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встанови базові залежності проекту в терміналі командою `npm install`.
-3. Запусти режим розробки, виконавши в терміналі команду `npm run dev`.
-4. Перейдіть у браузері за адресою
-   [http://localhost:5173](http://localhost:5173). Ця сторінка буде автоматично
-   перезавантажуватись після збереження змін у файли проекту.
+### Особливості проєкту:
 
-## Файли і папки
+🛠 Реалізовано на **Vanilla JavaScript** з використанням сучасного інструменту
+збірки **Vite**; 🛠 Повністю адаптивний та Responsive Design для комфортного
+користування на смартфонах 📱, планшетах 📟 та десктопах 💻; 🛠 Використання
+анімацій та інтерактивних елементів для покращення користувацького досвіду (UX).
 
-- Файли розмітки компонентів сторінки повинні лежати в папці `src/partials` та
-  імпортуватись до файлу `index.html`. Наприклад, файл з розміткою хедера
-  `header.html` створюємо у папці `partials` та імпортуємо в `index.html`.
-- Файли стилів повинні лежати в папці `src/css` та імпортуватись до HTML-файлів
-  сторінок. Наприклад, для `index.html` файл стилів називається `index.css`.
-- Зображення додавай до папки `src/img`. Збирач оптимізує їх, але тільки при
-  деплої продакшн версії проекту. Все це відбувається у хмарі, щоб не
-  навантажувати твій комп'ютер, тому що на слабких компʼютерах це може зайняти
-  багато часу.
+Ми — студенти курсу FullStack Developer у [GoIT](https://goit.ua), і цей проєкт
+є результатом нашої командної роботи наприкінці вивчення блоку JavaScript.
 
-## Деплой
+---
 
-Продакшн версія проекту буде автоматично збиратися та деплоїтись на GitHub
-Pages, у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад,
-після прямого пуша або прийнятого пул-реквесту. Для цього необхідно у файлі
-`package.json` змінити значення прапора `--base=/<REPO>/`, для команди `build`,
-замінивши `<REPO>` на назву свого репозиторію, та відправити зміни на GitHub.
+## Основний функціонал (Features)
 
-```json
-"build": "vite build --base=/<REPO>/",
-```
+🐾 **Каталог хвостиків:** зручний перегляд та фільтрація тварин притулку
+(Котики, Собачки, Всі) з можливістю завантаження додаткових карток ("Показати
+більше"). 🐾 **Історії успіху:** інтерактивний слайдер із реальними відгуками та
+історіями людей, які вже знайшли свого друга. 🐾 **Інтерактивний FAQ:** секція
+поширених запитань із плавним розкриттям відповідей (Accordion). 🐾 **Форма
+зв'язку:** модальне вікно для залишення заявки на знайомство з тваринкою, що
+містить валідацію введених користувачем даних. 🐾 **Скрол на початок сторінки:**
+кнопка у вигляді лапки, яка повертає користувачів до хедеру сторінки. 🐾
+**Світла та нічна тема:** кнопка, що береже ваш зір день та вночі.
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) та
-виставити роздачу продакшн версії файлів з папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+---
 
-![GitHub Pages settings](./assets/repo-settings.png)
+## Технологічний стек (Tech Stack)
 
-### Статус деплою
+- HTML5 / CSS3
+- Vanilla JavaScript (ES6+)
+- Vite (збірник проєкту)
+- Swiper.js (для реалізації слайдерів)
+- інші бібліотеки, що використовували, Axios, Lodash
 
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
+---
 
-- **Жовтий колір** - виконується збірка та деплой проекту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час лінтингу, збірки чи деплою сталася помилка.
+## Як запустити проєкт локально?
 
-Більш детальну інформацію про статус можна переглянути натиснувши на іконку, і в
-вікні, що випадає, перейти за посиланням `Details`.
-
-![Deployment status](./assets/deploy-status.png)
-
-### Жива сторінка
-
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною на вкладці `Settings` > `Pages` в налаштуваннях репозиторію.
-Наприклад, ось посилання на живу версію для цього репозиторію
-
-[https://goitacademy.github.io/vanilla-app-template/](https://goitacademy.github.io/vanilla-app-template/).
-
-Якщо відкриється порожня сторінка, переконайся, що у вкладці `Console` немає
-помилок пов'язаних з неправильними шляхами до CSS та JS файлів проекту
-(**404**). Швидше за все у тебе неправильне значення прапора `--base` для
-команди `build` у файлі `package.json`.
-
-## Як це працює
-
-![How it works](./assets/how-it-works.png)
-
-1. Після кожного пуша у гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) із файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проект ініціалізується та
-   проходить лінтинг та збірку перед деплоєм.
-3. Якщо всі кроки пройшли успішно, зібрана продакшн версія файлів проекту
-   відправляється у гілку `gh-pages`. В іншому випадку, у лозі виконання скрипта
-   буде вказано в чому проблема.
+1. Склонуйте репозиторій:
+   ```bash
+   git clone https://github.com/diliri/js-project-dream-team-6.git
+   ```
+2. Перейдіть у папку проєкту:
+   ```bash
+   cd js-project-dream-team-6
+   ```
+3. Встановіть залежності:
+   ```bash
+   npm install
+   ```
+4. Запустіть сервер для розробки:
+   ```bash
+   npm run dev
+   ```
+   💡 Живий сайт:
+   [Переглянути Хатинку лапок](https://diliri.github.io/js-project-dream-team-6/)
