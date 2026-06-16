@@ -4,3 +4,4 @@ import './js/happy-stories.js';
 import './js/paw-btn.js';
 import './js/order-modal.js';
 import './js/theme-switcher.js';
+import './js/team-modal.js';

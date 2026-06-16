@@ -5,7 +5,11 @@
   top: 0;
   left: 0;
   z-index: 999;
-  background-color: #00000079;
+  background-color: var(--opacity-neutral-darkest-50);
+
+  transition:
+    opacity 250ms linear,
+    visibility 250ms linear;
 }
 .team__backdrop--hidden {
   position: absolute;
@@ -27,15 +31,16 @@
   height: 35px;
   text-decoration: none;
   border: none;
-  fill: rgb(64, 60, 60);
+  fill: var(--color-neutral-dark);
   background: none;
   padding: 4px;
+  cursor: pointer;
   transition-property: fill border-color;
   transition-duration: 250ms;
 
   &:hover,
   &:focus {
-    fill: #ff6b08;
+    fill: var(--color-mariner-dark);
     transform: rotate(360deg);
   }
 }
@@ -50,7 +55,7 @@
   left: 50%;
   margin: 0;
   padding: 7px;
-  background-color: #f7f7f7;
+  background-color: var(--color-neutral-lightest);
   transform: translateX(-50%);
   overflow-y: scroll;
 
@@ -64,8 +69,8 @@
 
 .team__title {
   padding-top: 13px;
-  color: black;
-  font-family: 'Roboto';
+  color: var(--color-neutral-darkest);
+  font-family: var(--font-family);
   font-style: normal;
   font-weight: 500;
   font-size: 23px;
@@ -73,14 +78,14 @@
   margin-bottom: 20px;
   text-align: center;
   text-shadow:
-    1px 1px 1px #ccc,
-    1px -1px 1px #ccc,
-    -1px 1px 1px #ccc,
-    -1px -1px 1px #ccc;
+    1px 1px 1px var(--color-neutral-lighter),
+    1px -1px 1px var(--color-neutral-lighter),
+    -1px 1px 1px var(--color-neutral-lighter),
+    -1px -1px 1px var(--color-neutral-lighter);
   transition: all 1s;
   &:hover,
   &:focus {
-    color: #ff6b08;
+    color: var(--color-mariner-dark);
   }
 
   @media screen and (min-width: 768px) {
@@ -96,7 +101,7 @@
   z-index: -1;
   width: 100%;
   margin: auto;
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid var(--color-neutral-darkest);
   bottom: 0.15em;
   transition: all 1s;
 }
@@ -109,7 +114,7 @@ H1:hover:after {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 278px;
+  width: 100%;
   gap: 40px;
 
   @media screen and (min-width: 768px) {
@@ -118,7 +123,7 @@ H1:hover:after {
     margin-bottom: 35px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     width: 790px;
     gap: 45px;
     margin-bottom: 35px;
@@ -145,7 +150,7 @@ H1:hover:after {
     }
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     &:hover,
     &:focus {
       transform: scale(1.05);
@@ -159,18 +164,18 @@ H1:hover:after {
   border: 2px;
   margin: auto;
   border-radius: 50px;
-  box-shadow: 0px 0px 3px 5px #ccc;
+  box-shadow: 0px 0px 3px 5px var(--color-neutral-lighter);
 }
 
 .team__name {
   font-size: 18px;
   font-weight: 600;
-  color: black;
+  color: var(--color-neutral-darkest);
   transition-duration: 0.5s;
 
   &:hover,
   &:focus {
-    color: #ff6b08;
+    color: var(--color-mariner-dark);
   }
 
   @media screen and (min-width: 768px) {
@@ -178,7 +183,7 @@ H1:hover:after {
     align-content: center;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     font-size: 22px;
   }
 }
@@ -186,9 +191,9 @@ H1:hover:after {
 .team__role {
   font-size: 15px;
   font-weight: 500;
-  color: gray;
+  color: var(--color-neutral-dark);
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     font-size: 18px;
   }
 }
@@ -214,9 +219,21 @@ H1:hover:after {
 .team__github {
   &:hover,
   &:focus {
-    fill: #ff6b08;
+    fill: var(--color-mariner-dark);
     transition-duration: 0.5s;
   }
+}
+
+.open-modal-team {
+  cursor: pointer;
+  text-decoration: underline;
+  color: inherit;
+  transition: color 250ms ease;
+}
+
+.open-modal-team:hover,
+.open-modal-team:focus {
+  color: var(--color-mariner-dark);
 }
 
 .closeModalAnimationTeam {
