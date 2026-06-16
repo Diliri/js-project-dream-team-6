@@ -85,7 +85,7 @@
 
 .happy-stories__star {
   /* Колір зірочок регулюється через 'color', бо в JS ми прописали currentColor */
-  color: var(--color-neutral-darkest2);
+  color: #000000;
 }
 
 /* Текст відгуку всередині картки */
@@ -177,12 +177,9 @@
   opacity: 0.4;
   cursor: not-allowed;
 }
-
-/* ==========================================================================
-   КАСТОМІЗАЦІЯ КРАПОК ПАГІНАЦІЇ SWIPER
-   ========================================================================== */
-
-/* Контейнер для пагінації (скасовуємо дефолтне абсолютне позиціонування Swiper) */
+/* try to fix */
+/* Карусельна (dynamicBullets) пагінація — позиціонування, scale та
+   left-офсети крапок залишаємо повністю на Swiper, тут лише кольори */
 .happy-stories__pagination.swiper-pagination {
   position: static;
   display: flex;
@@ -201,12 +198,10 @@
     transform 0.2s ease-in-out;
 }
 
-/* Ховер на крапочку (для виконання ТЗ: змінювати стилі та курсор) */
 .happy-stories__pagination .swiper-pagination-bullet:hover {
   opacity: 0.4; /* Стає трохи чіткішою при наведенні */
 }
 
-/* 2. Активна крапка (чорне коло) */
 .happy-stories__pagination .swiper-pagination-bullet-active {
   opacity: 1; /* Стає повністю непрозорою (100% fill) */
   background-color: var(--color-neutral-darkest);
