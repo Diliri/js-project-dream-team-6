@@ -77,7 +77,6 @@
  }
 
  .footer__nav-link:hover {
-     color: var(--color-neutral-darkest);
      border-bottom-color: var(--color-neutral-darkest);
      scale: 1.07;
  }

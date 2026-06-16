@@ -49,6 +49,9 @@
 body.dark-theme {
 	--color-mariner-lightest: #383837;
 	--color-mariner-lighter: #9e5600;
+	--color-scheme-2-background:#9e5600;
+	--color-neutral-darkest2:#9e5600;
+	--color-mariner-darkest:#c3b49d;
 	--color-scheme-1-foreground: var(--color-mariner-lighter);
 	--color-scheme-1-background: var(--color-mariner-lightest);
 	--color-neutral-darkest: #d6d1c8;
