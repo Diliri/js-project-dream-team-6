@@ -1,0 +1,196 @@
+/* Swipper */
+.swiper {
+  width: 100%;
+  height: 100%;
+  position: unset;
+}
+.swiper-slide {
+  width: 100%;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.paws-house-pagination-arrows::after {
+  display: none;
+}
+.paws-house-pagination-dots.swiper-pagination {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* Звичайна неактивна крапка — однаковий розмір (статичні bullets) */
+.paws-house-pagination-dots .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #02060a;
+  opacity: 0.2;
+  margin: 0 !important;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.paws-house-pagination-dots .swiper-pagination-bullet:hover {
+  opacity: 0.4;
+}
+
+/* Активна крапка */
+.paws-house-pagination-dots .swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: #02060a;
+}
+.paws-house-section {
+  background-color: var(--color-mariner-lightest);
+}
+
+.paws-house-title {
+  text-align: center;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.paws-house-card {
+  margin-top: 40px;
+  position: relative;
+  max-width: 335px;
+  height: 402px;
+}
+
+/* Затемнення картини */
+.paws-house-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--opacity-neutral-darkest-20);
+  z-index: 1;
+}
+
+.paws-house-img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.paws-house-text {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #d6d1c8;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  margin: 0;
+  z-index: 2;
+}
+
+.paws-house-pagination {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.paws-house-pagination-wrap {
+  display: flex;
+  gap: 8px;
+  position: static;
+}
+.paws-house-pagination-arrows:nth-child(1) {
+  transform: rotate(180deg);
+}
+
+.paws-house-pagination-arrows {
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-mariner-lighter);
+  border: solid 1px var(--color-mariner-light);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+.paws-house-pagination > .paws-house-pagination-dots.swiper-pagination {
+  position: static;
+  left: 50%; /* додано */
+  bottom: -24px;
+  width: auto;
+  transform: translateX(0);
+}
+.paws-house-pagination-arrows.swiper-button-prev,
+.paws-house-pagination-arrows.swiper-button-next {
+  position: static;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  margin: 0;
+}
+/* Сама SVG іконка */
+.paws-house-pagination-arrows .paws-house-svg-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  flex-shrink: 0;
+  margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  .paws-house-container {
+    position: relative;
+  }
+  .paws-house-card {
+    max-width: 768px;
+  }
+  .paws-house-text {
+    max-width: 548px;
+    padding-left: 32px;
+  }
+  .paws-house-pagination-wrap {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 100%;
+    justify-content: space-between;
+    transform: translateX(-4.2%);
+  }
+  .paws-house-pagination-dots {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+  }
+  .paws-house-pagination-dots.swiper-pagination {
+    position: absolute;
+    width: auto;
+    transform: unset;
+  }
+  .paws-house-pagination > .paws-house-pagination-dots.swiper-pagination {
+    position: absolute;
+    bottom: -24px;
+    width: auto;
+    transform: translateX(-50%);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .paws-house-card {
+    max-width: 1312px;
+    height: 100%;
+  }
+  .paws-house-text {
+    padding: 0 0 64px 64px;
+  }
+  .paws-house-pagination-wrap {
+    transform: translateX(-4.5%);
+    padding: 0 36px;
+  }
+}
