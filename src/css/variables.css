@@ -1,6 +1,6 @@
 :root {
-    --font-family: "IBM Plex Sans", sans-serif;
-    --second-family: "Open Sans", sans-serif;
+	--font-family: "IBM Plex Sans", sans-serif;
+	--second-family: "Open Sans", sans-serif;
 	--color-scheme-1-background: var(--color-mariner-lightest);
 	--color-neutral-darkest: #02060a;
 	--color-scheme-1-border: var(--opacity-neutral-darkest-15);
@@ -45,6 +45,7 @@
 	--color-scheme-2-foreground: var(--color-mariner-dark);
 	--color-red: #ae0000;
 }
+
 body.dark-theme {
 	--color-mariner-lightest: #383837;
 	--color-mariner-lighter: #9e5600;
