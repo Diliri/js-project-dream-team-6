@@ -1,5 +1,21 @@
+body,
+body *,
+body *::before,
+body *::after {
+  transition:
+    background-color 300ms ease,
+    color 300ms ease,
+    border-color 300ms ease;
+}
+html,
 body {
   font-family: var(--font-family);
+  scroll-behavior: smooth;
 }
 
-@import './team-modal.css';
+/*Якщо всередині картки або десь поруч будуть картинки, додамо правило, щоб вони не «вивалилися» на маленьких екранах: */
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
