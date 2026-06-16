@@ -5,8 +5,8 @@
     align-items: center;
 
     /* Картинка Vite без точек впереди, строго по правилам ментора */
-    background-image: image-set(url('/img/hero-img1x.jpg') 1x,
-            url('/img/hero-img2x.jpg') 2x);
+    background-image: image-set(url('/img/hero-img1x.webp') 1x,
+            url('/img/hero-img2x.webp') 2x);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

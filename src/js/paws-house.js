@@ -11,7 +11,7 @@ async function initPawsSwiper() {
 
     pagination: {
       el: '.swiper-pagination',
-      dynamicBullets: false,
+      dynamicBullets: true,
       clickable: true,
     },
     navigation: {

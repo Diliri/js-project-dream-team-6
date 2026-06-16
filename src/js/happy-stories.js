@@ -1,4 +1,3 @@
-import Swiper from 'swiper/bundle';
 document.addEventListener('DOMContentLoaded', () => {
   const API_URL = 'https://paw-hut.b.goit.study/api/feedbacks';
   const container = document.getElementById('feedbacks-container');
@@ -28,31 +27,24 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const response = await fetch(API_URL);
 
-      // Якщо сервер повернув помилку (наприклад, код 500 чи 404)
       if (!response.ok) throw new Error('Помилка сервера');
 
       const data = await response.json();
-      // Якщо data — це вже масив, беремо його. Якщо об'єкт — шукаємо масив всередині (data.feedbacks або data.data).
       const feedbacksArray = Array.isArray(data)
         ? data
         : data.feedbacks || data.data || [];
-      // Перевірка умови ТЗ (мінімум 3 відгуки)
+
       if (!data || data.length < 3) {
         container.innerHTML =
           '<li class="swiper-slide happy-stories__error">Недостатньо відгуків для відображення.</li>';
         return;
       }
-      console.log(feedbacksArray);
 
-      // Очищуємо контейнер від тексту "Завантаження..."
       container.innerHTML = '';
 
-      // Рендеримо картки у структурі <li>
       feedbacksArray.forEach(item => {
         const listItem = document.createElement('li');
-        // Поєднуємо класи Swiper та твої власні класи
         listItem.className = 'happy-stories__list-item swiper-slide';
-
         listItem.innerHTML = `
           ${generateStarsHTML(item.rate || 5)}
           <p class="happy-stories__item-text">“${item.description}”</p>
@@ -61,20 +53,26 @@ document.addEventListener('DOMContentLoaded', () => {
         container.appendChild(listItem);
       });
 
-      // Ініціалізація слайдера після успішного рендеру
-      initSwiper();
+      // ЛІНИВА ІНІЦІАЛІЗАЦІЯ СЛАЙДЕРА
+      // Код Swiper почне завантажуватися лише зараз, коли відгуки вже на сторінці!
+      await initSwiperLazy();
     } catch (error) {
       console.error(error);
-      // Якщо запит не вдався — користувач побачить це повідомлення про помилку
       container.innerHTML =
         '<li class="swiper-slide happy-stories__error">Не вдалося завантажити відгуки. Спробуйте пізніше.</li>';
     }
   }
 
-  // Налаштування Swiper під класи в happy-stories.html
-  function initSwiper() {
+  // Функція для динамічного завантаження Swiper
+  async function initSwiperLazy() {
+    // Завантажуємо ядро Swiper та потрібні модулі окремо (без зайвого сміття)
+    const { default: Swiper } = await import('swiper');
+    const { Navigation, Pagination } = await import('swiper/modules');
+
     new Swiper('.happy-stories__swiper', {
-      slidesPerView: 1, // 1 картка на мобільних
+      // Підключаємо модулі в масив modules
+      modules: [Navigation, Pagination],
+      slidesPerView: 1,
       spaceBetween: 20,
       grabCursor: true,
       allowTouchMove: true,
@@ -89,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         dynamicBullets: true,
       },
       breakpoints: {
-        // Від 768px (планшет і десктоп) показує 2 картки в ряд
         768: {
           slidesPerView: 2,
           spaceBetween: 32,
