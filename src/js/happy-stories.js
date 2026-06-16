@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
       pagination: {
         el: '.happy-stories__pagination',
         clickable: true,
-        dynamicBullets: false, // ВИМИКАЄМО ЦЕЙ ПАРАМЕТР, щоб прибрати БАГ провантаження
+        dynamicBullets: true,
       },
       breakpoints: {
         // Від 768px (планшет і десктоп) показує 2 картки в ряд

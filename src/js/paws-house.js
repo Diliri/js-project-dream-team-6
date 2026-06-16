@@ -2,7 +2,7 @@ import Swiper from 'swiper/bundle';
 var swiper = new Swiper('.mySwiper', {
   pagination: {
     el: '.swiper-pagination',
-    dynamicBullets: true,
+    dynamicBullets: false,
     clickable: true,
   },
   navigation: {

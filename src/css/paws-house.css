@@ -4,7 +4,7 @@
   height: 100%;
   position: unset;
 }
-.swiper-slide{
+.swiper-slide {
   width: 100%;
 }
 .swiper-slide img {
@@ -16,10 +16,33 @@
 .paws-house-pagination-arrows::after {
   display: none;
 }
-.swiper-pagination-bullet-active{
-  background-color: var(--color-neutral-darkest);
+.paws-house-pagination-dots.swiper-pagination {
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
-.paws-house-section{
+
+/* Звичайна неактивна крапка — однаковий розмір (статичні bullets) */
+.paws-house-pagination-dots .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #02060a;
+  opacity: 0.2;
+  margin: 0 !important;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.paws-house-pagination-dots .swiper-pagination-bullet:hover {
+  opacity: 0.4;
+}
+
+/* Активна крапка */
+.paws-house-pagination-dots .swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: #02060a;
+}
+.paws-house-section {
   background-color: var(--color-mariner-lightest);
 }
 
@@ -95,12 +118,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0; 
+  padding: 0;
   box-sizing: border-box;
 }
-.paws-house-pagination>.paws-house-pagination-dots.swiper-pagination {
+.paws-house-pagination > .paws-house-pagination-dots.swiper-pagination {
   position: static;
-  width: auto ;
+  left: 50%; /* додано */
+  bottom: -24px;
+  width: auto;
   transform: translateX(0);
 }
 .paws-house-pagination-arrows.swiper-button-prev,
@@ -145,16 +170,16 @@
     font-size: 24px;
   }
   .paws-house-pagination-dots.swiper-pagination {
-  position: absolute;
-  width: auto ;
-  transform: unset;
-}
-.paws-house-pagination>.paws-house-pagination-dots.swiper-pagination {
-  position: absolute;
-  bottom: -24px;
-  width: auto ;
-  transform: translateX(-50%);
-}
+    position: absolute;
+    width: auto;
+    transform: unset;
+  }
+  .paws-house-pagination > .paws-house-pagination-dots.swiper-pagination {
+    position: absolute;
+    bottom: -24px;
+    width: auto;
+    transform: translateX(-50%);
+  }
 }
 @media screen and (min-width: 1280px) {
   .paws-house-card {
