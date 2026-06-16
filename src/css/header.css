@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. МОБИЛЬНАЯ ВЕРСИЯ (По умолчанию от 320px до 767px)
-   ========================================================================== */
+/* Mobile (от 320px до 767px) */
 .header {
     padding: 16px 0;
     background-color: var(--color-scheme-background, #ffffff);
@@ -13,13 +11,10 @@
     justify-content: space-between;
 }
 
-/* Базовые стили кликабельного логотипа с точными размерами */
 .logo {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    /* Точные размеры фрейма из Figma */
     width: 160px;
     height: 68px;
 gap: 12px;
@@ -31,17 +26,27 @@ gap: 12px;
 .logo:hover,
 .logo:focus-visible {
     outline: none;
-    /* Логотип становится на 30% прозрачнее и визуально «светлеет» в тон фона */
     opacity: 0.7;
 }
 
-/* Картинки внутри фрейма автоматически подстроятся под его высоту */
 .logo__icon,
 .logo__text {
     display: block;
     height: auto;
     max-height: 100%;
 }
+.dark-theme .header .logo__icon,
+.dark-theme .header .logo__text,
+.dark .header .logo__icon,
+.dark .header .logo__text {
+    
+    filter: drop-shadow(9999px 0 0 var(--color-mariner-light));
+    position: relative;
+    left: -9999px;
+    transition: filter 300ms ease;
+    /* Делает смену цвета плавной и красивой */
+}
+
 
 /* Кнопка открытия меню (Бургер) */
 .burger-btn {
@@ -61,7 +66,7 @@ gap: 12px;
     color: var(--color-scheme-1-accent, #887B5C);
 }
 
-/* Шторка мобильного меню (ТЗ: на всю ширину и высоту окна) */
+/* Шторка мобильного меню (на всю ширину и высоту окна) */
 .header__menu-wrapper {
     position: fixed;
     top: 0;
@@ -75,16 +80,12 @@ gap: 12px;
     flex-direction: column;
     align-items: center;
     gap: 40px;
-
-    /* Анимация плавного появления/скрытия */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transform: translateX(100%);
     transition: opacity 300ms ease, transform 300ms ease, visibility 300ms ease;
 }
-
-/* Класс, который мы будем добавлять через JS для открытия меню */
 .header__menu-wrapper.is-open {
     opacity: 1;
     visibility: visible;
@@ -92,7 +93,7 @@ gap: 12px;
     transform: translateX(0);
 }
 
-/* Кнопка закрытия меню (Крестик) */
+/* Кнопка закрытия меню */
 .menu-close-btn {
     position: absolute;
     top: 24px;
@@ -137,25 +138,18 @@ gap: 12px;
 }
 
 
-/* ==========================================================================
-   2. ПЛАНШЕТНАЯ ВЕРСИЯ (От 768px до 1439px)
-   ========================================================================== */
+/* Tablet (От 768px до 1439px) */
 @media screen and (min-width: 768px) {
     .header {
         padding: 24px 0;
     }
 
-    /* На планшетах меню всё ещё может быть мобильным (по ТЗ), 
-     но если в Figma на 768px оно уже открыто, мы его перестроим в десктопное. 
-     Пока оставляем логику мобильного по ТЗ, но увеличиваем отступы */
     .header__menu-wrapper {
         padding: 64px 32px;
     }
 }
 
-/* ==========================================================================
-   3. ДЕСКТОПНАЯ ВЕРСИЯ (От 1440px)
-   ========================================================================== */
+/* Desktop (От 1440px) */
 @media screen and (min-width: 1440px) {
 
     .burger-btn,
@@ -184,19 +178,16 @@ gap: 12px;
         transform: none;
     }
 
-    
-
     .nav__list {
         flex-direction: row;
         gap: 32px;
-        /* Расстояние между ссылками */
+        
     }
 
     .nav__link {
         font-size: 16px;
     }
 
-    /* ВОТ ЭТО СВОЙСТВО ОТОЛКНЕТ КНОПКУ НА ПРАВЫЙ КРАЙ */
     .header__btn {
         margin-left: auto;
     }
