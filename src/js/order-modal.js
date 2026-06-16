@@ -62,24 +62,6 @@ document.addEventListener('keydown', e => {
   }
 });
 
-/* ───────────────── Спільна логіка overlay ───────────────── */
-function openOverlay(overlay) {
-  overlay.classList.remove('hidden');
-  document.body.classList.add('modal-open');
-}
-
-function closeOverlay(overlay) {
-  overlay.classList.add('hidden');
-  document.body.classList.remove('modal-open');
-}
-
-// Закриття по Escape
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && !adoptModalOverlay.classList.contains('hidden')) {
-    closeAdoptModal();
-  }
-});
-
 /* ───────────────── Валідація форми ───────────────── */
 function validate() {
   let valid = true;
