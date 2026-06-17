@@ -1,3 +1,6 @@
+/* Підключаємо шрифти */
+@import url('./fonts.css');
+
 /* Підключаємо рідні стилі встановленого Swiper прямо з node_modules */
 @import url('swiper/css/bundle');
 
@@ -11,7 +14,9 @@
 @import url('./header.css');
 @import url('./hero.css');
 @import url('./pets-list.css');
+@import url('./swiper-custom.css');
 @import url('./paws-house.css');
+@import url('./faq.css');
 @import url('./happy-stories.css');
 @import url('./footer.css');
 
