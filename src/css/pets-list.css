@@ -533,3 +533,19 @@ body.dark-theme .pets__load-more:active:not(:disabled) {
 
 
 
+/* Якщо на десктопі (від 1440px) потрібен інший розмір */
+@media screen and (min-width: 768px) {
+  .pet-card__img {
+    width: 312px;
+    height: 245px; /* Можна змінити висоту під десктопний макет, якщо треба */
+  }
+}
+
+
+@media screen and (min-width: 1440px) {
+  .pet-card__img {
+    width: 392px;
+    height: 309px; /* Можна змінити висоту під десктопний макет, якщо треба */
+  }
+}
+
