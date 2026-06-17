@@ -15,7 +15,7 @@ const inputComment = document.getElementById('inputComment');
 
 let currentAnimalId = null;
 
-function openAdoptModal(animalId) {
+export function openAdoptModal(animalId) {
   currentAnimalId = animalId || currentAnimalId;
   openOverlay(adoptModalOverlay);
   inputName.focus();

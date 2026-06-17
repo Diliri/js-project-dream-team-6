@@ -203,7 +203,7 @@ function renderCategories(categories) {
 function createPetCard(animal) {
   const card = document.createElement('li');
   card.className = 'pet-card';
-  card.dataset.id = animal._id;    ///////////////Luisa
+  card.dataset.id = animal._id;
 
   const img = document.createElement('img');
   img.className = 'pet-card__img';
