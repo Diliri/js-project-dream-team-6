@@ -84,7 +84,7 @@
 }
 
 .happy-stories__star {
-  /* Колір зірочок регулюється через 'color', бо в JS ми прописали currentColor */
+  /* Колір зірочок регулюється через 'color', бо в JS мы прописали currentColor */
   color: var(--color-neutral-darkest2);
 }
 
@@ -133,29 +133,13 @@
 /* Спільний стиль для обох кнопок */
 .happy-stories__btn {
   border: 1px solid transparent; /*var(--color-mariner-light);*/
-  border-radius: 8px;
-  width: 48px;
-  height: 48px;
 
   /* 1. Звичайний стан (Перша пара з UI Kit) */
   background: var(--color-scheme-1-foreground);
-  /* fill:*/
   color: var(--color-scheme-1-text); /*Колір стрілочки */
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-/* Перевертаємо іконку для правої кнопки */
-.happy-stories__btn--next svg {
-  transform: rotate(180deg);
 }
 
 /* 2. Стан Hover — Наведення курсору (Друга пара з UI Kit) */
-
 .happy-stories__btn:hover {
   background: var(--color-scheme-1-foreground);
   border: 1px solid var(--opacity-neutral-darkest-60);
@@ -171,40 +155,6 @@
   background: var(--color-scheme-1-foreground); /* Стає темнішою */
   border: 1px solid var(--opacity-neutral-darkest-60);
   outline: none;
-}
-/* ДЕАКТИВОВАНИЙ СТАН КНОПОК (для першого/останнього слайду за ТЗ) */
-.happy-stories__btn.swiper-button-disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-/* try to fix */
-/* Карусельна (dynamicBullets) пагінація — позиціонування, scale та
-   left-офсети крапок залишаємо повністю на Swiper, тут лише кольори */
-.happy-stories__pagination.swiper-pagination {
-  position: static;
-  display: flex;
-  align-items: center;
-  gap: 7px; /* Відступ між краями крапок, щоб між центрами було ~15px */
-}
-/* 1. Звичайна неактивна крапка (маленьке сіре коло) */
-.happy-stories__controls .happy-stories__pagination .swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  background-color: var(--color-neutral-darkest); /* Беремо колір з Figma */
-  margin: 0; /* Скидаємо стандартні відступи Swiper */
-  cursor: pointer;
-  transition:
-    opacity 0.2s ease-in-out,
-    transform 0.2s ease-in-out;
-}
-
-.happy-stories__pagination .swiper-pagination-bullet:hover {
-  opacity: 0.4; /* Стає трохи чіткішою при наведенні */
-}
-
-.happy-stories__pagination .swiper-pagination-bullet-active {
-  opacity: 1; /* Стає повністю непрозорою (100% fill) */
-  background-color: var(--color-neutral-darkest);
 }
 
 /* ==========================================================================
