@@ -32,14 +32,13 @@ body.modal-open {
     max-height: 90vh;
     overflow-y: auto;
     width: min(90vw, 310px);
-    border: 1px solid red;
     padding: 64px 20px;
     background: var(--color-scheme-1-background);
     border-radius: 8px;
 }
 
 /* ── Container for Information ── */
-.dinamic-info {
+.dynamic-info {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -58,7 +57,7 @@ body.modal-open {
         padding: 64px 32px;
     }
 
-    .dinamic-info {
+    .dynamic-info {
         flex-direction: row;
     }
 }

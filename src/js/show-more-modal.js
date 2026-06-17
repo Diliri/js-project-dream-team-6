@@ -1,27 +1,27 @@
+import { animalObj } from './pets-list';
+import { openAdoptModal } from './order-modal';
 
-import { animalObj } from "./pets-list"; 
-import { openAdoptModal } from "./order-modal";
-
-const container = document.querySelector(".pets__list");
-const cardContainer = document.querySelector(".dinamic-info");
-const backdrop = document.querySelector(".modal-overlay");
-
+const container = document.querySelector('.pets__list');
+const cardContainer = document.querySelector('.dynamic-info');
+const backdrop = document.querySelector('.modal-overlay');
 
 let petId = null;
 
-container.addEventListener("click", showMoreInfo);
-cardContainer.addEventListener("click", handleButtons);
+container.addEventListener('click', showMoreInfo);
+cardContainer.addEventListener('click', handleButtons);
 
-backdrop.addEventListener("click", handleClick);
-document.addEventListener("keydown", onEscPress);
+backdrop.addEventListener('click', handleClick);
+document.addEventListener('keydown', onEscPress);
 
 function showMoreInfo(event) {
-  const btn = event.target.closest(".pet-card__btn");
-  if (!btn){ return; }
+  const btn = event.target.closest('.pet-card__btn');
+  if (!btn) {
+    return;
+  }
 
-  const card = btn.closest("li");
+  const card = btn.closest('li');
   if (!card) {
-    showError("Ой! Щось пішло не так.");
+    showError('Ой! Щось пішло не так.');
     return;
   }
   const idChoosed = card.dataset.id;
@@ -29,56 +29,55 @@ function showMoreInfo(event) {
   const animal = animalObj.animals.find(item => {
     return item._id === idChoosed;
   });
-    if (!animal) {
-      showError("Тваринка не знайдена.");
-     return;
+  if (!animal) {
+    showError('Тваринка не знайдена.');
+    return;
   }
-  
+
   cardContainer.innerHTML = createMarkup(animal);
 
   openModal();
 }
 
 function handleButtons(event) {
-   if(event.target.closest(".first-btn")){
-     openAdoptModal(petId);
-     closeModal();
-      return;
-    }
-   if(event.target.closest(".second-btn")){
-     openAdoptModal(petId);
-     closeModal();
-    }
+  if (event.target.closest('.first-btn')) {
+    openAdoptModal(petId);
+    closeModal();
+    return;
+  }
+  if (event.target.closest('.second-btn')) {
+    openAdoptModal(petId);
+    closeModal();
+  }
 }
 
 function handleClick(event) {
-   // Клик по крестику
-  if (event.target.closest(".modal__close")) {
-      closeModal();
-      return;
-    }
-   // Клик по backdrop
+  // Клик по крестику
+  if (event.target.closest('.modal__close')) {
+    closeModal();
+    return;
+  }
+  // Клик по backdrop
   if (event.target === event.currentTarget) {
-      closeModal();
-    }
+    closeModal();
+  }
 }
 
-function onEscPress(event){
-  if (event.key === "Escape" && !backdrop.classList.contains("hidden")){
-      closeModal();
-    }
+function onEscPress(event) {
+  if (event.key === 'Escape' && !backdrop.classList.contains('hidden')) {
+    closeModal();
+  }
 }
 
-function openModal(){
-  backdrop.classList.remove("hidden");
-  document.body.classList.add("modal-open");
-
+function openModal() {
+  backdrop.classList.remove('hidden');
+  document.body.classList.add('modal-open');
 }
 
 function closeModal() {
-  backdrop.classList.add("hidden");
-  document.body.classList.remove("modal-open");
-  cardContainer.innerHTML = "";
+  backdrop.classList.add('hidden');
+  document.body.classList.remove('modal-open');
+  cardContainer.innerHTML = '';
   petId = null;
 }
 
@@ -110,19 +109,18 @@ let SwalInstance = null;
 async function showError(message) {
   try {
     if (!SwalInstance) {
-      const { default: Swal } = await import("sweetalert2");
+      const { default: Swal } = await import('sweetalert2');
       SwalInstance = Swal;
     }
     await SwalInstance.fire({
-      icon: "error",
-      title: "Помилка",
+      icon: 'error',
+      title: 'Помилка',
       text: message,
-      confirmButtonText: "Добре",
-      confirmButtonColor: "#9b896a",
+      confirmButtonText: 'Добре',
+      confirmButtonColor: '#9b896a',
     });
-  } catch(err) {
+  } catch (err) {
     console.error(err);
     alert(message);
   }
 }
-
