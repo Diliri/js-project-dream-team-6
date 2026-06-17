@@ -43,8 +43,11 @@
 /* Кнопка открытия меню (Бургер) */
 .burger-btn {
   display: flex;
+  flex-flow: column;
+  width: 24px;
+  height: 24px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   background: none;
   border: none;
   padding: 0;
@@ -58,18 +61,17 @@
 }
 
 .burger-btn .burger-line {
-  display: block !important;
-  width: 22px !important;
-  height: 2px !important;
-  background-color: #333333 !important;
+  width: 18px;
+  height: 2px;
+  background-color: var(--color-scheme-1-text);
  
 }
 
-body.dark .burger-btn .burger-line,
+/* .burger-btn ,
 body.dark-theme .burger-btn .burger-line,
 [data-theme="dark"] .burger-btn .burger-line {
-  background-color: #ffffff !important;
-}
+  background-color: #ffffff;
+} */
 
 .btn {
   display: inline-flex;
@@ -381,7 +383,7 @@ body.dark-theme .burger-btn .burger-line,
 }
 
 .logo__icon,
-.logo__text {
+.logo__text-vector, .logo__text {
   filter: drop-shadow(9999px 0 0 var(--color-scheme-1-text));
   position: relative;
   left: -9999px;
