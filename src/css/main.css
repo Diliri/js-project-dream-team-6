@@ -1,3 +1,6 @@
+/* Підключаємо шрифти */
+@import url('./fonts.css');
+
 /* Підключаємо рідні стилі встановленого Swiper прямо з node_modules */
 @import url('swiper/css/bundle');
 

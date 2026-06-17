@@ -4,7 +4,7 @@
   max-width: 375px;
   margin: 0 auto;
   padding: 0 20px;
-  /* border: 1px solid red; потім закоментуємо */
+  border: 1px solid red; /* потім закоментуємо */
 }
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
