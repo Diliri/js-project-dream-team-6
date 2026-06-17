@@ -71,10 +71,10 @@
 
 /* Секція Paws House */
 .paws-house-pagination-dots .swiper-pagination-bullet {
-  background-color: #02060a;
+  background-color: var(--color-neutral-darkest);
 }
 .paws-house-pagination-dots .swiper-pagination-bullet-active {
-  background-color: #02060a;
+  background-color: var(--color-neutral-darkest);
   transform: scale(1.15);
 }
 

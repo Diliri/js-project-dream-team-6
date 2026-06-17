@@ -26,7 +26,7 @@
 .paws-house-pagination-dots .swiper-pagination-bullet {
   width: 8px;
   height: 8px;
-  background-color: #02060a;
+  background-color:  var(--color-neutral-darkest);
   opacity: 0.2;
   margin: 0 !important;
   cursor: pointer;
@@ -40,7 +40,7 @@
 /* Активна крапка */
 .paws-house-pagination-dots .swiper-pagination-bullet-active {
   opacity: 1;
-  background-color: #02060a;
+  background-color:  var(--color-neutral-darkest);
 }
 .paws-house-section {
   background-color: var(--color-mariner-lightest);
