@@ -4,7 +4,7 @@
 
 .faq {
   background: var(--color-scheme-1-background);
-  padding-block: 64px;
+  padding-block: 80px;
 }
 
 .faq .faq__container {
@@ -19,11 +19,11 @@
   font-family: var(--second-family);
   font-weight: 700;
   font-size: 36px;
-  line-height: 43px;
-  letter-spacing: -0.01em;
+  line-height: 1.12;
+  letter-spacing: 0;
   text-align: center;
   color: var(--color-scheme-1-text);
-  margin: 0 0 40px 0;
+  margin: 0 0 56px 0;
 }
 
 /* ==========================================================================
@@ -33,118 +33,106 @@
 .faq .accordion-container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
 }
 
 /* ==========================================================================
    ACCORDION ITEM
    ========================================================================== */
 
-.faq .ac,
-.faq .ac.is-active {
-  background-color: var(--color-scheme-1-foreground);
-  border-radius: 12px;
-  border: 1px solid var(--color-scheme-1-border);
+.faq .ac {
+  background: var(--color-scheme-1-foreground);
+  border: 0;
+  border-radius: 8px;
   margin: 0;
   overflow: hidden;
+  box-shadow: none;
+}
+
+.faq .ac.is-active {
+  background: var(--color-scheme-1-foreground);
 }
 
 .faq .ac-header {
   margin: 0;
-  background-color: var(--color-scheme-1-foreground);
 }
 
 /* ==========================================================================
    TRIGGER (QUESTION BUTTON)
    ========================================================================== */
 
-.faq .ac-trigger,
-.faq .ac.is-active .ac-trigger,
-.faq .ac-trigger:focus,
-.faq .ac.is-active .ac-trigger:focus {
+.faq .ac-trigger {
+  box-sizing: border-box;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 16px;
-  padding-right: 56px;
-  background-color: var(--color-scheme-1-foreground);
-  border: none;
+  gap: 24px;
+  min-height: 80px !important;
+  padding: 20px 24px !important;
+  background: transparent;
+  border: 0;
   cursor: pointer;
   text-align: left;
-  font-family: var(--font-family);
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 21px;
-  color: var(--color-scheme-1-text);
-  outline: none;
-  position: relative;
+  font-family: var(--font-family) !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  line-height: 1.45 !important;
+  color: var(--color-scheme-1-text) !important;
 }
 
-/* No hover effect — matches Figma */
-.faq .ac-trigger:hover,
-.faq .ac.is-active .ac-trigger:hover,
-.faq .ac .ac-header .ac-trigger:hover {
-  background-color: var(--color-scheme-1-foreground);
-  color: var(--color-scheme-1-text);
+.faq .ac-trigger:hover {
+  background: var(--opacity-neutral-darkest-10);
 }
 
-/* ==========================================================================
-   ICONS (+ and ×)
-   TODO: Icons icon-plus and icon-close need to be added to src/icons/sprite.svg by teammate
-   ========================================================================== */
+.faq .ac.is-active .ac-trigger {
+  background: transparent;
+}
 
-.faq .ac-trigger__icon {
+.faq .ac.is-active .ac-trigger:hover {
+  background: var(--opacity-neutral-darkest-10);
+}
+
+.faq .ac-trigger::after {
+  content: '+' !important;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 24px;
   height: 24px;
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  fill: var(--color-scheme-1-text);
-  stroke: var(--color-scheme-1-text);
+  font-family: var(--font-family);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-scheme-1-text);
 }
 
-/* Closed state — show plus, hide close */
-.faq .ac .ac-trigger__icon--close {
-  display: none;
-}
-
-.faq .ac .ac-trigger__icon--plus {
-  display: block;
-}
-
-/* Open state — show close, hide plus */
-.faq .ac.is-active .ac-trigger__icon--plus {
-  display: none;
-}
-
-.faq .ac.is-active .ac-trigger__icon--close {
-  display: block;
+.faq .ac.is-active .ac-trigger::after {
+  content: '×' !important;
 }
 
 /* ==========================================================================
    PANEL (ANSWER)
    ========================================================================== */
 
-.faq .ac-panel,
-.faq .ac.is-active .ac-panel {
-  background-color: var(--color-scheme-1-foreground);
-  padding: 0 16px 16px 16px;
+.faq .ac-panel {
+  background: var(--color-scheme-1-foreground);
+  padding: 0;
+  overflow: hidden;
 }
 
 .faq .ac-text {
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
-  color: var(--color-scheme-1-text);
+  font-size: 18px !important;
+  line-height: 1.55 !important;
+  color: var(--color-scheme-1-text) !important;
+  padding: 0 24px 24px !important;
 }
 
 .faq .ac-text p {
-  margin: 0 0 12px 0;
+  margin: 0 0 20px 0;
 }
 
 .faq .ac-text p:last-child {
@@ -153,103 +141,113 @@
 
 .faq .ac-text ul {
   list-style: disc;
-  padding-left: 20px;
-  margin: 0 0 12px 0;
+  padding-left: 24px;
+  margin: 0 0 20px 0;
 }
 
 .faq .ac-text ol {
   list-style: decimal;
-  padding-left: 20px;
-  margin: 0 0 12px 0;
+  padding-left: 24px;
+  margin: 0 0 20px 0;
 }
 
 .faq .ac-text li {
   display: list-item;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
 .faq .ac-text li:last-child {
   margin-bottom: 0;
 }
 
+.faq .ac.is-active .ac-trigger {
+  color: var(--color-scheme-1-text);
+}
+
+.faq .ac-trigger:hover {
+  color: var(--color-scheme-1-text);
+  background: var(--opacity-neutral-darkest-10);
+}
+
+.faq .ac.is-active .ac-trigger {
+  color: var(--color-scheme-1-text);
+  background: transparent;
+}
+
+.faq .ac-trigger:focus {
+  color: var(--color-scheme-1-text);
+  outline: none;
+}
+
 /* ==========================================================================
-   TABLET (768px+)
+   ADAPTIVE (MEDIA QUERIES)
    ========================================================================== */
 
+/* Tablet (768px+) */
 @media screen and (min-width: 768px) {
+  .faq {
+    padding-block: 80px;
+  }
+
   .faq .faq__container {
     max-width: 768px;
     padding-inline: 32px;
   }
 
   .faq .faq__title {
-    font-size: 40px;
-    line-height: 48px;
-    margin: 0 0 80px 0;
+    font-size: 56px;
+    line-height: 1.12;
+    margin-bottom: 96px;
   }
 
-  .faq .ac-trigger,
-  .faq .ac.is-active .ac-trigger {
-    padding: 20px 24px;
-    padding-right: 64px;
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .faq .ac-trigger__icon {
-    right: 24px;
-  }
-
-  .faq .ac-panel,
-  .faq .ac.is-active .ac-panel {
-    padding: 0 24px 20px 24px;
+  .faq .ac-trigger {
+    min-height: 104px !important;
+    padding: 28px 32px !important;
+    font-size: 24px !important;
+    line-height: 1.4 !important;
   }
 
   .faq .ac-text {
-    font-size: 16px;
-    line-height: 24px;
+    padding: 0 24px 24px !important;
+    font-size: 22px !important;
+    line-height: 1.55 !important;
   }
 }
 
-/* ==========================================================================
-   DESKTOP (1440px+)
-   ========================================================================== */
-
-@media screen and (min-width: 1440px) {
+/* Desktop (1280px+) */
+@media screen and (min-width: 1280px) {
   .faq {
     padding-block: 80px;
   }
 
   .faq .faq__container {
-    max-width: 1440px;
-    padding-inline: 288px;
+    max-width: 864px;
+    padding-inline: 0;
   }
 
   .faq .faq__title {
+    max-width: 768px;
     font-size: 48px;
     line-height: 58px;
-    margin: 0 0 80px 0;
+    margin-inline: auto;
+    margin-bottom: 80px;
   }
 
-  .faq .ac-trigger,
-  .faq .ac.is-active .ac-trigger {
-    padding: 20px 16px;
-    padding-right: 56px;
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .faq .ac-trigger__icon {
-    right: 16px;
-  }
-
-  .faq .ac-panel,
-  .faq .ac.is-active .ac-panel {
-    padding: 0 16px 16px 16px;
+  .faq .ac-trigger {
+    min-height: 67px !important;
+    padding: 20px 72px 20px 24px !important;
+    font-size: 18px !important;
+    line-height: 1.5 !important;
   }
 
   .faq .ac-text {
-    font-size: 16px;
-    line-height: 24px;
+    padding: 0 24px 24px !important;
+    font-size: 18px !important;
+    line-height: 1.55 !important;
+  }
+
+  .faq .ac:nth-child(4) .ac-trigger,
+  .faq .ac:nth-child(5) .ac-trigger {
+    min-height: 94px !important;
   }
 }
