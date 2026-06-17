@@ -1,0 +1,122 @@
+
+.burger-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    
+    z-index: 999;
+}
+
+   
+.burger-menu .burger-menu__container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 24px 20px;
+}
+/* Шапка модалки */
+.burger-menu .burger-menu__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+/* Логотип */
+.burger-menu .burger-menu__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--main-color, #3F382E);
+}
+
+/* Кнопка-крестик */
+.burger-menu .burger-menu__close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-color, #3F382E);
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.burger-menu .burger-menu__close-btn:hover,
+.burger-menu .burger-menu__close-btn:focus {
+    color: var(--accent-color, #8B7A63);
+    transform: scale(1.1);
+}
+
+
+.burger-menu .burger-menu__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.burger-menu .burger-menu__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+   
+}
+
+/* Текст ссылок меню */
+.burger-menu .burger-menu__link {
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+    color: var(--main-color, #3F382E);
+  
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.burger-menu .burger-menu__link:hover,
+.burger-menu .burger-menu__link:focus {
+    color: var(--accent-color, #8B7A63);
+    transform: scale(1.05);
+}
+
+/* Нижняя кнопка "Взяти друга" */
+.burger-menu .burger-menu__footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.burger-menu .burger-menu__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    border-radius: 12px;
+    background-color: var(--accent-color, #8B7A63);
+    /* Цвет кнопки по UI-киту */
+    color: var(--bg-color, #FFFFFF);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.burger-menu .burger-menu__btn:hover,
+.burger-menu .burger-menu__btn:focus {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}

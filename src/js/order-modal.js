@@ -5,8 +5,6 @@ const adoptModalOverlay = document.getElementById('adoptModalOverlay');
 const adoptModalClose = document.getElementById('adoptModalClose');
 const adoptForm = document.getElementById('adoptForm');
 
-const openAdoptModalBtn = document.getElementById('openAdoptModalBtn');
-
 const fieldName = document.getElementById('fieldName');
 const fieldPhone = document.getElementById('fieldPhone');
 const inputName = document.getElementById('inputName');
@@ -15,7 +13,28 @@ const inputComment = document.getElementById('inputComment');
 
 let currentAnimalId = null;
 
-function openAdoptModal(animalId) {
+/* ───────────────── Спільна логіка overlay ─────────────────
+   Винесена тут і використовується також з pet-modal.js,
+   щоб скрол блокувався/розблоковувався коректно для обох модалок */
+export function openOverlay(overlay) {
+  overlay.classList.remove('hidden');
+  document.body.classList.add('modal-open');
+}
+
+export function closeOverlay(overlay) {
+  overlay.classList.add('hidden');
+
+  const petModalOverlay = document.getElementById('petModalOverlay');
+  const stillOpen =
+    !adoptModalOverlay.classList.contains('hidden') ||
+    (petModalOverlay && !petModalOverlay.classList.contains('hidden'));
+
+  if (!stillOpen) {
+    document.body.classList.remove('modal-open');
+  }
+}
+
+export function openAdoptModal(animalId) {
   currentAnimalId = animalId || currentAnimalId;
   openOverlay(adoptModalOverlay);
   inputName.focus();
@@ -36,25 +55,7 @@ adoptModalOverlay.addEventListener('click', e => {
   if (e.target === adoptModalOverlay) closeAdoptModal();
 });
 
-/* ─── Логіка кліку на кнопку "Відкрити модальне вікно" ─── */
-if (openAdoptModalBtn) {
-  openAdoptModalBtn.addEventListener('click', () => {
-    openAdoptModal('65c2b0c3f5963c0012345678');
-  });
-}
-
-/* ───────────────── Спільна логіка overlay ───────────────── */
-function openOverlay(overlay) {
-  overlay.classList.remove('hidden');
-  document.body.classList.add('modal-open');
-}
-
-function closeOverlay(overlay) {
-  overlay.classList.add('hidden');
-  document.body.classList.remove('modal-open');
-}
-
-// Закриття по Escape
+// Закриття по Escape (тільки якщо саме Order Modal відкрита)
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && !adoptModalOverlay.classList.contains('hidden')) {
     closeAdoptModal();

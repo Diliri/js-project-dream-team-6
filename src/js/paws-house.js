@@ -10,8 +10,10 @@ async function initPawsSwiper() {
     modules: [Pagination, Navigation, Keyboard],
 
     pagination: {
+      //el: '.paws-house-pagination-dots', // <-- Тепер Swiper шукає саме ваш унікальний контейнер
+      //clickable: true,
       el: '.swiper-pagination',
-      dynamicBullets: true,
+      dynamicBullets: false,
       clickable: true,
     },
     navigation: {
