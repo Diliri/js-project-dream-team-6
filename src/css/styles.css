@@ -1,4 +1,14 @@
-html,body {
+body,
+body *,
+body *::before,
+body *::after {
+  transition:
+    background-color 300ms ease,
+    color 300ms ease,
+    border-color 300ms ease;
+}
+html,
+body {
   font-family: var(--font-family);
   scroll-behavior: smooth;
 }

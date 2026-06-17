@@ -5,7 +5,7 @@
   z-index: 99;
   background: transparent;
   box-shadow: none;
-  color: var(--color-mariner-light);
+  color: var(--color-neutral-darkest);
   width: 64px;
   height: 64px;
   display: flex;
@@ -24,7 +24,7 @@
 }
 .paw-top-btn:hover {
   background-color: transparent;
-  color: var(--color-mariner-dark);
+  color: var(--color-mariner-lighter);
 }
 .paw-top-btn svg {
   fill: none;
