@@ -5,18 +5,31 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    
-    z-index: 999;
-}
+    z-index: 9999;
+   
+    background-color: var(--bg-color, #FFFFFF);
+
+  
+    transform: translateX(100%);
 
    
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.burger-menu.is-open {
+    transform: translateX(0);
+}
+
+
 .burger-menu .burger-menu__container {
     display: flex;
     flex-direction: column;
     height: 100%;
     padding: 24px 20px;
 }
-/* Шапка модалки */
+
+/* Шапка меню  */
 .burger-menu .burger-menu__header {
     display: flex;
     justify-content: space-between;
@@ -33,7 +46,7 @@
     color: var(--main-color, #3F382E);
 }
 
-/* Кнопка-крестик */
+/* Крестик */
 .burger-menu .burger-menu__close-btn {
     background: none;
     border: none;
@@ -52,7 +65,7 @@
     transform: scale(1.1);
 }
 
-
+/* по центру*/
 .burger-menu .burger-menu__nav {
     display: flex;
     justify-content: center;
@@ -60,6 +73,7 @@
     flex-grow: 1;
 }
 
+/* посилання лист*/
 .burger-menu .burger-menu__list {
     list-style: none;
     padding: 0;
@@ -68,55 +82,69 @@
     flex-direction: column;
     align-items: center;
     gap: 32px;
-   
 }
 
-/* Текст ссылок меню */
+/* посилання */
 .burger-menu .burger-menu__link {
     font-family: inherit;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1.2;
+    font-size: 12px;
     text-decoration: none;
     color: var(--main-color, #3F382E);
-  
-    transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.burger-menu .burger-menu__link:hover,
-.burger-menu .burger-menu__link:focus {
-    color: var(--accent-color, #8B7A63);
-    transform: scale(1.05);
+/* откл меня для старого щоб було для мого */
+#mobile-menu {
+    display: none !important;
 }
 
-/* Нижняя кнопка "Взяти друга" */
+
 .burger-menu .burger-menu__footer {
     margin-top: auto;
+    
     display: flex;
     justify-content: center;
+    /* Выравнивает кнопку строго по центру горизонтали */
+    align-items: center;
     width: 100%;
     padding-bottom: 20px;
 }
 
+/*  кнопка */
 .burger-menu .burger-menu__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 32px;
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.2;
+    width: 196px;
+    height: 37px;
+    padding: 8px 20px;
+
+    /* Шрифт и текст из Figma */
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    /* 150% из Figma */
+    letter-spacing: 0%;
     text-decoration: none;
-    border-radius: 12px;
-    background-color: var(--accent-color, #8B7A63);
-    /* Цвет кнопки по UI-киту */
-    color: var(--bg-color, #FFFFFF);
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    color: #FFFFFF;
+    /* Белый текст */
+
+    /* Маленький радиус скругления из Figma (Radius/Small) */
+    border-radius: 8px;
+
+    /* Цвет фона Mariner Dark из Figma */
+    background-color: rgba(136, 118, 92, 1);
+    border: 1px solid rgba(136, 118, 92, 1);
+    /* Рамка 1px */
+
+    /* Эффекты наведения */
+    transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    cursor: pointer;
 }
+
 
 .burger-menu .burger-menu__btn:hover,
 .burger-menu .burger-menu__btn:focus {
     opacity: 0.9;
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }

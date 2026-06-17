@@ -7,3 +7,4 @@ import './js/order-modal.js';
 import './js/theme-switcher.js';
 // import './js/show-more-modal.js';
 import './js/team-modal.js';
+import './js/burger-menu.js';
