@@ -1,18 +1,26 @@
-.hero {
+hero {
     position: relative;
     width: 100%;
     display: flex;
     align-items: center;
+    overflow: hidden;
+    background-color: #f6f4f1;
+}
 
-    /* Картинка Vite без точек впереди, строго по правилам ментора */
-    background-image: image-set(url('/img/hero-img1x.webp') 1x,
-            url('/img/hero-img2x.webp') 2x);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+.hero__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 80% 30%;
+    z-index: 1;
 }
 
 .hero__container {
+    position: relative;
+    z-index: 2;
     width: 100%;
 }
 
@@ -38,10 +46,14 @@
     margin-top: 0;
 }
 
-/* MOBILE (Параметры адаптива от 320px до 767px) */
+.hero__btn {
+    width: auto;
+    white-space: nowrap;
+}
+
+/* MOBILE VERSION (от 320px до 767px) */
 @media screen and (max-width: 767px) {
     .hero {
-        /* РЕЗИНА */
         padding: 80px 0 60px 0;
     }
 
@@ -59,15 +71,18 @@
 
     .hero__btn {
         min-width: 171px;
-        width: auto;
         height: 45px !important;
         font-size: 14px;
-        white-space: nowrap;
-        
     }
 }
 
-/* TABLET  (Параметры адаптива от 768px до 1439px) */
+/* TABLET VERSION (от 768px до 1439px) */
+@media screen and (min-width: 768px) {
+    .hero__img {
+        object-position: center;
+    }
+}
+
 @media screen and (min-width: 768px) and (max-width: 1439px) {
     .hero {
         padding: 120px 0;
@@ -91,17 +106,17 @@
 
     .hero__btn {
         min-width: 171px;
-        width: auto;
         height: 45px !important;
         font-size: 14px;
-        white-space: nowrap;
     }
 }
 
-/* DESKTOP (Параметры макета от 1440px) */
+/* DESKTOP VERSION (от 1440px) */
 @media screen and (min-width: 1440px) {
     .hero {
         padding: 180px 0;
+    }
+
     .hero__content {
         max-width: 622px;
     }
@@ -120,10 +135,7 @@
 
     .hero__btn {
         min-width: 189px;
-        width: auto;
         height: 48px !important;
         font-size: 16px;
-        white-space: nowrap;
     }
-}
 }
