@@ -1,0 +1,36 @@
+<section class="pets">
+  <div class="container">
+    <div class="pets__header">
+      <h2 class="pets__title">Наші хвостики</h2>
+      <p class="pets__subtitle">
+        Вони дуже чекають на знайомство з вами
+      </p>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="pets__filters">
+      <button type="button" class="pets__filter-btn is-active" data-category-id="">
+        Всі
+      </button>
+      <!-- categories from API -->
+    </div>
+
+    <!-- CARDS LIST -->
+    <ul class="pets__list">
+      <!-- cards from API -->
+    </ul>
+
+    <!-- LOAD MORE -->
+    <div class="pets__actions">
+      <button type="button" class="pets__load-more">
+        Показати більше
+      </button>
+    </div>
+  </div>
+
+  <!-- LOADER -->
+  <div class="pets__loader hidden" role="status" aria-live="polite" aria-label="Завантаження">
+    <div class="pets__loader-overlay"></div>
+    <div class="pets__loader-spinner"></div>
+  </div>
+</section>
