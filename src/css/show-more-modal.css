@@ -39,7 +39,7 @@ body.modal-open {
 }
 
 /* ── Container for Information ── */
-.dinamic-info{
+.dinamic-info {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -58,7 +58,7 @@ body.modal-open {
         padding: 64px 32px;
     }
 
-    .dinamic-info{
+    .dinamic-info {
         flex-direction: row;
     }
 }
@@ -93,7 +93,7 @@ body.modal-open {
 }
 
 .wrap-descr {
-    width: 100%;   
+    width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -233,4 +233,3 @@ body.modal-open {
 .modal__close svg {
     display: block;
 }
-
