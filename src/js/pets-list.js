@@ -203,6 +203,7 @@ function renderCategories(categories) {
 function createPetCard(animal) {
   const card = document.createElement('li');
   card.className = 'pet-card';
+  card.dataset.id = animal._id;    ///////////////Luisa
 
   const img = document.createElement('img');
   img.className = 'pet-card__img';
@@ -293,6 +294,8 @@ function updateLoadMoreButton() {
   refs.loadMoreBtn.disabled = !hasMore || isLoading;
 }
 
+export let animalObj = {}; //////////////////////////////////Luisa
+
 async function loadAnimals({ reset = false, append = false } = {}) {
   if (reset) {
     state.page = 1;
@@ -300,7 +303,7 @@ async function loadAnimals({ reset = false, append = false } = {}) {
 
   const data = await fetchAnimals();
   state.totalItems = data.totalItems;
-
+  animalObj = data;     ////////////////////Luisa
   renderPetCards(data.animals, { append });
   updateLoadMoreButton();
 }
