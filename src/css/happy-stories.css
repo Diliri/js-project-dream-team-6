@@ -85,7 +85,7 @@
 
 .happy-stories__star {
   /* Колір зірочок регулюється через 'color', бо в JS ми прописали currentColor */
-  color: #000000;
+  color: var(--color-neutral-darkest2);
 }
 
 /* Текст відгуку всередині картки */

@@ -5,3 +5,4 @@ import './js/faq.js';
 import './js/paw-btn.js';
 import './js/order-modal.js';
 import './js/theme-switcher.js';
+import './js/team-modal.js';
