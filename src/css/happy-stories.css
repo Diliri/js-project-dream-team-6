@@ -75,6 +75,8 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  /* щоб картки не були занадто гігантськими на моніторах */
+  max-width: 640px;
 }
 
 /* Зірочки */
