@@ -75,8 +75,7 @@
 - HTML5 / CSS3
 - Vanilla JavaScript (ES6+)
 - Vite (збірник проєкту)
-- Swiper.js (для реалізації слайдерів)
-- інші бібліотеки, що використовували, Axios, Lodash
+- використані бібліотеки: Swiper, Axios, Accordion-js, Spin.js, SweetAlert2.
 
 ---
 
