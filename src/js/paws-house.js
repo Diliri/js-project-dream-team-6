@@ -4,6 +4,7 @@ async function initPawsSwiper() {
   const { default: Swiper } = await import('swiper');
   const { Pagination, Navigation, Keyboard } = await import('swiper/modules');
 
+  const isMobile = window.innerWidth < 768;
   // Ініціалізуємо слайдер
   new Swiper('.mySwiper', {
     // Обов'язково передаємо масив підключених модулів
@@ -13,7 +14,7 @@ async function initPawsSwiper() {
       //el: '.paws-house-pagination-dots', // <-- Тепер Swiper шукає саме ваш унікальний контейнер
       //clickable: true,
       el: '.swiper-pagination',
-      dynamicBullets: true,
+      dynamicBullets: isMobile,
       clickable: true,
     },
     navigation: {
