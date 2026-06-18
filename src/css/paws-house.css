@@ -3,6 +3,7 @@
    ========================================================================== */
 .paws-house-section {
   background-color: var(--color-mariner-lightest);
+  padding-top: 64px;
 }
 
 .paws-house-title {
@@ -11,13 +12,13 @@
   font-weight: 700;
   font-size: 36px;
   line-height: 1.2;
+  padding-bottom: 40px;
 }
 
 /* ==========================================================================
    КАРТКА СЛАЙДЕРА
    ========================================================================== */
 .paws-house-card {
-  margin-top: 40px;
   position: relative;
   max-width: 335px;
   height: 402px;
@@ -62,6 +63,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.paws-house-pagination-dots.swiper-pagination{
+  margin-left: 0;
 }
 
 .paws-house-pagination-wrap {
