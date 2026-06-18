@@ -38,7 +38,7 @@ function closeModalTeam() {
 }
 
 function onEscapeClose(event) {
-  if (event.code === 'Escape') {
+  if (event.key === 'Escape') {
     closeModalTeam();
   }
 }

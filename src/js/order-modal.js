@@ -1,5 +1,5 @@
-// ПОВНІСТЮ ПРИБРАЛИ СТАТИЧНІ ІМПОРТИ ЗВІДСИ
-// Сторінка завантажиться миттєво!
+// Імпортуємо функцію відправки з нашого єдиного модуля API
+import { createOrder } from './api.js';
 
 const adoptModalOverlay = document.getElementById('adoptModalOverlay');
 const adoptModalClose = document.getElementById('adoptModalClose');
@@ -13,9 +13,7 @@ const inputComment = document.getElementById('inputComment');
 
 let currentAnimalId = null;
 
-/* ───────────────── Спільна логіка overlay ─────────────────
-   Винесена тут і використовується також з pet-modal.js,
-   щоб скрол блокувався/розблоковувався коректно для обох модалок */
+/* ───────────────── Спільна логіка overlay ───────────────── */
 export function openOverlay(overlay) {
   overlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
@@ -55,7 +53,7 @@ adoptModalOverlay.addEventListener('click', e => {
   if (e.target === adoptModalOverlay) closeAdoptModal();
 });
 
-// Закриття по Escape (тільки якщо саме Order Modal відкрита)
+// Закриття по Escape
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && !adoptModalOverlay.classList.contains('hidden')) {
     closeAdoptModal();
@@ -91,7 +89,7 @@ inputPhone.addEventListener('input', () =>
   fieldPhone.classList.remove('field--error')
 );
 
-/* ───────────────── Сабміт форми ───────────────── */
+/* ───────────────── Сабміт форми (Виправлений) ───────────────── */
 adoptForm.addEventListener('submit', async e => {
   e.preventDefault();
   if (!validate()) return;
@@ -108,28 +106,19 @@ adoptForm.addEventListener('submit', async e => {
   };
 
   try {
-    // ДИНАМІЧНИЙ ІМПОРТ: завантажуємо Axios та SweetAlert2 паралельно прямо під час відправки!
-    const [axiosModule, swalModule] = await Promise.all([
-      import('axios'),
-      import('sweetalert2'),
-    ]);
-
-    const axios = axiosModule.default;
+    // Динамічно завантажуємо тільки SweetAlert2, бо Axios вже працює через модуль api.js
+    const swalModule = await import('sweetalert2');
     const Swal = swalModule.default;
 
-    // Робимо запит
-    const response = await axios.post(
-      'https://paw-hut.b.goit.study/api/orders',
-      payload
-    );
-    const orderData = response.data;
+    // Виклик винесеної функції замість прямого axios.post
+    const orderData = await createOrder(payload);
     console.log('orderData :>> ', orderData);
 
     // Показуємо красиве вікно успіху
     await Swal.fire({
       icon: 'success',
       title: 'Заявку надіслано!',
-      text: 'Ми звяжемося з вами найближчим часом.',
+      text: 'Ми звʼяжемося з вами найближчим часом.',
       confirmButtonColor: '#9b896a',
     });
 
@@ -137,8 +126,6 @@ adoptForm.addEventListener('submit', async e => {
   } catch (err) {
     console.error(err);
 
-    // Перестраховка: якщо помилка сталася до того, як завантажився SweetAlert2,
-    // пробуємо підтягнути його знову, або використовуємо дефолтний alert
     let Swal;
     try {
       const swalModule = await import('sweetalert2');
