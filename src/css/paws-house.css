@@ -1,47 +1,6 @@
-/* Swipper */
-.swiper {
-  width: 100%;
-  height: 100%;
-  position: unset;
-}
-.swiper-slide {
-  width: 100%;
-}
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.paws-house-pagination-arrows::after {
-  display: none;
-}
-.paws-house-pagination-dots.swiper-pagination {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-/* Звичайна неактивна крапка — однаковий розмір (статичні bullets) */
-.paws-house-pagination-dots .swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  background-color:  var(--color-neutral-darkest);
-  opacity: 0.2;
-  margin: 0 !important;
-  cursor: pointer;
-  transition: opacity 0.2s ease-in-out;
-}
-
-.paws-house-pagination-dots .swiper-pagination-bullet:hover {
-  opacity: 0.4;
-}
-
-/* Активна крапка */
-.paws-house-pagination-dots .swiper-pagination-bullet-active {
-  opacity: 1;
-  background-color:  var(--color-neutral-darkest);
-}
+/* ==========================================================================
+   СЕКЦІЯ ТА ЗАГОЛОВКИ
+   ========================================================================== */
 .paws-house-section {
   background-color: var(--color-mariner-lightest);
 }
@@ -54,6 +13,9 @@
   line-height: 1.2;
 }
 
+/* ==========================================================================
+   КАРТКА СЛАЙДЕРА
+   ========================================================================== */
 .paws-house-card {
   margin-top: 40px;
   position: relative;
@@ -92,6 +54,9 @@
   z-index: 2;
 }
 
+/* ==========================================================================
+   ЕЛЕМЕНТИ КЕРУВАННЯ (БЕЗ КОНФЛІКТІВ ЗІ SWIPER)
+   ========================================================================== */
 .paws-house-pagination {
   margin-top: 24px;
   display: flex;
@@ -104,39 +69,7 @@
   gap: 8px;
   position: static;
 }
-.paws-house-pagination-arrows:nth-child(1) {
-  transform: rotate(180deg);
-}
 
-.paws-house-pagination-arrows {
-  width: 48px;
-  height: 48px;
-  background-color: var(--color-mariner-lighter);
-  border: solid 1px var(--color-mariner-light);
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  box-sizing: border-box;
-}
-.paws-house-pagination > .paws-house-pagination-dots.swiper-pagination {
-  position: static;
-  left: 50%; /* додано */
-  bottom: -24px;
-  width: auto;
-  transform: translateX(0);
-}
-.paws-house-pagination-arrows.swiper-button-prev,
-.paws-house-pagination-arrows.swiper-button-next {
-  position: static;
-  top: auto;
-  bottom: auto;
-  left: auto;
-  right: auto;
-  margin: 0;
-}
 /* Сама SVG іконка */
 .paws-house-pagination-arrows .paws-house-svg-icon {
   width: 16px;
@@ -145,17 +78,27 @@
   flex-shrink: 0;
   margin: 0 auto;
 }
+
+/* ==========================================================================
+   АДАПТИВНІСТЬ (МЕДІА-ЗАПИТИ)
+   ========================================================================== */
+
+/* Планшетна версія (від 768px) */
 @media screen and (min-width: 768px) {
   .paws-house-container {
     position: relative;
   }
+  
   .paws-house-card {
     max-width: 768px;
   }
+  
   .paws-house-text {
     max-width: 548px;
     padding-left: 32px;
   }
+  
+  /* Переносимо стрілочки на саму картку */
   .paws-house-pagination-wrap {
     position: absolute;
     top: 50%;
@@ -164,31 +107,19 @@
     justify-content: space-between;
     transform: translateX(-4.2%);
   }
-  .paws-house-pagination-dots {
-    width: 100%;
-    text-align: center;
-    font-size: 24px;
-  }
-  .paws-house-pagination-dots.swiper-pagination {
-    position: absolute;
-    width: auto;
-    transform: unset;
-  }
-  .paws-house-pagination > .paws-house-pagination-dots.swiper-pagination {
-    position: absolute;
-    bottom: -24px;
-    width: auto;
-    transform: translateX(-50%);
-  }
 }
+
+/* Десктопна версія (від 1280px) */
 @media screen and (min-width: 1280px) {
   .paws-house-card {
     max-width: 1312px;
     height: 100%;
   }
+  
   .paws-house-text {
     padding: 0 0 64px 64px;
   }
+  
   .paws-house-pagination-wrap {
     transform: translateX(-4.5%);
     padding: 0 36px;

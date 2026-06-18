@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
       pagination: {
         el: '.happy-stories__pagination',
         clickable: true,
-        dynamicBullets: false,
+        dynamicBullets: true,
       },
       breakpoints: {
         768: {

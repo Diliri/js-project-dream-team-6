@@ -177,35 +177,6 @@
   opacity: 0.4;
   cursor: not-allowed;
 }
-/* try to fix */
-/* Карусельна (dynamicBullets) пагінація — позиціонування, scale та
-   left-офсети крапок залишаємо повністю на Swiper, тут лише кольори */
-.happy-stories__pagination.swiper-pagination {
-  position: static;
-  display: flex;
-  align-items: center;
-  gap: 7px; /* Відступ між краями крапок, щоб між центрами було ~15px */
-}
-/* 1. Звичайна неактивна крапка (маленьке сіре коло) */
-.happy-stories__controls .happy-stories__pagination .swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  background-color: var(--color-neutral-darkest); /* Беремо колір з Figma */
-  margin: 0; /* Скидаємо стандартні відступи Swiper */
-  cursor: pointer;
-  transition:
-    opacity 0.2s ease-in-out,
-    transform 0.2s ease-in-out;
-}
-
-.happy-stories__pagination .swiper-pagination-bullet:hover {
-  opacity: 0.4; /* Стає трохи чіткішою при наведенні */
-}
-
-.happy-stories__pagination .swiper-pagination-bullet-active {
-  opacity: 1; /* Стає повністю непрозорою (100% fill) */
-  background-color: var(--color-neutral-darkest);
-}
 
 /* ==========================================================================
    СТАНИ ЗАВАНТАЖЕННЯ ТА ПОМИЛКИ

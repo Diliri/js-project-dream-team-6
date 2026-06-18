@@ -13,7 +13,7 @@ async function initPawsSwiper() {
       //el: '.paws-house-pagination-dots', // <-- Тепер Swiper шукає саме ваш унікальний контейнер
       //clickable: true,
       el: '.swiper-pagination',
-      dynamicBullets: false,
+      dynamicBullets: true,
       clickable: true,
     },
     navigation: {
