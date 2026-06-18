@@ -41,13 +41,14 @@ function showMoreInfo(event) {
 
 function handleButtons(event) {
   if (event.target.closest('.first-btn')) {
-    openAdoptModal(petId);
     closeModal();
+    openAdoptModal(petId);
     return;
   }
   if (event.target.closest('.second-btn')) {
-    openAdoptModal(petId);
     closeModal();
+    openAdoptModal(petId);
+    console.log(petId)
   }
 }
 
@@ -78,7 +79,6 @@ function closeModal() {
   backdrop.classList.add('hidden');
   document.body.classList.remove('modal-open');
   cardContainer.innerHTML = "";
-  petId = null;
 }
 
 function createMarkup(obj) {
@@ -124,3 +124,4 @@ async function showError(message) {
     alert(message);
   }
 }
+
