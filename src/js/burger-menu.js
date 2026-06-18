@@ -1,23 +1,23 @@
 // Связываем кнопку напарницы с вашим бургер-меню
-const openMenuBtn = document.querySelector('#menu-open');       // Кнопка из хедера напарницы
+const openMenuBtn = document.querySelector('#menu-open');       // Кнопка из хедера 
 const closeMenuBtn = document.querySelector('#closeMenuBtn');   // Ваш крестик
 const mobileMenu = document.querySelector('#burgerMenu');       // Ваше меню
 const menuLinks = document.querySelectorAll('.burger-menu__link, .burger-menu__btn');   
 
 if (openMenuBtn && closeMenuBtn && mobileMenu) {
-  // Открыть ваше меню
+  // Відкрити меню
   openMenuBtn.addEventListener('click', () => {
     mobileMenu.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   });
 
-  // Закрыть ваше меню
+  // Закрити меню
   closeMenuBtn.addEventListener('click', () => {
     mobileMenu.classList.remove('is-open');
     document.body.style.overflow = '';
   });
 
-  // Закрыть при клике на ссылки
+  // Закрити при кліку на посилання
   menuLinks.forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.classList.remove('is-open');

@@ -15,11 +15,6 @@
    
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-
-
-
-
 .burger-menu .burger-menu__container {
     display: flex;
     flex-direction: column;
@@ -101,7 +96,7 @@
     
     display: flex;
     justify-content: center;
-    /* Выравнивает кнопку строго по центру горизонтали */
+    
     align-items: center;
     width: 100%;
     padding-bottom: 20px;
@@ -116,21 +111,21 @@
     height: 37px;
     padding: 8px 20px;
 
-    /* Шрифт и текст из Figma */
+   
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.5;
-    /* 150% из Figma */
+    /
     letter-spacing: 0%;
     text-decoration: none;
     color: #FFFFFF;
-    /* Белый текст */
+   
 
-    /* Маленький радиус скругления из Figma (Radius/Small) */
+
     border-radius: 8px;
 
-    /* Цвет фона Mariner Dark из Figma */
+   
     background-color: rgba(136, 118, 92, 1);
     border: 1px solid rgba(136, 118, 92, 1);
     /* Рамка 1px */
