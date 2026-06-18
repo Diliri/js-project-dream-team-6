@@ -11,6 +11,7 @@ html,
 body {
   font-family: var(--font-family);
   scroll-behavior: smooth;
+  min-width: 320px;
 }
 
 /*Якщо всередині картки або десь поруч будуть картинки, додамо правило, щоб вони не «вивалилися» на маленьких екранах: */

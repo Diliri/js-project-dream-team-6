@@ -117,6 +117,8 @@ body.modal-open {
 
 .small-text {
     font-size: 12px;
+    color: var(--color-scheme-1-text);
+
 }
 
 @media (min-width: 1440px) {
@@ -187,6 +189,9 @@ body.modal-open {
 
 .second-btn {
     display: block;
+}
+body.dark-theme .second-btn {
+    background-color: var(--color-mariner-lighter)
 }
 
 @media screen and (min-width: 768px) and (max-width: 1439px) {
