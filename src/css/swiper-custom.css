@@ -32,62 +32,31 @@
 /* Скидаємо інлайнову ширину та паддінги, які додавав інспектор сторінки */
 .paws-house-pagination-dots.swiper-pagination,
 .happy-stories__pagination.swiper-pagination {
-  display: flex; 
-  align-items: center;
-  gap: 7px; 
-  position: static;
-  
-  /* Примусово лікуємо 40px та 50px з element.style */
-  width: auto !important;
-  padding: 0 !important;
-}
-
-/* Об'єднуємо базовий вигляд неактивних крапок */
-.paws-house-pagination-dots .swiper-pagination-bullet,
-.happy-stories__pagination .swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  margin: 0 !important; /* Скидаємо стандартні маржини Swiper */
-  cursor: pointer;
-  opacity: 0.2;
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  position: relative; /* Повертаємо relative, щоб Swiper міг коректно рахувати координати всередині */
+  display: block; /* Повертаємо блочний тип, щоб флекс-маржини працювали як треба */
+/* Жорстко вимикаємо внутрішні зсуви Swiper, які косять крапки вбік */
+  left: auto !important;
+  transform: none !important;
+  /* Ідеальний трюк для флексів: автоматичні маржини з обох боків примусово 
+     ставлять елемент по центру, навіть якщо у батька прописано space-between */
+  margin-left: auto;
+  margin-right: auto;
+  /* Змінюємо внутрішні відступи між крапками через офіційну змінну Swiper */
+  --swiper-pagination-bullet-horizontal-gap: 4px;
+  --swiper-pagination-color: var(--color-neutral-darkest);
+  --swiper-pagination-bullet-inactive-color: var(--color-neutral-darkest);
+  --swiper-pagination-bullet-inactive-opacity: 0.2;
 }
 
 /* Спільний ефект ховеру */
 .paws-house-pagination-dots .swiper-pagination-bullet:hover,
 .happy-stories__pagination .swiper-pagination-bullet:hover {
+  --swiper-pagination-bullet-inactive-opacity: 0.4;
   opacity: 0.4;
 }
 
-/* Спільний стан активної крапки */
-.paws-house-pagination-dots .swiper-pagination-bullet-active,
-.happy-stories__pagination .swiper-pagination-bullet-active {
-  opacity: 1;
-}
-
 /* ==========================================================================
-   3. УНІКАЛЬНІ КОЛЬОРИ ПАГІНАЦІЇ
-   ========================================================================== */
-
-/* Секція Paws House */
-.paws-house-pagination-dots .swiper-pagination-bullet {
-  background-color: #02060a;
-}
-.paws-house-pagination-dots .swiper-pagination-bullet-active {
-  background-color: #02060a;
-  transform: scale(1.15);
-}
-
-/* Секція Happy Stories */
-.happy-stories__pagination .swiper-pagination-bullet {
-  background-color: var(--color-neutral-darkest);
-}
-.happy-stories__pagination .swiper-pagination-bullet-active {
-  background-color: var(--color-neutral-darkest);
-}
-
-/* ==========================================================================
-   4. СПІЛЬНІ КНОПКИ-СТРІЛОЧКИ КЕРУВАННЯ
+   3. СПІЛЬНІ КНОПКИ-СТРІЛОЧКИ КЕРУВАННЯ
    ========================================================================== */
 
 /* Об'єднуємо розміри, радіуси та флекси для кнопок обох секцій */
@@ -132,7 +101,7 @@
 }
 
 /* ==========================================================================
-   5. УНІКАЛЬНІ СТИЛІ КНОПОК ТА АДАПТИВУ (ЗАЛИШАЮТЬСЯ ОКРЕМО)
+   4. УНІКАЛЬНІ СТИЛІ КНОПОК ТА АДАПТИВУ (ЗАЛИШАЮТЬСЯ ОКРЕМО)
    ========================================================================== */
 
 /* Унікальні кольори кнопок Paws House */

@@ -1,7 +1,7 @@
-// ПРИБРАЛИ СТАТИЧНИЙ ІМПОРТ spin.js З ПЕРШОГО РЯДКА
+// ІМПОРТУЄМО ФУНКЦІЇ З ЄДИНОГО МОДУЛЯ API
+import { fetchCategories, fetchAnimals } from './api.js';
 
-const API_BASE = 'https://paw-hut.b.goit.study/api';
-
+// Фіксований порядок кнопок фільтрів після «Всі»
 const CATEGORY_ORDER = [
   'Собаки',
   'Коти',
@@ -12,6 +12,7 @@ const CATEGORY_ORDER = [
   'Терміново шукають дім',
 ];
 
+// DOM-елементи секції
 const refs = {
   filtersContainer: document.querySelector('.pets__filters'),
   petsList: document.querySelector('.pets__list'),
@@ -21,6 +22,7 @@ const refs = {
   spinnerRoot: document.querySelector('.pets__loader-spinner'),
 };
 
+// Поточний стан пагінації та фільтра
 const state = {
   page: 1,
   categoryId: '',
@@ -35,6 +37,15 @@ let isPetsListReady = false;
 
 const TOAST_DURATION = 5000;
 
+// Тексти toast-повідомлень для користувача
+const TOAST_MESSAGES = {
+  loadFailed: 'Не вдалося завантажити список. Спробуйте ще раз.',
+  filterFailed: 'Не вдалося застосувати фільтр. Спробуйте ще раз.',
+  loadMoreFailed: 'Не вдалося показати більше карток. Спробуйте ще раз.',
+  updateFailed: 'Не вдалося оновити список. Спробуйте ще раз.',
+  listEnd: 'Це всі тваринки в цій категорії.',
+};
+
 const spinnerOptions = {
   lines: 12,
   length: 7,
@@ -43,11 +54,10 @@ const spinnerOptions = {
   color: '#88765c',
 };
 
-// ОПТИМІЗОВАНА ФУНКЦІЯ ЛОАДЕРА
+// Показує або ховає лоадер і блокує скрол сторінки
 export async function toggleLoader(isVisible) {
   if (!refs.loader) return;
 
-  // Класи перемикаємо миттєво, щоб інтерфейс зразу реагував (CSS-бекграунд чи розмиття)
   refs.loader.classList.toggle('hidden', !isVisible);
   document.body.classList.toggle('is-loading', isVisible);
   updateLoadMoreButton();
@@ -58,7 +68,6 @@ export async function toggleLoader(isVisible) {
         // ЛІНИВИЙ ІМПОРТ: завантажуємо бібліотеку тільки в момент появи лоадера
         const { Spinner } = await import('./spin.js');
 
-        // Перевіряємо ще раз isVisible, бо поки скрипт вантажився, запит міг уже завершитись
         if (refs.loader.classList.contains('hidden')) return;
 
         if (!spinner) {
@@ -71,13 +80,13 @@ export async function toggleLoader(isVisible) {
     return;
   }
 
-  // Якщо лоадер ховаємо, зупиняємо спінер
   if (spinner) {
     spinner.stop();
     spinner = null;
   }
 }
 
+// Плавно ховає toast і видаляє його з DOM
 function hideToast(toast) {
   if (!toast) return;
 
@@ -91,6 +100,7 @@ function hideToast(toast) {
   );
 }
 
+// Показує toast-повідомлення
 function showToast(message) {
   const existingToast = document.querySelector('.pets-toast');
   if (existingToast) {
@@ -136,40 +146,12 @@ function showToast(message) {
   }, TOAST_DURATION);
 }
 
+// Кількість карток на сторінці: 9 на desktop, 8 на mobile/tablet
 function getItemsPerPage() {
   return window.innerWidth >= 1280 ? 9 : 8;
 }
 
-async function fetchCategories() {
-  const response = await fetch(`${API_BASE}/categories`);
-
-  if (!response.ok) {
-    throw new Error(`Categories request failed: ${response.status}`);
-  }
-
-  return response.json();
-}
-
-async function fetchAnimals() {
-  const limit = getItemsPerPage();
-  const params = new URLSearchParams({
-    page: String(state.page),
-    limit: String(limit),
-  });
-
-  if (state.categoryId) {
-    params.set('categoryId', state.categoryId);
-  }
-
-  const response = await fetch(`${API_BASE}/animals?${params}`);
-
-  if (!response.ok) {
-    throw new Error(`Animals request failed: ${response.status}`);
-  }
-
-  return response.json();
-}
-
+// Створює одну кнопку фільтра категорії
 function createFilterButton(name, categoryId = '') {
   const button = document.createElement('button');
   button.type = 'button';
@@ -179,6 +161,7 @@ function createFilterButton(name, categoryId = '') {
   return button;
 }
 
+// Сортує категорії за порядком із макету
 function sortCategories(categories) {
   return [...categories].sort((a, b) => {
     const indexA = CATEGORY_ORDER.indexOf(a.name);
@@ -190,6 +173,7 @@ function sortCategories(categories) {
   });
 }
 
+// Додає кнопки категорій у блок фільтрів
 function renderCategories(categories) {
   const fragment = document.createDocumentFragment();
 
@@ -200,19 +184,15 @@ function renderCategories(categories) {
   refs.filtersContainer.appendChild(fragment);
 }
 
+// Збирає HTML однієї картки тварини
 function createPetCard(animal) {
   const card = document.createElement('li');
   card.className = 'pet-card';
+  card.dataset.id = animal._id;
 
   const img = document.createElement('img');
   img.className = 'pet-card__img';
-  //img.src = animal.image;//
-  // img.alt = animal.name;//
-  //img.loading = 'lazy';
-  // img.width = '311';
-  //img.height = '245'; //
-  // ОПТИМІЗАЦІЯ: Пропускаємо оригінальне фото через сервіс weserv
-  // &w=311 задає ширину, &output=webp конвертує у надлегкий формат, &q=80 якість
+
   const optimizedImage = `https://images.weserv.nl/?url=${encodeURIComponent(
     animal.image
   )}&w=311&output=webp&q=80`;
@@ -221,7 +201,6 @@ function createPetCard(animal) {
   img.alt = animal.name;
   img.loading = 'lazy';
 
-  // Обов'язково додаємо дескриптори для адаптивності (якщо на ретині треба чіткіше)
   const optimizedImage2x = `https://images.weserv.nl/?url=${encodeURIComponent(
     animal.image
   )}&w=622&output=webp&q=80`;
@@ -288,6 +267,7 @@ function createPetCard(animal) {
   return card;
 }
 
+// Малює картки в списку
 function renderPetCards(animals, { append = false } = {}) {
   if (!append) {
     refs.petsList.innerHTML = '';
@@ -302,6 +282,7 @@ function renderPetCards(animals, { append = false } = {}) {
   refs.petsList.appendChild(fragment);
 }
 
+// Керує видимістю кнопки «Показати більше»
 function updateLoadMoreButton() {
   if (!refs.loadMoreBtn || !refs.loadMoreWrapper) return;
 
@@ -313,43 +294,74 @@ function updateLoadMoreButton() {
   refs.loadMoreBtn.disabled = !hasMore || isLoading;
 }
 
+// Примусово ховає кнопку пагінації
+function hideLoadMoreButton() {
+  if (!refs.loadMoreBtn || !refs.loadMoreWrapper) return;
+
+  refs.loadMoreWrapper.classList.add('hidden');
+  refs.loadMoreBtn.disabled = true;
+}
+
+// Дані останнього запиту тварин
+export let animalObj = {};
+
+// Завантажує порцію тварин через загальний модуль API
 async function loadAnimals({ reset = false, append = false } = {}) {
   if (reset) {
     state.page = 1;
   }
 
-  const data = await fetchAnimals();
-  state.totalItems = data.totalItems;
+  const limit = getItemsPerPage();
 
+  // Передаємо параметри у імпортовану функцію
+  const data = await fetchAnimals(state.page, limit, state.categoryId);
+
+  state.totalItems = data.totalItems;
+  animalObj = data;
   renderPetCards(data.animals, { append });
   updateLoadMoreButton();
+
+  if (append) {
+    const renderedCount = refs.petsList.children.length;
+
+    if (renderedCount >= state.totalItems) {
+      hideLoadMoreButton();
+      showToast(TOAST_MESSAGES.listEnd);
+    }
+  }
 }
 
+// Перезавантажує всі вже відкриті сторінки
 async function reloadAnimalsForCurrentPages() {
   const pagesLoaded = state.page;
+  const limit = getItemsPerPage();
 
   await toggleLoader(true);
+  let requestFailed = false;
 
   try {
     state.page = 1;
-    const firstPage = await fetchAnimals();
+    const firstPage = await fetchAnimals(1, limit, state.categoryId);
     state.totalItems = firstPage.totalItems;
     renderPetCards(firstPage.animals, { append: false });
 
     for (let page = 2; page <= pagesLoaded; page += 1) {
       state.page = page;
-      const data = await fetchAnimals();
+      const data = await fetchAnimals(page, limit, state.categoryId);
       renderPetCards(data.animals, { append: true });
     }
 
     updateLoadMoreButton();
   } catch {
-    showToast('Не вдалося оновити список тварин. Спробуйте пізніше.');
+    requestFailed = true;
+    showToast(TOAST_MESSAGES.updateFailed);
   } finally {
     await toggleLoader(false);
+    if (requestFailed) hideLoadMoreButton();
   }
 }
 
+// Реагує на перехід між 8 і 9 картками при resize
 function handleViewportResize() {
   if (!isPetsListReady) return;
 
@@ -374,6 +386,7 @@ function setActiveFilter(activeButton) {
     .forEach(btn => btn.classList.toggle('is-active', btn === activeButton));
 }
 
+// Обробник кліку по фільтру категорії
 async function onFiltersClick(event) {
   const button = event.target.closest('.pets__filter-btn');
   if (!button || button.classList.contains('is-active')) return;
@@ -386,15 +399,19 @@ async function onFiltersClick(event) {
   setActiveFilter(button);
   state.categoryId = button.dataset.categoryId || '';
 
+  let requestFailed = false;
+
   try {
     await toggleLoader(true);
     await loadAnimals({ reset: true });
   } catch {
+    requestFailed = true;
     setActiveFilter(previousActive);
     state.categoryId = previousCategoryId;
-    showToast('Не вдалося завантажити тварин. Спробуйте пізніше.');
+    showToast(TOAST_MESSAGES.filterFailed);
   } finally {
     await toggleLoader(false);
+    if (requestFailed) hideLoadMoreButton();
   }
 }
 
@@ -402,6 +419,7 @@ function bindFiltersEvents() {
   refs.filtersContainer.addEventListener('click', onFiltersClick);
 }
 
+// Плавний скрол
 function smoothScrollToElement(element, duration = 1200) {
   const offset = 24;
   const targetY = element.getBoundingClientRect().top + window.scrollY - offset;
@@ -435,21 +453,26 @@ function scrollToFirstNewCard(previousCount) {
   smoothScrollToElement(firstNewCard);
 }
 
+// Обробник кліку «Показати більше»
 async function onLoadMoreClick() {
   if (refs.loadMoreBtn.disabled) return;
 
   const previousCount = refs.petsList.children.length;
   state.page += 1;
 
+  let requestFailed = false;
+
   try {
     await toggleLoader(true);
     await loadAnimals({ append: true });
     scrollToFirstNewCard(previousCount);
   } catch {
+    requestFailed = true;
     state.page -= 1;
-    showToast('Не вдалося завантажити ще тварин. Спробуйте пізніше.');
+    showToast(TOAST_MESSAGES.loadMoreFailed);
   } finally {
     await toggleLoader(false);
+    if (requestFailed) hideLoadMoreButton();
     refs.loadMoreBtn.blur();
   }
 }
@@ -458,11 +481,14 @@ function bindLoadMoreEvents() {
   refs.loadMoreBtn.addEventListener('click', onLoadMoreClick);
 }
 
+// Скидає список до першої порції карток
 async function resetToFirstPage() {
   const isFirstPageOnly =
     state.page === 1 && refs.petsList.children.length <= getItemsPerPage();
 
   if (isFirstPageOnly) return;
+
+  let requestFailed = false;
 
   try {
     await toggleLoader(true);
@@ -473,9 +499,11 @@ async function resetToFirstPage() {
       smoothScrollToElement(firstCard);
     }
   } catch {
-    showToast('Не вдалося оновити список тварин. Спробуйте пізніше.');
+    requestFailed = true;
+    showToast(TOAST_MESSAGES.updateFailed);
   } finally {
     await toggleLoader(false);
+    if (requestFailed) hideLoadMoreButton();
   }
 }
 
@@ -489,15 +517,19 @@ function bindEscapeEvent() {
   document.addEventListener('keydown', onEscapeKeydown);
 }
 
+// Старт секції
 async function initPetsList() {
   bindFiltersEvents();
   bindLoadMoreEvents();
   bindResizeEvents();
   bindEscapeEvent();
 
+  let requestFailed = false;
+
   try {
     await toggleLoader(true);
 
+    // Виклик імпортованої функції категорій
     const categories = await fetchCategories();
     renderCategories(categories);
 
@@ -505,9 +537,11 @@ async function initPetsList() {
     lastItemsPerPage = getItemsPerPage();
     isPetsListReady = true;
   } catch {
-    showToast('Не вдалося завантажити дані. Спробуйте пізніше.');
+    requestFailed = true;
+    showToast(TOAST_MESSAGES.loadFailed);
   } finally {
     await toggleLoader(false);
+    if (requestFailed) hideLoadMoreButton();
   }
 }
 

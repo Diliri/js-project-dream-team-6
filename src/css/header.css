@@ -1,6 +1,5 @@
-/* ==========================================================================
-   1. МОБИЛЬНАЯ ВЕРСИЯ (По умолчанию от 320px до 767px)
-   ========================================================================== */
+/* Mobile (от 320px до 767px) */
+
 .header {
   padding: 16px 0;
   background-color: var(--color-scheme-1-background);
@@ -12,7 +11,6 @@
   justify-content: space-between;
 }
 
-/* Базовые стили кликабельного логотипа с точными размерами */
 .logo {
   display: inline-flex;
   align-items: center;
@@ -22,6 +20,7 @@
   width: 160px;
   height: 68px;
   gap: 12px;
+  margin-right: 24px;
   text-decoration: none;
   cursor: pointer;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0, 0.2);
@@ -34,7 +33,6 @@
   opacity: 0.7;
 }
 
-/* Картинки внутри фрейма автоматически подстроятся под его высоту */
 .logo__icon,
 .logo__text {
   display: block;
@@ -45,8 +43,11 @@
 /* Кнопка открытия меню (Бургер) */
 .burger-btn {
   display: flex;
+  flex-flow: column;
+  width: 24px;
+  height: 24px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   background: none;
   border: none;
   padding: 0;
@@ -54,19 +55,87 @@
   cursor: pointer;
   transition: color 250ms cubic-bezier(0.4, 0, 0, 0.2);
 }
-
 .burger-btn:hover,
 .burger-btn:focus {
   color: var(--color-scheme-1-accent, #887b5c);
 }
 
-/* Шторка мобильного меню (ТЗ: на всю ширину и высоту окна) */
+.burger-btn .burger-line {
+  width: 18px;
+  height: 2px;
+  background-color: var(--color-scheme-1-text);
+ 
+}
+
+/* .burger-btn ,
+body.dark-theme .burger-btn .burger-line,
+[data-theme="dark"] .burger-btn .burger-line {
+  background-color: #ffffff;
+} */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+
+  /* Плавные переходы для всех состояний */
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, box-shadow 200ms ease, transform 100ms ease;
+}
+
+/* --------------------------------------------------------------------------
+   1. PRIMARY BUTTON (Закрашенная)
+   -------------------------------------------------------------------------- */
+.btn-primary {
+  /* Normal: кнопка #88765C, рамка #88765C, текст белый */
+  background-color: var(--color-mariner-dark);
+  border: 1px solid var(--color-mariner-dark);
+  color: var(--color-white);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  outline: none;
+  /* Hover: кнопка #EEE9E3, рамка #88765C, текст #02060A */
+  background-color: var(--color-mariner-lighter);
+  border-color: var(--color-mariner-dark);
+  color: var(--color-neutral-darkest);
+}
+
+.btn-primary:active {
+  /* ИСПРАВЛЯЕМ: Возвращаем точный нежный кофейный цвет при зажатии */
+  background-color: var(--color-mariner-light);
+  /* Это и есть ваш цвет #C3B49D */
+  border-color: var(--color-mariner-dark);
+  /* Рамка остается бежевой */
+  color: var(--color-neutral-darkest);
+  /* Текст становится темным */
+
+  /* Накладываем две внутренние тени для эффекта градиента из ТЗ */
+  box-shadow:
+    inset 0 12px 16px -4px rgba(0, 0, 0, 0.08),
+    inset 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+
+  transform: scale(0.98);
+}
+
+
+
+/* Шторка мобильного меню (на всю ширину и высоту окна) */
 .header__menu-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  z-index: 999;
   background-color: var(--color-scheme-background, #ffffff);
   padding: 48px 24px;
   display: flex;
@@ -85,7 +154,6 @@
     visibility 300ms ease;
 }
 
-/* Класс, который мы будем добавлять через JS для открытия меню */
 .header__menu-wrapper.is-open {
   opacity: 1;
   visibility: visible;
@@ -153,10 +221,13 @@
   }
 }
 
-/* ==========================================================================
-   3. ДЕСКТОПНАЯ ВЕРСИЯ (От 1440px)
-   ========================================================================== */
+/* Desktop (От 1440px) */
 @media screen and (min-width: 1440px) {
+  .burger-btn,
+  .menu-close-btn {
+    display: none;
+  }
+
   .burger-btn,
   .menu-close-btn {
     display: none;
@@ -168,15 +239,13 @@
     height: auto;
     background: none;
     padding: 0;
-
+  
     /* Растягиваем обертку на всю оставшуюся ширину */
     display: flex;
     flex-grow: 1;
     flex-direction: row;
     align-items: center;
-
     margin-left: 24px;
-    /* Отступ всего блока меню от логотипа */
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -186,16 +255,156 @@
   .nav__list {
     flex-direction: row;
     gap: 32px;
-    /* Расстояние между ссылками */
   }
 
   .nav__link {
     font-size: 16px;
   }
-
-  /* ВОТ ЭТО СВОЙСТВО ОТОЛКНЕТ КНОПКУ НА ПРАВЫЙ КРАЙ */
   .header__btn {
     margin-left: auto;
-    color: var(--color-scheme-1-text);
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, box-shadow 200ms ease, transform 100ms ease;
+}
+
+/*  PRIMARY BUTTON */
+.btn-primary {
+  /* Normal: кнопка #88765C, рамка #88765C, текст белый */
+  background-color: var(--color-mariner-dark);
+  border: 1px solid var(--color-mariner-dark);
+  color: var(--color-white);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  outline: none;
+  background-color: var(--color-mariner-lighter);
+  border-color: var(--color-mariner-dark);
+  color: var(--color-neutral-darkest);
+}
+
+.btn-primary:active {
+  background-color: var(--color-mariner-light);
+  border-color: var(--color-mariner-dark);
+  color: var(--color-neutral-darkest);
+  box-shadow:
+    inset 0 12px 16px -4px rgba(0, 0, 0, 0.08),
+    inset 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  transform: scale(0.98);
+}
+
+/* SECONDARY BUTTON (Прозрачная с рамкой) */
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--color-neutral-darkest);
+  color: var(--color-neutral-darkest);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  outline: none;
+  /* Hover: кнопка #C3B49D, рамка #02060A, текст #02060A */
+  background-color: var(--color-mariner-light);
+  border-color: var(--color-neutral-darkest);
+  color: var(--color-neutral-darkest);
+}
+
+.btn-secondary:active {
+  background-color: var(--color-mariner-light);
+  border-color: var(--color-neutral-darkest);
+  color: var(--color-neutral-darkest);
+  box-shadow:
+    inset 0 12px 16px -4px rgba(0, 0, 0, 0.08),
+    inset 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  transform: scale(0.98);
+}
+
+/* DISABLED */
+.btn:disabled,
+.btn.is-disabled {
+  background-color: var(--color-mariner-lightest);
+  border-color: var(--color-mariner-light);
+  color: var(--color-neutral-light);
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  transform: none;
+}
+
+.nav__link {
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  padding-bottom: 2px;
+
+
+  /* NORMAL */
+  color: var(--color-neutral-darkest, #02060A);
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  transition: color 250ms cubic-bezier(0.4, 0, 0, 0.2), border-color 250ms cubic-bezier(0.4, 0, 0, 0.2);
+}
+
+/* HOVER/FOCUS */
+.nav__link:hover,
+.nav__link:focus,
+.nav__link:focus-visible {
+  outline: none;
+  color: var(--color-neutral-darkest, #02060A);
+  border-color: var(--color-mariner-darker, #443B2E);
+
+}
+
+/* ACTIVE  */
+.nav__link:active {
+  color: var(--color-mariner-dark, #887B5C);
+  border-color: var(--color-mariner-dark, #887B5C);
+}
+
+.nav__link.current {
+  color: var(--color-mariner-dark, #887B5C);
+  border-color: var(--color-mariner-dark, #887B5C);
+  pointer-events: none;
+}
+
+.logo__icon,
+.logo__text-vector, .logo__text {
+  filter: drop-shadow(9999px 0 0 var(--color-scheme-1-text));
+  position: relative;
+  left: -9999px;
+  transition: filter 10ms ease;
+}
+.header__btn,
+.header .btn,
+.header .menu__list,
+.header .nav {
+  display: none !important;
+}
+@media screen and (min-width: 1440px) {
+
+  .header__btn,
+  .header .btn {
+    display: inline-flex !important;
+   
+  }
+  .header .menu__list,
+  .header .nav {
+    display: flex !important;
+
   }
 }
