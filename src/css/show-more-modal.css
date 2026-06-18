@@ -1,34 +1,16 @@
-body.modal-open {
-    overflow: hidden;
-    touch-action: none;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-/* ── Overlay ── */
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: var(--opacity-neutral-darkest-40);
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 20px;
-    overflow-y: auto;
-    z-index: 100;
-    opacity: 1;
-    transition: opacity 0.25s ease;
-}
-
-
-.modal-overlay.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
 
 /* ── Container ── */
 .card-container {
     position: relative;
     z-index: 101;
-
     max-height: 90vh;
     overflow-y: auto;
     width: min(90vw, 310px);
@@ -51,36 +33,11 @@ body.modal-open {
     }
 }
 
-@media (min-width: 768px) {
-    .card-container {
-        width: 704px;
-        padding: 64px 32px;
-    }
-
-    .dynamic-info {
-        flex-direction: row;
-    }
-}
-
-@media (min-width: 1440px) {
-    .card-container {
-        width: min(90vw, 1312px);
-        padding: 64px;
-    }
-}
-
 .img-wrap {
     width: 100%;
     border-radius: 8px;
     height: 295px;
     overflow: hidden;
-}
-
-@media (min-width: 768px) {
-    .img-wrap {
-        flex-basis: calc((100% - 32px) / 2);
-        height: 450px;
-    }
 }
 
 .card-img {
@@ -95,12 +52,6 @@ body.modal-open {
     width: 100%;
 }
 
-@media (min-width: 768px) {
-    .wrap-descr {
-        flex-basis: calc((100% - 32px) / 2);
-    }
-}
-
 .card-text {
     font-family: var(--font-family);
     font-weight: 400;
@@ -109,22 +60,10 @@ body.modal-open {
     color: var(--color-scheme-1-text);
 }
 
-@media (min-width: 1440px) {
-    .card-text {
-        font-size: 16px;
-    }
-}
-
 .small-text {
     font-size: 12px;
     color: var(--color-scheme-1-text);
 
-}
-
-@media (min-width: 1440px) {
-    .small-text {
-        font-size: 14px;
-    }
 }
 
 .wrap-text {
@@ -143,12 +82,6 @@ body.modal-open {
     margin: 8px 0;
 }
 
-@media (min-width: 1440px) {
-    .card-title {
-        font-size: 40px;
-    }
-}
-
 .title-descr {
     font-family: var(--font-family);
     font-weight: 600;
@@ -157,12 +90,6 @@ body.modal-open {
     color: var(--color-scheme-1-text);
     margin-top: 24px;
     margin-bottom: 8px;
-}
-
-@media (min-width: 1440px) {
-    .title-descr {
-        font-size: 16px;
-    }
 }
 
 .button {
@@ -177,12 +104,6 @@ body.modal-open {
     cursor: pointer;
 }
 
-@media (min-width: 1440px) {
-    .button {
-        font-size: 16px;
-    }
-}
-
 .first-btn {
     display: none;
 }
@@ -190,6 +111,7 @@ body.modal-open {
 .second-btn {
     display: block;
 }
+
 body.dark-theme .second-btn {
     background-color: var(--color-mariner-lighter)
 }
@@ -204,36 +126,53 @@ body.dark-theme .second-btn {
     }
 }
 
-/* ── Close button ── */
-.modal__close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--color-neutral-darkest);
-    line-height: 1;
-    padding: 5px;
-    transition:
-        color 0.25s,
-        transform 0.25s;
+@media (min-width: 768px) {
+    .card-container {
+        width: 704px;
+        padding: 64px 32px;
+    }
+
+    .dynamic-info {
+        flex-direction: row;
+    }
+
+    .img-wrap {
+        flex-basis: calc((100% - 32px) / 2);
+        height: 450px;
+    }
+
+    .wrap-descr {
+        flex-basis: calc((100% - 32px) / 2);
+    }
 }
 
-.modal__close:hover {
-    color: var(--color-neutral-darkest);
-}
+@media (min-width: 1440px) {
+    .card-container {
+        width: min(90vw, 1312px);
+        padding: 64px;
+    }
 
-.modal__close:focus-visible {
-    color: var(--color-neutral-darkest);
-    outline: 2px solid var(--color-neutral-darkest);
-    outline-offset: 2px;
-}
+    .card-text {
+        font-size: 16px;
+    }
 
-.modal__close:active {
-    transform: scale(0.92);
-}
+    .small-text {
+        font-size: 14px;
+    }
 
-.modal__close svg {
-    display: block;
+    .card-title {
+        font-size: 40px;
+    }
+
+    .title-descr {
+        font-size: 16px;
+    }
+
+    .title-descr {
+        font-size: 16px;
+    }
+
+    .button {
+        font-size: 16px;
+    }
 }

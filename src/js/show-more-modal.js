@@ -77,7 +77,7 @@ function openModal() {
 function closeModal() {
   backdrop.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  cardContainer.innerHTML = '';
+  cardContainer.innerHTML = "";
   petId = null;
 }
 
