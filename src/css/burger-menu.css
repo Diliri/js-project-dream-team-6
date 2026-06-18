@@ -17,9 +17,7 @@
 }
 
 
-.burger-menu.is-open {
-    transform: translateX(0);
-}
+
 
 
 .burger-menu .burger-menu__container {
