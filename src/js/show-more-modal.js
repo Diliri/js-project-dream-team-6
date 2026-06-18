@@ -48,7 +48,6 @@ function handleButtons(event) {
   if (event.target.closest('.second-btn')) {
     closeModal();
     openAdoptModal(petId);
-    console.log(petId)
   }
 }
 
