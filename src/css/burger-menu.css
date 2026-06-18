@@ -7,7 +7,7 @@
     height: 100vh;
     z-index: 9999;
    
-    background-color: var(--bg-color, #FFFFFF);
+    background-color: var(--color-mariner-lightest);
 
   
     transform: translateX(100%);
@@ -53,7 +53,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--main-color, #3F382E);
+    color: var(--color-scheme-1-text);
     transition: color 0.2s ease, transform 0.2s ease;
 }
 
@@ -87,7 +87,7 @@
     font-family: inherit;
     font-size: 12px;
     text-decoration: none;
-    color: var(--main-color, #3F382E);
+    color: var(--color-scheme-1-text);
 }
 
 /* откл меня для старого щоб було для мого */
@@ -131,7 +131,7 @@
     border-radius: 8px;
 
     /* Цвет фона Mariner Dark из Figma */
-    background-color: rgba(136, 118, 92, 1);
+    background-color: var(--color-mariner-dark);
     border: 1px solid rgba(136, 118, 92, 1);
     /* Рамка 1px */
 
@@ -139,7 +139,9 @@
     transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
     cursor: pointer;
 }
-
+body.dark-theme .burger-menu__btn{
+    background-color: var(--color-mariner-lighter);
+}
 
 .burger-menu .burger-menu__btn:hover,
 .burger-menu .burger-menu__btn:focus {
