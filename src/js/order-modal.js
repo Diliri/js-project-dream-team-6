@@ -45,6 +45,7 @@ function closeAdoptModal() {
   fieldPhone.classList.remove('field--error');
   const btn = adoptForm.querySelector('.modal__submit');
   btn.disabled = false;
+  btn.classList.remove('is-loading');
   btn.textContent = 'Надіслати';
 }
 
@@ -89,21 +90,41 @@ inputPhone.addEventListener('input', () =>
   fieldPhone.classList.remove('field--error')
 );
 
+/* ───────────────── Лоадер на кнопці сабміту ───────────────── */
+function setSubmitLoading(btn, isLoading) {
+  if (isLoading) {
+    btn.disabled = true;
+    if (!btn.dataset.originalText) {
+      btn.dataset.originalText = btn.textContent;
+    }
+    btn.innerHTML =
+      '<span class="btn-spinner" aria-hidden="true"></span><span>Надсилання…</span>';
+    btn.classList.add('is-loading');
+  } else {
+    btn.disabled = false;
+    btn.classList.remove('is-loading');
+    btn.textContent = btn.dataset.originalText || 'Надіслати';
+  }
+}
+
 /* ───────────────── Сабміт форми (Виправлений) ───────────────── */
 adoptForm.addEventListener('submit', async e => {
   e.preventDefault();
   if (!validate()) return;
 
   const btn = adoptForm.querySelector('.modal__submit');
-  btn.disabled = true;
-  btn.textContent = 'Надсилання…';
+  setSubmitLoading(btn, true);
 
   const payload = {
     name: inputName.value.trim(),
     phone: inputPhone.value.trim(),
-    comment: inputComment.value.trim(),
     animalId: currentAnimalId,
   };
+
+  const comment = inputComment.value.trim();
+  if (comment) {
+    payload.comment = comment;
+  }
 
   try {
     // Динамічно завантажуємо тільки SweetAlert2, бо Axios вже працює через модуль api.js
@@ -150,7 +171,6 @@ adoptForm.addEventListener('submit', async e => {
       alert(`Помилка: ${errorMessage}`);
     }
 
-    btn.disabled = false;
-    btn.textContent = 'Надіслати';
+    setSubmitLoading(btn, false);
   }
 });

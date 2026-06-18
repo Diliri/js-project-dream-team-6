@@ -17,16 +17,16 @@ body.modal-open {
 
 /* ── Overlay ── */
 .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    z-index: 100;
-    opacity: 1;
-    transition: opacity 0.25s ease;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 100;
+  opacity: 1;
+  transition: opacity 0.25s ease;
 }
 
 .modal-overlay.hidden {
@@ -47,6 +47,7 @@ body.modal-open {
   transform: translateY(0);
   transition: transform 0.25s ease;
 }
+
 .field input::placeholder,
 .field textarea::placeholder {
   color: var(--color-scheme-1-text);
@@ -240,9 +241,9 @@ body.modal-open {
 }
 
 .modal__submit:active {
-    transform: scale(0.98);
-    box-shadow: inset 0 4px 6px -2px rgba(0, 0, 0, 0.03), inset 0 12px 16px -4px rgba(0, 0, 0, 0.08);
-    background: var(--color-mariner-light);
+  transform: scale(0.98);
+  box-shadow: inset 0 4px 6px -2px rgba(0, 0, 0, 0.03), inset 0 12px 16px -4px rgba(0, 0, 0, 0.08);
+  background: var(--color-mariner-light);
 }
 
 .modal__submit:disabled {
@@ -250,6 +251,30 @@ body.modal-open {
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+}
+
+/* ── Лоадер на кнопці ── */
+.modal__submit.is-loading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: btn-spinner-rotate 0.7s linear infinite;
+}
+
+@keyframes btn-spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (min-width: 768px) {
@@ -304,9 +329,12 @@ body.modal-open {
 
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
+
   .modal-overlay,
   .modal,
-  .modal__submit {
+  .modal__submit,
+  .btn-spinner {
     transition: none;
+    animation: none;
   }
 }
