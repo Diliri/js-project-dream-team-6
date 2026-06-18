@@ -302,6 +302,32 @@ function hideLoadMoreButton() {
   refs.loadMoreBtn.disabled = true;
 }
 
+// Ховає кнопку «Всі» при помилці запиту
+function hideAllFilterButton() {
+  const allFilterBtn = refs.filtersContainer?.querySelector(
+    '[data-category-id=""]'
+  );
+
+  allFilterBtn?.classList.add('hidden');
+}
+
+// Ховає блок фільтрів (помилка завантаження категорій)
+function hideFiltersBlock() {
+  refs.filtersContainer?.classList.add('hidden');
+}
+
+// Ховає пагінацію і «Всі» після помилки запиту тварин
+function hideControlsOnAnimalsError() {
+  hideLoadMoreButton();
+  hideAllFilterButton();
+}
+
+// Ховає фільтри і пагінацію після помилки початкового завантаження
+function hideControlsOnInitError() {
+  hideLoadMoreButton();
+  hideFiltersBlock();
+}
+
 // Дані останнього запиту тварин
 export let animalObj = {};
 
@@ -357,7 +383,7 @@ async function reloadAnimalsForCurrentPages() {
     showToast(TOAST_MESSAGES.updateFailed);
   } finally {
     await toggleLoader(false);
-    if (requestFailed) hideLoadMoreButton();
+    if (requestFailed) hideControlsOnAnimalsError();
   }
 }
 
@@ -411,7 +437,7 @@ async function onFiltersClick(event) {
     showToast(TOAST_MESSAGES.filterFailed);
   } finally {
     await toggleLoader(false);
-    if (requestFailed) hideLoadMoreButton();
+    if (requestFailed) hideControlsOnAnimalsError();
   }
 }
 
@@ -472,7 +498,7 @@ async function onLoadMoreClick() {
     showToast(TOAST_MESSAGES.loadMoreFailed);
   } finally {
     await toggleLoader(false);
-    if (requestFailed) hideLoadMoreButton();
+    if (requestFailed) hideControlsOnAnimalsError();
     refs.loadMoreBtn.blur();
   }
 }
@@ -503,7 +529,7 @@ async function resetToFirstPage() {
     showToast(TOAST_MESSAGES.updateFailed);
   } finally {
     await toggleLoader(false);
-    if (requestFailed) hideLoadMoreButton();
+    if (requestFailed) hideControlsOnAnimalsError();
   }
 }
 
@@ -541,7 +567,7 @@ async function initPetsList() {
     showToast(TOAST_MESSAGES.loadFailed);
   } finally {
     await toggleLoader(false);
-    if (requestFailed) hideLoadMoreButton();
+    if (requestFailed) hideControlsOnInitError();
   }
 }
 
