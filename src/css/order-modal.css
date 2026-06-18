@@ -257,6 +257,30 @@ body.modal-open {
   box-shadow: none;
 }
 
+/* ── Лоадер на кнопці ── */
+.modal__submit.is-loading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: btn-spinner-rotate 0.7s linear infinite;
+}
+
+@keyframes btn-spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (min-width: 768px) {
   .modal__submit {
     padding: 12px 88px;
@@ -275,7 +299,9 @@ body.modal-open {
 
   .modal-overlay,
   .modal,
-  .modal__submit {
+  .modal__submit,
+  .btn-spinner {
     transition: none;
+    animation: none;
   }
 }
