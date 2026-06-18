@@ -1,6 +1,9 @@
+/* ============================================================
+   Секція «Наші хвостики» (pets-list)
+   Breakpoints: mobile 320+, tablet 768+, desktop 1280+
+   ============================================================ */
 
-/* base section */
-
+/* --- Секція: відступи та фон --- */
 .pets {
   display: flex;
   flex-direction: column;
@@ -26,6 +29,7 @@
   }
 }
 
+/* --- Заголовок і підзаголовок --- */
 .pets__header {
     display: flex;
     flex-direction: column;
@@ -75,8 +79,7 @@
 }
 
 
-/* filters */
-
+/* --- Фільтри категорій --- */
 .pets__filters {
     display: flex;
     flex-wrap: wrap;
@@ -109,12 +112,14 @@
     cursor: pointer;
 }
 
+/* Активна кнопка фільтра */
 .pets__filter-btn.is-active {
     border: 1px solid var(--opacity-transparent);
     background: var(--color-scheme-1-foreground);
     font-weight: 500;
 }
 
+/* Hover-ефект фільтрів тільки на desktop */
 @media (min-width: 1280px) {
   .pets__filter-btn {
     transition: transform 0.3s ease;
@@ -125,8 +130,7 @@
   }
 }
 
-/* loader */
-
+/* --- Лоадер: оверлей + спінер --- */
 .pets__loader {
   position: fixed;
   inset: 0;
@@ -149,17 +153,18 @@
   z-index: 1;
 }
 
+/* Блокує скрол, поки йде завантаження (клас додає JS) */
 body.is-loading {
   overflow: hidden;
 }
 
+/* Утиліта: приховати елемент (лоадер, кнопка тощо) */
 .hidden {
     display: none;
 }
 
 
-/* cards list */
-
+/* --- Сітка карток: 1 / 2 / 3 колонки --- */
 .pets__list {
     display: grid;
     grid-template-columns: 1fr;
@@ -178,13 +183,15 @@ body.is-loading {
   }
 }
 
-/* card */
-
+/* --- Картка тварини --- */
 .pet-card {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+
+    min-width: 0;
+    max-width: 100%;
 
     padding: 12px;
     border-radius: 16px;
@@ -201,9 +208,11 @@ body.is-loading {
   }
 }
 
-
+/* Фото картки */
 .pet-card__img {
     width: 100%;
+    max-width: 100%;
+    height: auto;
     aspect-ratio: 4 / 3;
     object-fit: cover;
 
@@ -217,6 +226,7 @@ body.is-loading {
   }
 }
 
+/* Верхній блок (вид, ім'я, теги) і нижній (meta, опис, кнопка) */
 .pet-card__top,
 .pet-card__footer {
     display: flex;
@@ -225,20 +235,23 @@ body.is-loading {
     width: 100%;
 }
 
+/* Відступ між ім'ям і тегами — 4px за макетом */
 .pet-card__top {
-    gap: 0;
+    gap: 4px;
 }
 
 .pet-card__footer {
     gap: 16px;
 }
 
+/* Блок вид + кличка */
 .pet-card__main {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
+/* Кличка тварини */
 .pet-card__name {
   font-family: var(--second-family);
   font-weight: 700;
@@ -248,6 +261,7 @@ body.is-loading {
   color: var(--color-scheme-1-text);
 }
 
+/* Вид тварини (кіт, собака тощо) */
 .pet-card__species {
   font-family: var(--font-family);
   font-weight: 400;
@@ -256,12 +270,14 @@ body.is-loading {
   color: var(--color-scheme-1-text);
 }
 
+/* Теги категорій на картці */
 .pet-card__tags {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
 }
 
+/* Один тег-категорія */
 .tag {
     padding: 4px 8px;
     border: 1px solid var(--opacity-transparent);
@@ -274,6 +290,7 @@ body.is-loading {
     background: var(--opacity-neutral-darkest-5);
 }
 
+/* Вік і стать */
 .pet-card__meta {
     display: flex;
     gap: 12px;
@@ -282,6 +299,7 @@ body.is-loading {
     color: var(--color-scheme-1-text);
 }
 
+/* Короткий опис тварини */
 .pet-card__description {
     font-family: var(--font-family);
     font-weight: 400;
@@ -290,6 +308,7 @@ body.is-loading {
     color: var(--color-scheme-1-text);
 }
 
+/* Кнопка «Дізнатись більше» на картці */
 .pet-card__btn {
     display: flex;
     align-items: center;
@@ -310,6 +329,7 @@ body.is-loading {
     cursor: pointer;
 }
 
+/* Desktop: фіксована висота картки, footer притиснутий донизу */
 @media (min-width: 1280px) {
   .pet-card__top {
     margin-inline: 12px;
@@ -338,7 +358,6 @@ body.is-loading {
   .pet-card__name {
     font-size: 24px;
     line-height: 1.4;
-    padding-bottom: 4px;
   }
 
   .pet-card__tags {
@@ -377,6 +396,7 @@ body.is-loading {
   }
 }
 
+/* Стани кнопки на картці */
 .pet-card__btn:hover,
 .pet-card__btn:focus-visible {
     background: var(--color-mariner-light);
@@ -395,8 +415,7 @@ body.is-loading {
 }
 
 
-/* load more */
-
+/* --- Кнопка «Показати більше» --- */
 .pets__actions {
     display: flex;
     justify-content: center;
@@ -415,7 +434,8 @@ body.is-loading {
 
     padding-block: 12px;
     padding-inline: 24px;
-    width: 335px;
+    width: 100%;
+    max-width: 335px;
     height: 45px;
 
     font-family: var(--font-family);
@@ -440,6 +460,7 @@ body.is-loading {
   }
 }
 
+/* Світла тема: hover / focus / active */
 .pets__load-more:hover:not(:disabled),
 .pets__load-more:focus-visible:not(:disabled) {
     background: var(--color-mariner-light);
@@ -454,12 +475,14 @@ body.is-loading {
         inset 0 12px 16px -4px rgba(0, 0, 0, 0.08);
 }
 
+/* Темна тема: базовий вигляд кнопки */
 body.dark-theme .pets__load-more {
     border-color: var(--color-mariner-lighter);
     background: var(--color-mariner-lighter);
     color: var(--color-white);
 }
 
+/* Темна тема: hover / focus / active */
 body.dark-theme .pets__load-more:hover:not(:disabled),
 body.dark-theme .pets__load-more:focus-visible:not(:disabled),
 body.dark-theme .pets__load-more:active:not(:disabled) {
@@ -474,8 +497,7 @@ body.dark-theme .pets__load-more:active:not(:disabled) {
 }
 
 
-/* toast */
-
+/* --- Toast-повідомлення (помилки та кінець списку) --- */
 .pets-toast {
     position: fixed;
     right: 20px;
@@ -507,6 +529,7 @@ body.dark-theme .pets__load-more:active:not(:disabled) {
         transform 0.25s ease;
 }
 
+/* Видимий стан toast (додає JS) */
 .pets-toast.is-visible {
     opacity: 1;
     transform: translateY(0);
@@ -516,6 +539,7 @@ body.dark-theme .pets__load-more:active:not(:disabled) {
     flex: 1;
 }
 
+/* Кнопка закриття toast */
 .pets-toast__close {
     flex-shrink: 0;
 
@@ -533,19 +557,20 @@ body.dark-theme .pets__load-more:active:not(:disabled) {
 
 
 
-/* Якщо на десктопі (від 1440px) потрібен інший розмір */
+/* --- Розміри фото картки на tablet і wide desktop --- */
 @media screen and (min-width: 768px) {
   .pet-card__img {
-    width: 312px;
-    height: 245px; /* Можна змінити висоту під десктопний макет, якщо треба */
+    width: 100%;
+    max-width: 312px;
+    height: auto;
+    aspect-ratio: 312 / 245;
   }
 }
 
-
 @media screen and (min-width: 1440px) {
   .pet-card__img {
-    width: 392px;
-    height: 309px; /* Можна змінити висоту під десктопний макет, якщо треба */
+    max-width: 392px;
+    aspect-ratio: 392 / 309;
   }
 }
 

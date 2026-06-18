@@ -1,11 +1,13 @@
+<!-- Секція «Наші хвостики» — розмітка; дані підтягуються через pets-list.js -->
 <section class="pets">
   <div class="container">
+    <!-- Заголовок секції -->
     <div class="pets__header">
       <h2 class="pets__title">Наші хвостики</h2>
       <p class="pets__subtitle">Вони дуже чекають на знайомство з вами</p>
     </div>
 
-    <!-- FILTERS -->
+    <!-- Фільтри категорій: «Всі» в HTML, решта — з API -->
     <div class="pets__filters">
       <button
         type="button"
@@ -14,21 +16,18 @@
       >
         Всі
       </button>
-      <!-- categories from API -->
     </div>
 
-    <!-- CARDS LIST -->
-    <ul class="pets__list">
-      <!-- cards from API -->
-    </ul>
+    <!-- Список карток тварин (рендериться JS) -->
+    <ul class="pets__list"></ul>
 
-    <!-- LOAD MORE -->
+    <!-- Кнопка пагінації «Показати більше» -->
     <div class="pets__actions">
       <button type="button" class="pets__load-more">Показати більше</button>
     </div>
   </div>
 
-  <!-- LOADER -->
+  <!-- Повноекранний лоадер під час запитів до API -->
   <div
     class="pets__loader hidden"
     role="status"
