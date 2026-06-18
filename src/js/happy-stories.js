@@ -1,26 +1,24 @@
-import { fetchFeedbacks } from './api.js'; // Імпортуємо функцію запиту
+import { fetchFeedbacks } from './api.js'; // Імпорт функції запиту
 
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('feedbacks-container');
   const controlsBlock = document.querySelector('.happy-stories__controls');
 
-  // Зміни розмір зірок (наприклад, на 18), якщо в макеті інакше!
   function generateStarsHTML(rating) {
     let starsHTML = '';
     const maxStars = 5;
-    const starSize = 18; // Сюди підстав значення з Figma
 
     for (let i = 1; i <= maxStars; i++) {
       if (rating >= i) {
-        starsHTML += `<svg class="happy-stories__star fill" viewBox="0 0 24 24" width="${starSize}" height="${starSize}"><polygon fill="currentColor" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+        starsHTML += `<svg class="happy-stories__star fill" viewBox="0 0 24 24" width="20" height="19"><polygon fill="currentColor" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
       } else if (rating >= i - 0.5) {
         starsHTML += `
-          <svg class="happy-stories__star" viewBox="0 0 24 24" width="${starSize}" height="${starSize}">
-            <defs><linearGradient id="halfGrad"><stop offset="50%" stop-color="currentColor"/><stop offset="50%" stop-color="transparent"/></linearGradient></defs>
-            <polygon fill="url(#halfGrad)" stroke="currentColor" stroke-width="2" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-          </svg>`;
+        <svg class="happy-stories__star" viewBox="0 0 24 24" width="20" height="19">
+          <defs><linearGradient id="halfGrad"><stop offset="50%" stop-color="currentColor"/><stop offset="50%" stop-color="transparent"/></linearGradient></defs>
+          <polygon fill="url(#halfGrad)" stroke="currentColor" stroke-width="2" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>`;
       } else {
-        starsHTML += `<svg class="happy-stories__star empty" viewBox="0 0 24 24" width="${starSize}" height="${starSize}"><polygon fill="none" stroke="currentColor" stroke-width="2" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+        starsHTML += `<svg class="happy-stories__star empty" viewBox="0 0 24 24" width="20" height="19"><polygon fill="none" stroke="currentColor" stroke-width="2" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
       }
     }
     return `<div class="happy-stories__stars">${starsHTML}</div>`;
@@ -30,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const data = await fetchFeedbacks();
 
-      // Перевірка на масив (як у тебе)
+      // Перевірка на масив
       const feedbacksArray = Array.isArray(data)
         ? data
         : data.feedbacks || data.data || [];
@@ -52,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         container.appendChild(listItem);
       });
 
-      // Показуємо контроли, якщо раніше вони ховалися, та запускаємо слайдер
+      // Є контроли, якщо раніше вони ховалися, та запускається слайдер
       if (controlsBlock) controlsBlock.style.display = 'flex';
       await initSwiperLazy();
     } catch (error) {
@@ -78,17 +76,17 @@ document.addEventListener('DOMContentLoaded', () => {
       grabCursor: true,
 
       navigation: {
-        nextEl: '.happy-stories__btn--next', // Використовуй точніші класи, щоб уникнути конфліктів
+        nextEl: '.happy-stories__btn--next',
         prevEl: '.happy-stories__btn:not(.happy-stories__btn--next)',
       },
       pagination: {
         el: '.happy-stories__pagination',
         clickable: true,
-        dynamicBullets: true, // Це виконує умову ТЗ про "динамічну пагінацію" (крапки зменшуються)
+        dynamicBullets: true, // ТЗ про "динамічну пагінацію" (крапки зменшуються)
       },
       breakpoints: {
         768: { slidesPerView: 2, spaceBetween: 32 },
-        1440: { slidesPerView: 4, spaceBetween: 32 }, // Додай десктоп, якщо за макетом там більше карток!
+        1440: { slidesPerView: 4, spaceBetween: 32 },
       },
     });
   }
